@@ -3,11 +3,11 @@ import { Img } from '../../models/Img';
 
 import './ImgCard.scss';
 
-type ImgCardProps = {
+type Props = {
 	img: Img;
 };
 
-export const ImgCard: React.FC<ImgCardProps> = ({ img }) => {
+export const ImgCard: React.FC<Props> = ({ img }) => {
 	return (
 		<>
 			<div className="img-card bg-cover bg-center cursor-pointer" style={{ backgroundImage: `url(${img.webformatURL})` }}>
