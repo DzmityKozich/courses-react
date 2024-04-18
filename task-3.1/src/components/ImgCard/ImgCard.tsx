@@ -1,12 +1,13 @@
+import React from 'react';
 import { Img } from '../../models/Img';
 
 import './ImgCard.scss';
 
-interface Props {
+type ImgCardProps = {
 	img: Img;
-}
+};
 
-export default function ImgCard({ img }: Props) {
+export const ImgCard: React.FC<ImgCardProps> = ({ img }) => {
 	return (
 		<>
 			<div className="img-card bg-cover bg-center cursor-pointer" style={{ backgroundImage: `url(${img.webformatURL})` }}>
@@ -14,4 +15,4 @@ export default function ImgCard({ img }: Props) {
 			</div>
 		</>
 	);
-}
+};
