@@ -1,19 +1,23 @@
 import { useRef, useState } from 'react';
-import { useStateFunction } from './useStateFunction';
+
+// NOTE:
+// { active: false, reasone: 'start } - timer NOT started yet
+export type TimerStatus = {
+	active: boolean;
+	reason: 'stop' | 'start' | 'resume';
+};
 
 export function useTimer() {
 	const timerId = useRef<number>();
 	const startTime = useRef<number>(0);
 	const passedSeconds = useRef(0);
-	const [seconds, setSeconds] = useState(0);
-	// const { state: seconds, setState: setSeconds } = useStateFunction<number>((newValue) => {
-	// 	console.log(newValue);
-	// 	return +(newValue / 1000).toFixed(2);
-	// }, 0);
+	const [milliseconds, setSeconds] = useState(0);
+	const [status, setStatus] = useState<TimerStatus>({ active: false, reason: 'start' });
 
 	const startTimer = () => {
 		stopTimer();
 		setSeconds(0);
+		setStatus({ active: true, reason: 'start' });
 		startTime.current = Date.now();
 		timerId.current = setInterval(() => {
 			setSeconds(Date.now() - startTime.current);
@@ -23,11 +27,13 @@ export function useTimer() {
 	const stopTimer = () => {
 		clearInterval(timerId.current);
 		timerId.current = undefined;
+		setStatus({ active: false, reason: milliseconds ? 'stop' : 'start' });
 	};
 
 	const resumeTimer = () => {
-		if (!timerId.current) {
-			passedSeconds.current = seconds!;
+		if (!timerId.current && milliseconds) {
+			setStatus({ active: true, reason: 'resume' });
+			passedSeconds.current = milliseconds!;
 			startTime.current = Date.now();
 			timerId.current = setInterval(() => {
 				setSeconds(Date.now() - startTime.current + passedSeconds.current);
@@ -35,5 +41,5 @@ export function useTimer() {
 		}
 	};
 
-	return { seconds, stopTimer, startTimer, resumeTimer };
+	return { status, milliseconds, stopTimer, startTimer, resumeTimer };
 }

@@ -1,0 +1,32 @@
+.oldFashoiBtn {
+	color: #000;
+	background-color: #d3d3d5;
+	box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+	border-radius: 3px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 30px 30px;
+	font-size: 0;
+	width: 50px;
+	height: 50px;
+
+	&:active {
+		box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+	}
+
+	&:disabled {
+		box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+	}
+
+	&.start {
+		background-image: url(../../assets/play.svg);
+	}
+
+	&.stop {
+		background-image: url(../../assets/pause.svg);
+	}
+
+	&.resume {
+		background-image: url(../../assets/resume.svg);
+	}
+}
