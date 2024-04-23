@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
 // NOTE:
 // { active: false, reasone: 'start } - timer NOT started yet
@@ -14,7 +14,7 @@ export function useTimer() {
 	const [milliseconds, setSeconds] = useState(0);
 	const [status, setStatus] = useState<TimerStatus>({ active: false, reason: 'start' });
 
-	const startTimer = () => {
+	const startTimer = useCallback(() => {
 		stopTimer();
 		setSeconds(0);
 		setStatus({ active: true, reason: 'start' });
@@ -22,15 +22,15 @@ export function useTimer() {
 		timerId.current = setInterval(() => {
 			setSeconds(Date.now() - startTime.current);
 		}, 1000);
-	};
+	}, []);
 
-	const stopTimer = () => {
+	const stopTimer = useCallback(() => {
 		clearInterval(timerId.current);
 		timerId.current = undefined;
 		setStatus({ active: false, reason: milliseconds ? 'stop' : 'start' });
-	};
+	}, [milliseconds]);
 
-	const resumeTimer = () => {
+	const resumeTimer = useCallback(() => {
 		if (!timerId.current && milliseconds) {
 			setStatus({ active: true, reason: 'resume' });
 			passedSeconds.current = milliseconds!;
@@ -39,7 +39,7 @@ export function useTimer() {
 				setSeconds(Date.now() - startTime.current + passedSeconds.current);
 			}, 1000);
 		}
-	};
+	}, [timerId.current, milliseconds]);
 
 	return { status, milliseconds, stopTimer, startTimer, resumeTimer };
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 import { useTimer } from '../../hooks/useTimer';
 import { ClockFace } from '../ClockFace';
 import { TimerControl } from '../TimerControls';
@@ -12,24 +12,19 @@ function formatTime(milliseconds: number): { minutes: number; seconds: number } 
 	return { minutes, seconds };
 }
 
-let render = 0;
-
-const renderAmount = () => {
-	return render;
-};
-
 export const Timer: React.FC<any> = () => {
+	const render = useRef(0);
 	const { milliseconds, resumeTimer, startTimer, stopTimer, status } = useTimer();
-	const { minutes, seconds } = formatTime(milliseconds);
+	const { minutes, seconds } = useMemo(() => formatTime(milliseconds), [milliseconds]);
 
 	useEffect(() => {
-		console.log(render++);
+		render.current++;
 	});
 
 	return (
 		<>
 			<div className="flex flex-col justify-center gap-4 items-center">
-				<div>Number of component renders: {renderAmount()}</div>
+				<div>Number of component renders: {render.current}</div>
 				<ClockFace minutes={minutes} seconds={seconds}></ClockFace>
 				<TimerControl startTimer={startTimer} stopTimer={stopTimer} resumeTimer={resumeTimer} status={status}></TimerControl>
 			</div>
