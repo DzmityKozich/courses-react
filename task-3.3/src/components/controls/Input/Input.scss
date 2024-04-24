@@ -1,0 +1,23 @@
+.inputControl {
+	background-color: transparent;
+	border: 0;
+	border-bottom: 1px #737373 solid;
+	outline: none;
+	padding: 0.5rem 0;
+
+	&:focus {
+		border-bottom-color: #fff;
+	}
+
+	&::-webkit-input-placeholder {
+		color: #fff;
+		opacity: 0.6;
+	}
+}
+
+.inputLabel {
+	font-size: 0.75rem;
+	font-weight: 700;
+	text-align: start;
+	text-transform: capitalize;
+}
