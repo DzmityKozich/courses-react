@@ -4,13 +4,7 @@ import { ClockFace } from '../ClockFace';
 import { TimerControl } from '../TimerControls';
 
 import './Timer.scss';
-
-function formatTime(milliseconds: number): { minutes: number; seconds: number } {
-	const totalSeconds = Math.floor(milliseconds / 1000);
-	const minutes = Math.floor(totalSeconds / 60);
-	const seconds = totalSeconds % 60;
-	return { minutes, seconds };
-}
+import { formatTime } from '../../utils/utils';
 
 export const Timer: React.FC<any> = () => {
 	const render = useRef(0);
