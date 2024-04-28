@@ -1,10 +1,10 @@
 import './App.scss';
-import { UncontrolledForm } from './components/uncontrolled';
+import { ControlledForm } from './components/ControlledForm';
 
 function App() {
 	return (
 		<div className="flex flex-row gap-10">
-			<UncontrolledForm />
+			<ControlledForm />
 		</div>
 	);
 }

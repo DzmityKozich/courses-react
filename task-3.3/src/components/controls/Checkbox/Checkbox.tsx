@@ -12,9 +12,11 @@ export const Checkbox: React.FC<Props> = forwardRef<HTMLInputElement, Props>((pr
 
 	return (
 		<div className="w-full inline-flex gap-2 flex-row text-white items-center">
-			<input type="checkbox" className="hidden originalCheckbox" ref={ref} id={id} />
-			<div className="checkboxMark"></div>
-			<label htmlFor={id}>{label}</label>
+			<input type="checkbox" className="hidden originalCheckbox" {...props} ref={ref} />
+			<label htmlFor={id} className="checkboxMark cursor-pointer"></label>
+			<label htmlFor={id} className="cursor-pointer">
+				{label}
+			</label>
 		</div>
 	);
 });
