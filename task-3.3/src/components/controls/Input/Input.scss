@@ -4,6 +4,7 @@
 	border-bottom: 1px #737373 solid;
 	outline: none;
 	padding: 0.5rem 0;
+	width: 100%;
 
 	&:focus {
 		border-bottom-color: #fff;
@@ -16,8 +17,22 @@
 }
 
 .inputLabel {
-	font-size: 0.75rem;
+	font-size: 0.625rem;
 	font-weight: 700;
-	text-align: start;
 	text-transform: capitalize;
+}
+
+.passwordBtn {
+	width: 30px;
+	height: 30px;
+	padding: 0;
+	background-color: transparent;
+	background-position: center;
+	background-size: 16px 16px, 0px 0px;
+	background-repeat: no-repeat;
+	background-image: url(../../../../icons/closed-eye.svg), url(../../../../icons/eye.svg);
+
+	&.show {
+		background-size: 0px 0px, 16px 16px;
+	}
 }
