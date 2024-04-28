@@ -5,7 +5,7 @@ import { ControlError } from '../types';
 import classNames from 'classnames';
 
 type Props = React.InputHTMLAttributes<HTMLInputElement> & {
-	ref?: React.ForwardedRef<HTMLInputElement>;
+	// ref?: React.ForwardedRef<HTMLInputElement>;
 	label?: string;
 	contolErrors?: ControlError[];
 };

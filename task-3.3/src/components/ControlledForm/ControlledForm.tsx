@@ -1,6 +1,5 @@
 import { useForm } from '../../hooks/useForm';
-import { InputControl, Checkbox } from '../controls';
-import { ConfirmBtn } from '../controls/ConfirmBtn';
+import { InputControl, Checkbox, ConfirmBtn } from '../controls';
 
 import './ControlledForm.scss';
 

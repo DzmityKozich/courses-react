@@ -7,7 +7,7 @@ type Props = CheckboxAttrs & {
 	label?: string;
 };
 
-export const Checkbox: React.FC<Props> = forwardRef<HTMLInputElement, Props>((props, ref) => {
+export const Checkbox = forwardRef<HTMLInputElement, Props>((props, ref) => {
 	const { id, label } = props;
 
 	return (
