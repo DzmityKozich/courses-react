@@ -1,14 +1,7 @@
 import { useState, ChangeEvent, useCallback } from 'react';
+import { RegistrationForm } from '../types';
 
-type FieldsType = {
-	username?: string;
-	email?: string;
-	password?: string;
-	confirmPassword?: string;
-	isAgree?: boolean;
-};
-
-export function useForm(initialState: FieldsType) {
+export function useForm(initialState: RegistrationForm) {
 	const [fields, setValues] = useState(initialState);
 
 	const updateFields = useCallback(

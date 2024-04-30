@@ -3,7 +3,7 @@ import { Checkbox, ConfirmBtn, InputControl } from '../controls';
 import { useUncoontrolledForm } from '../../hooks/useUncontrolledForm';
 
 export const UncontrolledForm: React.FC = () => {
-	const { value, confirmPasswordRef, emailRef, isAgreeRef, passwordRef, usernameRef, getValue } = useUncoontrolledForm({});
+	const { confirmPasswordRef, emailRef, isAgreeRef, passwordRef, usernameRef, getValue } = useUncoontrolledForm();
 
 	const logResult = () => {
 		console.log(getValue());

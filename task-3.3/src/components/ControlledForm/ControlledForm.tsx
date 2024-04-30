@@ -1,13 +1,16 @@
 import { useForm } from '../../hooks/useForm';
+import { useValidation } from '../../hooks/useValidation';
 import { InputControl, Checkbox, ConfirmBtn } from '../controls';
 
 import './ControlledForm.scss';
 
 export const ControlledForm: React.FC = () => {
 	const { fields, updateFields } = useForm({ username: '', email: '', confirmPassword: '', isAgree: false, password: '' });
+	const { validate } = useValidation();
 
 	const logResult = () => {
 		console.log(fields);
+		console.log(validate(fields));
 	};
 
 	return (

@@ -1,11 +1,10 @@
 import React, { forwardRef, useMemo, useState } from 'react';
 
 import './Input.scss';
-import { ControlError } from '../types';
+import { ControlError } from '../../../types';
 import classNames from 'classnames';
 
 type Props = React.InputHTMLAttributes<HTMLInputElement> & {
-	// ref?: React.ForwardedRef<HTMLInputElement>;
 	label?: string;
 	contolErrors?: ControlError[];
 };
