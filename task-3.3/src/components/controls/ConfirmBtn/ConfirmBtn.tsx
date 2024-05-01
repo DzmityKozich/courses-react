@@ -5,10 +5,10 @@ type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 export const ConfirmBtn: React.FC<Props> = (props) => {
-	const { label } = props;
+	const { label, ...btnProps } = props;
 
 	return (
-		<button {...props} className="confirmBtn">
+		<button {...btnProps} className="confirmBtn">
 			{label}
 		</button>
 	);
