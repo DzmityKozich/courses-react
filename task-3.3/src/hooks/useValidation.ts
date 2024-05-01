@@ -37,5 +37,5 @@ export const useValidation = () => {
 			.filter((val) => !!val);
 	};
 
-	return { validate, formValidator };
+	return { validate };
 };
