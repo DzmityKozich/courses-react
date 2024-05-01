@@ -30,8 +30,8 @@ export const useValidation = () => {
 				if (typeof validator === 'function') {
 					return validator(value);
 				} else {
-					const { ref, fn } = validator;
-					return fn((formValue as any)[ref])(value);
+					const { ref, fn, errMessage } = validator;
+					return fn((formValue as any)[ref], errMessage)(value);
 				}
 			})
 			.filter((val) => !!val);

@@ -12,7 +12,7 @@ export interface RegistrationForm {
 
 export interface ValidationOptions {
 	ref: string;
-	fn: (value: any) => ValidationFn;
+	fn: (value: any, errMessage?: string) => ValidationFn;
 	errMessage?: string;
 }
 
