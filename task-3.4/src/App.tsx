@@ -4,7 +4,8 @@ import { TicTacToeField } from './components/TicTacToeField';
 function App() {
 	return (
 		<>
-			<TicTacToeField />
+			<TicTacToeField player="playerO" />
+			<TicTacToeField player="playerX" />
 		</>
 	);
 }
