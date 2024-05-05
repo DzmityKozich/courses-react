@@ -1,5 +1,5 @@
 import React, { forwardRef, useMemo, useState } from 'react';
-import { ValidationError } from '../../types';
+import { ValidationError } from '@/types';
 import classNames from 'classnames';
 
 import './Input.scss';

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useForm } from '../../hooks/useForm';
 import { useValidation } from '../../hooks/useValidation';
-import { InputControl, Checkbox, ConfirmBtn } from '../../ui-kit';
-import { ValidationResult } from '../../types';
+import { InputControl, Checkbox, ConfirmBtn } from '@/ui-kit';
+import { ValidationResult } from '@/types';
 
 import './ControlledForm.scss';
 

@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
-import { Checkbox, ConfirmBtn, InputControl } from '../../ui-kit';
+import { Checkbox, ConfirmBtn, InputControl } from '@/ui-kit';
 import { useValidation } from '../../hooks/useValidation';
-import { ValidationResult } from '../../types';
+import { ValidationResult } from '@/types';
 import { getFormData } from '../../utils/form-utils';
 
 export const UncontrolledForm: React.FC = () => {
