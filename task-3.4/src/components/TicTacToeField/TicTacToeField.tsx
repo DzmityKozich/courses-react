@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo } from 'react';
 import { TicTacToeCell } from '../../share';
-import { useTicTacToe } from '../../hooks/useTicTacToe';
+import { useTicTacToeState } from '../../hooks';
 import { CellValue, Player } from '../../types/types';
 
 import './TicTacToeField.scss';
@@ -21,7 +21,7 @@ const defineStatus = (player: Player, currentPlayer: Player, winner: Player | nu
 };
 
 export const TicTacToeField: React.FC<Props> = ({ player }) => {
-	const [values, setValue, currentPlayer, winner] = useTicTacToe((state) => [
+	const [values, setValue, currentPlayer, winner] = useTicTacToeState((state) => [
 		state.values,
 		state.setValue,
 		state.currentPlayer,

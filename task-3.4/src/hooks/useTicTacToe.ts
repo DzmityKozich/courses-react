@@ -9,7 +9,7 @@ interface TicTacToeState {
 	winner: Player | null;
 }
 
-export const useTicTacToe = create<TicTacToeState>((set) => ({
+export const useTicTacToeState = create<TicTacToeState>((set) => ({
 	currentPlayer: 'playerX',
 	values: Array(9).fill(null),
 	winner: null,
