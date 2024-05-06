@@ -1,3 +1,12 @@
+.cell {
+	background-color: transparent;
+	transition: background-color 0.15s ease;
+
+	&.active:hover {
+		background-color: #737373;
+	}
+}
+
 .cell-btn {
 	background-color: transparent;
 	width: 50px;
