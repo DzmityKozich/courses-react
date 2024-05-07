@@ -44,8 +44,28 @@
 	text-transform: capitalize;
 }
 
+.messageHolder {
+	width: 100%;
+	margin-bottom: 0.5rem;
+}
+
 .messageBubble {
 	color: #fff;
+	max-width: 85%;
+	width: fit-content;
+	min-width: 50px;
+	padding: 0.25rem 0.5rem;
+	text-align: left;
+	background-color: #737373;
+	border-radius: 8px;
+
+	&.right {
+		float: right;
+	}
+
+	&.playerMessage {
+		background-color: #00ae1c;
+	}
 }
 
 .chatInput {

@@ -6,6 +6,8 @@ export class Message {
 	constructor(public sender: Player, public content: string) {}
 
 	public sendDate(): string {
-		return new Date(this.sendAt).toISOString();
+		const hours = new Date(this.sendAt).getHours();
+		const minutes = new Date(this.sendAt).getMinutes();
+		return `${hours}:${minutes < 10 ? `0${minutes}` : minutes}`;
 	}
 }

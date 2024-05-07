@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
 import './Chat.scss';
 import { Player } from '../../types/types';
@@ -14,10 +14,10 @@ export const Chat: React.FC<Props> = ({ player }) => {
 	const { messages, sendMesage } = useChatStore((state) => ({ messages: state.messages, sendMesage: state.sendMessage }));
 	const ava = useMemo(() => (player === 'playerX' ? 'x-ava' : 'o-ava'), [player]);
 	const [message, setMessage] = useState('');
+	const sortedMessages = useMemo(() => messages.sort((a, b) => b.sendAt - a.sendAt), [messages]);
 
 	const submit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		console.log(message);
 		sendMesage(new Message(player, message));
 		setMessage('');
 	};
@@ -29,37 +29,25 @@ export const Chat: React.FC<Props> = ({ player }) => {
 				<div className="playerName">{player}</div>
 			</div>
 
-			<MessageList messages={messages} player={player} />
-			{/* <div className="">
-				{messages.map((message) => {
+			<div className="flex flex-col-reverse overflow-y-auto p-3">
+				{sortedMessages.map((message) => {
 					return (
-						<div key={message.sendDate()} className="messageBubble">
-							{message.content}
+						<div key={message.sendAt} className="messageHolder">
+							<div
+								className={classNames('messageBubble', { right: player === message.sender }, { playerMessage: player === message.sender })}
+							>
+								<div>{message.content}</div>
+								<div className="text-xs text-end">{message.sendDate()}</div>
+							</div>
 						</div>
 					);
 				})}
-			</div> */}
+			</div>
 
 			<form className="chatInput" onSubmit={submit}>
 				<input type="text" className="input" placeholder="Message" value={message} onChange={({ target }) => setMessage(target.value)} />
 				<button className="sendBtn"></button>
 			</form>
-		</div>
-	);
-};
-
-const MessageList: React.FC<{ messages: Message[]; player: Player }> = ({ messages, player }) => {
-	const sortedMessage = useMemo(() => messages.sort((a, b) => b.sendAt - a.sendAt), [messages]);
-
-	return (
-		<div className="flex flex-col-reverse overflow-y-auto">
-			{sortedMessage.map((message) => {
-				return (
-					<div key={message.sendDate()} className="messageBubble">
-						{message.content}
-					</div>
-				);
-			})}
 		</div>
 	);
 };
