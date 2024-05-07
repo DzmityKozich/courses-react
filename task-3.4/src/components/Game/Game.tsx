@@ -20,13 +20,18 @@ export const Game: React.FC = () => {
 		}
 	}, [isGameOver]);
 
+	const fullReset = () => {
+		reset();
+		restScore();
+	};
+
 	return (
 		<>
 			<div className="gameHeader">
 				<div className="gameScore">
 					Score {score.playerX}:{score.playerO}
 				</div>
-				<button className="resetBtn" onClick={restScore}>
+				<button className="resetBtn" onClick={fullReset}>
 					reset
 				</button>
 			</div>
