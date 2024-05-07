@@ -1,10 +1,10 @@
 import React, { useMemo, useState } from 'react';
-
-import './Chat.scss';
 import { Player } from '../../types/types';
 import classNames from 'classnames';
 import { useChatStore } from '../../hooks';
 import { Message } from '../../types/Message';
+
+import './Chat.scss';
 
 type Props = {
 	player: Player;

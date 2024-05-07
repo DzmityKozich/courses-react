@@ -18,7 +18,7 @@ export const TicTacToeCell: React.FC<Props> = ({ value, onClick, index, disabled
 	}, [value]);
 
 	return (
-		<div className={classNames('p-2', 'border border-gray-500', 'cell', { active: !disabled }, `cellN${index}`)}>
+		<div className={classNames('relative', 'border border-gray-500', 'cell', { active: !disabled }, `cellN${index}`)}>
 			<button className={classNames('cell-btn', cellValueClass)} onClick={onClick} disabled={disabled}></button>
 		</div>
 	);

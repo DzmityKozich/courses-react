@@ -1,4 +1,5 @@
 .ticTacToeField {
+	position: relative;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	grid-template-rows: repeat(3, 1fr);
@@ -12,4 +13,22 @@
 	font-size: 2rem;
 	font-weight: 500;
 	color: #ef9919;
+}
+
+.winnerLine {
+	position: absolute;
+	background-color: #fff;
+	border-radius: 100px;
+}
+
+.myrotate-45 {
+	top: 50%;
+	transform-origin: center;
+	transform: translateY(-50%) rotate(45deg);
+}
+
+.myrotate-135 {
+	top: 50%;
+	transform-origin: center;
+	transform: translateY(-50%) rotate(135deg);
 }

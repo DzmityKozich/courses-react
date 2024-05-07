@@ -1,6 +1,10 @@
 .cell {
 	background-color: transparent;
 	transition: background-color 0.15s ease;
+	padding: 0.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
 	&.active:hover {
 		background-color: #737373;

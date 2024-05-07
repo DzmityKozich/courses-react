@@ -1,39 +1,47 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { TicTacToeCell } from '../../share';
 import { useTicTacToeState } from '../../hooks';
 import { CellValue, Player } from '../../types/types';
+import classNames from 'classnames';
+import { definePalyerStatus } from '../../utils';
 
 import './TicTacToeField.scss';
-import classNames from 'classnames';
 
 type Props = {
 	player: Player;
 };
 
-const defineStatus = (player: Player, currentPlayer: Player, winner: Player | null): string => {
-	if (winner === player) return 'You win!';
-	if (!winner) {
-		if (currentPlayer === player) return 'Your turn:';
-		return 'Wait your opponent.';
-	}
-	if (winner !== player) return 'You lost!';
-	return 'Draw!';
-};
-
 export const TicTacToeField: React.FC<Props> = ({ player }) => {
-	const [values, setValue, currentPlayer, winner] = useTicTacToeState((state) => [
-		state.values,
-		state.setValue,
-		state.currentPlayer,
-		state.winner,
-	]);
+	const { values, setValue, currentPlayer, winner, isGameOver, line } = useTicTacToeState((state) => ({
+		values: state.values,
+		setValue: state.setValue,
+		currentPlayer: state.currentPlayer,
+		winner: state.winner,
+		isGameOver: state.isGameOver,
+		line: state.line,
+	}));
 
-	const status = useMemo(() => defineStatus(player, currentPlayer, winner), [player, currentPlayer, winner]);
-
-	useEffect(() => {
-		console.log(values);
-		console.log(winner);
-	}, [values]);
+	const status = useMemo(() => definePalyerStatus(player, currentPlayer, winner, isGameOver), [player, currentPlayer, winner, isGameOver]);
+	const winLine = useMemo(() => {
+		switch (line) {
+			case 'diagonal':
+				return <div className="winnerLine w-[3px] h-[280px] myrotate-135 left-[108px]"></div>;
+			case 'reverse-diagonal':
+				return <div className="winnerLine w-[3px] h-[280px] myrotate-45 left-[108px]"></div>;
+			case 'horizontally-top':
+				return <div className="winnerLine w-full h-[3px] top-[36px]"></div>;
+			case 'horizontally-center':
+				return <div className="winnerLine w-full h-[3px] top-[108px]"></div>;
+			case 'horizontally-bot':
+				return <div className="winnerLine w-full h-[3px] top-[180px]"></div>;
+			case 'vertically-left':
+				return <div className="winnerLine w-[3px] h-full left-[36px]"></div>;
+			case 'vertically-center':
+				return <div className="winnerLine w-[3px] h-full left-[108px]"></div>;
+			case 'vertically-right':
+				return <div className="winnerLine w-[3px] h-full left-[180px] "></div>;
+		}
+	}, [line]);
 
 	const isDisabled = (value: CellValue | null): boolean => {
 		if (value) return true;
@@ -57,6 +65,7 @@ export const TicTacToeField: React.FC<Props> = ({ player }) => {
 				{values.map((value, i) => (
 					<TicTacToeCell key={i} value={value} index={i} onClick={() => move(value, i)} disabled={isDisabled(value)} />
 				))}
+				{winLine}
 			</div>
 		</div>
 	);

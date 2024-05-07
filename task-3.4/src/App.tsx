@@ -1,14 +1,9 @@
 import './App.scss';
+import { Game } from './components/Game';
 import { Playgroud } from './components/Playground';
-import { TicTacToeField } from './components/TicTacToeField';
 
 function App() {
-	return (
-		<div className="flex flex-row gap-[100px]">
-			<Playgroud player="playerX" />
-			<Playgroud player="playerO" />
-		</div>
-	);
+	return <Game />;
 }
 
 export default App;
