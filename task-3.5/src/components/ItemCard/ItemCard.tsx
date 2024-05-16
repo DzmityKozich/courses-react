@@ -1,6 +1,7 @@
 import React from 'react';
 import { CardMedia, CardContent, Card, CardActions } from '@mui/material';
-import { Button } from '@mui/material';
+import { StoreBtn } from '../../share';
+import AddIcon from '@mui/icons-material/Add';
 
 import './ItemCard.scss';
 
@@ -23,9 +24,9 @@ export const ItemCard: React.FC<Props> = ({ imgSrc, price, text, title, onAdd })
 			</CardContent>
 
 			<CardActions>
-				<Button color="success" variant="contained" sx={{ width: '100%', borderRadius: '8px' }} onClick={onAdd}>
+				<StoreBtn onClick={onAdd} sx={{ width: '100%' }} icon={<AddIcon />}>
 					Add to cart
-				</Button>
+				</StoreBtn>
 			</CardActions>
 		</Card>
 	);
