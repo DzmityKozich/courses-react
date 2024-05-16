@@ -7,11 +7,12 @@ import './ItemCard.scss';
 type Props = {
 	imgSrc: string;
 	price: number;
-	text?: string;
+	text: string;
 	title: string;
+	onAdd: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-export const ItemCard: React.FC<Props> = ({ imgSrc, price, text = '', title }) => {
+export const ItemCard: React.FC<Props> = ({ imgSrc, price, text, title, onAdd }) => {
 	return (
 		<Card sx={{ height: '100%', maxWidth: 240, borderRadius: '8px' }}>
 			<CardMedia component="div" image={imgSrc} title="chair item" sx={{ height: 250, width: 224, margin: 'auto' }} />
@@ -22,7 +23,7 @@ export const ItemCard: React.FC<Props> = ({ imgSrc, price, text = '', title }) =
 			</CardContent>
 
 			<CardActions>
-				<Button color="success" variant="contained" sx={{ width: '100%', borderRadius: '8px' }}>
+				<Button color="success" variant="contained" sx={{ width: '100%', borderRadius: '8px' }} onClick={onAdd}>
 					Add to cart
 				</Button>
 			</CardActions>
