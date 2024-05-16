@@ -14,7 +14,7 @@ type Props = {
 export const ItemCard: React.FC<Props> = ({ imgSrc, price, text = '', title }) => {
 	return (
 		<Card sx={{ height: '100%', maxWidth: 240, borderRadius: '8px' }}>
-			<CardMedia component="div" image={imgSrc} title="chair item" sx={{ height: 250, width: 224 }} />
+			<CardMedia component="div" image={imgSrc} title="chair item" sx={{ height: 250, width: 224, margin: 'auto' }} />
 			<CardContent>
 				<div className="itemTitle">{title}</div>
 				<div className="itemText">{text}</div>
