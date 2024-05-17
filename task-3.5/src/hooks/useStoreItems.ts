@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { StoreItem } from '../models/types';
 
 const url = 'https://dummyjson.com/products';
@@ -17,5 +17,12 @@ export const useStoreItems = () => {
 		});
 	}, []);
 
-	return { items };
+	const getItemsByIds = useCallback(
+		(ids: number[]) => {
+			return items.filter(({ id }) => ids.includes(id));
+		},
+		[items]
+	);
+
+	return { items, getItemsByIds };
 };

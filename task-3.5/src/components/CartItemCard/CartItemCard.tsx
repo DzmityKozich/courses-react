@@ -1,30 +1,50 @@
 import { Box, Card, CardMedia, Typography } from '@mui/material';
 import React from 'react';
 import { StoreItem } from '../../models/types';
-import { StoreBtn } from '../../share';
+import { StoreBtn, StoreIconBtn } from '../../share';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
+import DeleteIcon from '@mui/icons-material/Delete';
+
+import './CartItemCard.scss';
 
 type Props = {
-	// item: StoreItem;
+	item: StoreItem;
+	amount: number;
 };
 
-export const CartItemCard: React.FC<Props> = () => {
-	return (
-		<Card>
-			<CardMedia component="img" image="" alt="Items img" />
-			<Box>
-				<Typography variant="subtitle1" color="text.secondary" component="div">
-					Mac Miller
-				</Typography>
+export const CartItemCard: React.FC<Props> = ({ item, amount }) => {
+	const { thumbnail, description, title, price } = item;
 
-				<StoreBtn onClick={() => {}}>Delete</StoreBtn>
+	return (
+		<Card sx={{ minHeight: 150 }} className="cartItemCard">
+			<CardMedia component="div" image={thumbnail} sx={{ height: '100%', minWidth: 130, borderRadius: '8px' }} className="row-span-2" />
+
+			<Box className="flex flex-row justify-between items-start">
+				<Typography component="div">
+					{title}, {description}
+				</Typography>
+				<StoreBtn startIcon={<DeleteIcon />} onClick={() => {}}>
+					Delete
+				</StoreBtn>
 			</Box>
-			<Box>
-				<Box>
-					<StoreBtn onClick={() => {}}>-</StoreBtn>
-					<div>1</div>
-					<StoreBtn onClick={() => {}}>+</StoreBtn>
+
+			<Box className="flex flex-row justify-between items-center">
+				<Box className="flex flex-row items-center gap-5">
+					<StoreIconBtn onClick={() => {}}>
+						<AddIcon />
+					</StoreIconBtn>
+
+					<div className="font-bold">{amount}</div>
+
+					<StoreIconBtn onClick={() => {}}>
+						<RemoveIcon />
+					</StoreIconBtn>
 				</Box>
-				price: 132
+
+				<Typography component="div">
+					Price: <span className="text-2xl">${price}</span>
+				</Typography>
 			</Box>
 		</Card>
 	);

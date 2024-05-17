@@ -24,7 +24,7 @@ export const ItemCard: React.FC<Props> = ({ imgSrc, price, text, title, onAdd })
 			</CardContent>
 
 			<CardActions>
-				<StoreBtn onClick={onAdd} sx={{ width: '100%' }} icon={<AddIcon />}>
+				<StoreBtn onClick={onAdd} sx={{ width: '100%' }} startIcon={<AddIcon />}>
 					Add to cart
 				</StoreBtn>
 			</CardActions>

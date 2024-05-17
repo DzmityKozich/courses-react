@@ -22,7 +22,7 @@ export const Navbar: React.FC = () => {
 					onClick={() => {
 						navigate('/cart');
 					}}
-					icon={<ShoppingCartIcon />}
+					startIcon={<ShoppingCartIcon />}
 				>
 					Cart
 				</StoreBtn>

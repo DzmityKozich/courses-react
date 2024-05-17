@@ -1,7 +1,11 @@
-import { Button, styled } from '@mui/material';
+import { IconButton, styled } from '@mui/material';
 
-export const StoreBtn = styled(Button)({
+import './StoreIconBtn.scss';
+
+export const StoreIconBtn = styled(IconButton)({
 	backgroundColor: '#00ae1c',
+	widht: 36,
+	height: 36,
 	borderRadius: 8,
 	color: '#fff',
 
