@@ -6,6 +6,7 @@ import { ItemsPage } from '../ItemsPage/ItemsPage';
 import { CartPage } from '../CartPage';
 
 import './Layout.scss';
+import { StoreLink } from '../../share';
 
 export const Layout: React.FC = () => {
 	return (
@@ -13,6 +14,8 @@ export const Layout: React.FC = () => {
 			<Navbar />
 
 			<div className="mt-6">
+				<StoreLink to="/cart">To somewhere</StoreLink>
+
 				<Routes>
 					<Route path="/" element={<ItemsPage />} />
 					<Route path="/cart" element={<CartPage />} />

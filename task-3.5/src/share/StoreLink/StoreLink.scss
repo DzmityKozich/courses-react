@@ -1,0 +1,22 @@
+.storeLink {
+	text-decoration: 'none';
+	color: #243573;
+	font-weight: 400;
+
+	&:hover {
+		text-decoration: underline;
+		color: #243573;
+	}
+
+	&:active {
+		color: #00ae1c;
+	}
+}
+
+.activeLink .storeLink {
+	color: #00ae1c !important;
+
+	&:hover {
+		text-decoration: none;
+	}
+}

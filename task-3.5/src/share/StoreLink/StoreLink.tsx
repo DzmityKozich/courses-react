@@ -1,11 +1,22 @@
 import React, { ReactNode } from 'react';
 import { NavLink } from 'react-router-dom';
 
+import './StoreLink.scss';
+
 type Props = {
-	children: ReactNode;
+	children?: ReactNode;
 	to: string;
 };
 
 export const StoreLink: React.FC<Props> = ({ to, children }) => {
-	return <NavLink to={to}>{children}</NavLink>;
+	return (
+		<NavLink
+			to={to}
+			className={({ isActive }) => {
+				return isActive ? 'activeLink' : '';
+			}}
+		>
+			<div className="storeLink">{children}</div>
+		</NavLink>
+	);
 };
