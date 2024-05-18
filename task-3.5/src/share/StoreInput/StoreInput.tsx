@@ -32,9 +32,9 @@ const CustomLabel = styled(InputLabel)({
 export const StoreInput: React.FC<Props> = (props) => {
 	const { label, ...inputProps } = props;
 	return (
-		<>
+		<div>
 			<CustomLabel required={inputProps.required}>{label}</CustomLabel>
 			<CustomInput {...inputProps} variant="standard" />
-		</>
+		</div>
 	);
 };

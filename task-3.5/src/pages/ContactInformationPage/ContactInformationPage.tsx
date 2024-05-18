@@ -1,13 +1,17 @@
 import React from 'react';
-import { PageTitle } from '../../share';
+import { PageTitle, StoreLinkBtn } from '../../share';
 import { ContactInfoForm } from '../../components/ContactInfoForm';
 
 export const ContactInformationPage: React.FC = () => {
 	return (
-		<div className="container mx-auto">
+		<div className="px-[15rem]">
 			<PageTitle title="Contact information" />
 
-			<ContactInfoForm />
+			<div className="mb-8">
+				<ContactInfoForm />
+			</div>
+
+			<StoreLinkBtn to="">Next step</StoreLinkBtn>
 		</div>
 	);
 };
