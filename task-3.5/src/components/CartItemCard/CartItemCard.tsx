@@ -11,34 +11,43 @@ import './CartItemCard.scss';
 type Props = {
 	item: StoreItem;
 	amount: number;
+	deleteItem: React.MouseEventHandler<HTMLButtonElement>;
+	increaseAmount: React.MouseEventHandler<HTMLButtonElement>;
+	reduceAmount: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-export const CartItemCard: React.FC<Props> = ({ item, amount }) => {
+export const CartItemCard: React.FC<Props> = ({ item, amount, deleteItem, increaseAmount, reduceAmount }) => {
 	const { thumbnail, description, title, price } = item;
 
+	const onRemove = (event: React.MouseEvent<any>) => {
+		if (amount > 1) {
+			reduceAmount(event);
+		}
+	};
+
 	return (
-		<Card sx={{ minHeight: 150 }} className="cartItemCard">
+		<Card sx={{ minHeight: 150, borderRadius: '8px' }} className="cartItemCard">
 			<CardMedia component="div" image={thumbnail} sx={{ height: '100%', minWidth: 130, borderRadius: '8px' }} className="row-span-2" />
 
 			<Box className="flex flex-row justify-between items-start">
 				<Typography component="div">
 					{title}, {description}
 				</Typography>
-				<StoreBtn startIcon={<DeleteIcon />} onClick={() => {}}>
+				<StoreBtn startIcon={<DeleteIcon />} onClick={deleteItem}>
 					Delete
 				</StoreBtn>
 			</Box>
 
 			<Box className="flex flex-row justify-between items-center">
 				<Box className="flex flex-row items-center gap-5">
-					<StoreIconBtn onClick={() => {}}>
-						<AddIcon />
+					<StoreIconBtn onClick={onRemove} disabled={amount === 1}>
+						<RemoveIcon />
 					</StoreIconBtn>
 
 					<div className="font-bold">{amount}</div>
 
-					<StoreIconBtn onClick={() => {}}>
-						<RemoveIcon />
+					<StoreIconBtn onClick={increaseAmount}>
+						<AddIcon />
 					</StoreIconBtn>
 				</Box>
 

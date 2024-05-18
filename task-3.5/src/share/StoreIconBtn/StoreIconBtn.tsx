@@ -16,4 +16,9 @@ export const StoreIconBtn = styled(IconButton)({
 	'&:hover': {
 		backgroundColor: '#00ae1c',
 	},
+
+	'&:disabled': {
+		backgroundColor: '#187727',
+		color: '#B9B9B9',
+	},
 });

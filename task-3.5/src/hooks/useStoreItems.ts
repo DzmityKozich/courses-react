@@ -24,5 +24,12 @@ export const useStoreItems = () => {
 		[items]
 	);
 
-	return { items, getItemsByIds };
+	const getItemById = useCallback(
+		(id: number) => {
+			return items.find((item) => item.id === id);
+		},
+		[items]
+	);
+
+	return { items, getItemById, getItemsByIds };
 };

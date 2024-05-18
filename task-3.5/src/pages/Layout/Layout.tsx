@@ -3,7 +3,7 @@ import { Box } from '@mui/material';
 import { Navbar } from '../../components/Navbar';
 import { Route, Routes } from 'react-router-dom';
 import { ItemsPage } from '../ItemsPage/ItemsPage';
-import { CartPage } from '../CartPage';
+import { OrderPage } from '../OrderPage';
 
 import './Layout.scss';
 
@@ -15,7 +15,7 @@ export const Layout: React.FC = () => {
 			<div className="mt-6">
 				<Routes>
 					<Route path="/" element={<ItemsPage />} />
-					<Route path="/cart" element={<CartPage />} />
+					<Route path="/cart" element={<OrderPage />} />
 				</Routes>
 			</div>
 		</Box>

@@ -3,39 +3,60 @@ import { StoreItem } from '../models/types';
 
 interface CartItem {
 	amount: number;
-	id: number;
+	item: StoreItem;
 }
 
 type Cart = {
 	items: CartItem[];
+	sum: () => number;
+	totalItems: () => number;
 	addItem: (item: StoreItem) => void;
-	removeItem: (item: StoreItem) => void;
+	subtractItem: (item: StoreItem) => void;
+	deleteItem: (item: StoreItem) => void;
 };
 
-export const useCart = create<Cart>((set) => ({
+export const useCart = create<Cart>((set, get) => ({
 	items: [],
+	sum: () => calculateSum(get().items),
+	totalItems: () => totalItems(get().items),
 	addItem: (item) =>
 		set((state) => {
 			return { items: addItem(item, state.items) };
 		}),
-	removeItem: (item) =>
+	subtractItem: (item) =>
 		set((state) => {
-			return { items: removeItem(item, state.items) };
+			return { items: subtractItem(item, state.items) };
+		}),
+	deleteItem: (item) =>
+		set((state) => {
+			return { items: deleteItem(item, state.items) };
 		}),
 }));
 
+const calculateSum = (items: CartItem[]): number => {
+	return items.reduce((sum, { item, amount }) => {
+		return sum + item.price * amount;
+	}, 0);
+};
+
+const totalItems = (items: CartItem[]): number => {
+	return items.reduce((total, { amount }) => {
+		return total + amount;
+	}, 0);
+};
+
 const addItem = (item: StoreItem, items: CartItem[]): CartItem[] => {
-	const index = items.findIndex(({ id }) => id === item.id);
+	const index = findCartIntemIndex(item.id, items);
 	if (index === -1) {
-		return [...items, { id: item.id, amount: 1 }];
+		return [...items, { item, amount: 1 }];
 	}
 	const copy = [...items];
 	copy[index].amount += 1;
 	return copy;
 };
 
-const removeItem = (item: StoreItem, items: CartItem[]): CartItem[] => {
-	const index = items.findIndex(({ id }) => id === item.id);
+const subtractItem = (item: StoreItem, items: CartItem[]): CartItem[] => {
+	const index = findCartIntemIndex(item.id, items);
 	if (index === -1) return items;
 	const copy = [...items];
 	const cartItem = copy[index];
@@ -45,4 +66,16 @@ const removeItem = (item: StoreItem, items: CartItem[]): CartItem[] => {
 		copy.splice(index, 1, { ...cartItem, amount: cartItem.amount - 1 });
 	}
 	return copy;
+};
+
+const deleteItem = (item: StoreItem, items: CartItem[]): CartItem[] => {
+	const index = findCartIntemIndex(item.id, items);
+	if (index === -1) return [...items];
+	const copy = [...items];
+	copy.splice(index, 1);
+	return copy;
+};
+
+const findCartIntemIndex = (storeItemId: number, items: CartItem[]): number => {
+	return items.findIndex(({ item }) => item.id === storeItemId);
 };
