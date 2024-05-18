@@ -15,7 +15,7 @@ export const Navbar: React.FC = () => {
 					News
 				</Typography>
 
-				<StoreLinkBtn icon={<ShoppingCartIcon fontSize="small" />} to="/cart">
+				<StoreLinkBtn icon={<ShoppingCartIcon fontSize="small" />} to="/order/cart">
 					Cart
 				</StoreLinkBtn>
 			</Toolbar>

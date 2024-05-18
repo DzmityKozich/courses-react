@@ -41,7 +41,7 @@ export const CartPage: React.FC = () => {
 					</div>
 				</div>
 
-				<StoreLinkBtn to="/">Next step</StoreLinkBtn>
+				<StoreLinkBtn to="/order/contact-information">Next step</StoreLinkBtn>
 			</div>
 		</>
 	);

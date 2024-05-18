@@ -15,7 +15,7 @@ export const Layout: React.FC = () => {
 			<div className="mt-6">
 				<Routes>
 					<Route path="/" element={<ItemsPage />} />
-					<Route path="/cart" element={<OrderPage />} />
+					<Route path="/order/*" element={<OrderPage />} />
 				</Routes>
 			</div>
 		</Box>
