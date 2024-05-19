@@ -1,4 +1,5 @@
-import { InputLabel, TextField, TextFieldProps, styled } from '@mui/material';
+import { TextField, TextFieldProps, styled } from '@mui/material';
+import { StoreInputLabel } from '../StoreInputLabel/StoreInputLabel';
 import React from 'react';
 
 type Props = TextFieldProps;
@@ -23,17 +24,11 @@ const CustomInput = styled(TextField)({
 	},
 });
 
-const CustomLabel = styled(InputLabel)({
-	color: '#243573',
-	fontWeight: 700,
-	width: 300,
-});
-
 export const StoreInput: React.FC<Props> = (props) => {
 	const { label, ...inputProps } = props;
 	return (
 		<div>
-			<CustomLabel required={inputProps.required}>{label}</CustomLabel>
+			<StoreInputLabel required={inputProps.required}>{label}</StoreInputLabel>
 			<CustomInput {...inputProps} variant="standard" />
 		</div>
 	);

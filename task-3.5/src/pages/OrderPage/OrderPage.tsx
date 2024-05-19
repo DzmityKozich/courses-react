@@ -13,9 +13,15 @@ export const OrderPage: React.FC<Props> = () => {
 		<div className="px-[15rem]">
 			<StoreBreadcrumbs
 				breadcrumbs={[
-					<StoreLink to="/order/cart">Cart</StoreLink>,
-					<StoreLink to="/order/contact-information">Contact information</StoreLink>,
-					<StoreLink to="/order/shipment-information">Shipment information</StoreLink>,
+					<StoreLink key="1" to="/order/cart">
+						Cart
+					</StoreLink>,
+					<StoreLink key="2" to="/order/contact-information">
+						Contact information
+					</StoreLink>,
+					<StoreLink key="3" to="/order/shipment-information">
+						Shipment information
+					</StoreLink>,
 				]}
 			></StoreBreadcrumbs>
 			<Routes>
