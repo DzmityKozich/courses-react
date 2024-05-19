@@ -17,6 +17,12 @@
 	&:active {
 		background-color: #0cd52b;
 	}
+
+	&.disabled {
+		background-color: #187727;
+		color: #b9b9b9;
+		cursor: not-allowed;
+	}
 }
 
 .linkBadge {

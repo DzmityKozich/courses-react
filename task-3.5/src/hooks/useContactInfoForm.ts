@@ -4,15 +4,15 @@ import { create } from 'zustand';
 type FormValues = { firstName?: string; lastName?: string; email?: string; phone?: string };
 
 type Store = {
-	errors: FormikErrors<FormValues>;
+	valid: boolean;
 	value: FormValues;
 	setValue: (value: FormValues) => void;
-	setErrors: (errors: FormikErrors<FormValues>) => void;
+	setValid: (valid: boolean) => void;
 };
 
 export const useContactInfoForm = create<Store>((set) => ({
-	errors: {},
+	valid: false,
 	value: {},
 	setValue: (value) => set(() => ({ value })),
-	setErrors: (errors) => set(() => ({ errors })),
+	setValid: (valid) => set(() => ({ valid })),
 }));

@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { PageTitle, StoreLinkBtn } from '../../share';
 import { ContactInfoForm } from '../../components/ContactInfoForm';
+import { useContactInfoForm } from '../../hooks/useContactInfoForm';
 
 export const ContactInformationPage: React.FC = () => {
+	const { valid, value } = useContactInfoForm(({ valid, value }) => ({ valid, value }));
+
+	useEffect(() => {
+		console.log(valid);
+	}, [valid]);
+
+	// TODO: use this value
+	useEffect(() => {
+		console.log(value);
+	}, [value]);
+
 	return (
 		<div className="px-[15rem]">
 			<PageTitle title="Contact information" />
@@ -11,7 +23,9 @@ export const ContactInformationPage: React.FC = () => {
 				<ContactInfoForm />
 			</div>
 
-			<StoreLinkBtn to="">Next step</StoreLinkBtn>
+			<StoreLinkBtn to="/" disabled={!valid}>
+				Next step
+			</StoreLinkBtn>
 		</div>
 	);
 };
