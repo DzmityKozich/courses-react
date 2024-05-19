@@ -12,7 +12,7 @@ export const ContactInformationPage: React.FC = () => {
 	}, [value]);
 
 	return (
-		<div className="px-[15rem]">
+		<>
 			<PageTitle title="Contact information" />
 
 			<div className="mb-8">
@@ -22,6 +22,6 @@ export const ContactInformationPage: React.FC = () => {
 			<StoreLinkBtn to="/" disabled={!valid}>
 				Next step
 			</StoreLinkBtn>
-		</div>
+		</>
 	);
 };

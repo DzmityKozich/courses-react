@@ -1,0 +1,1 @@
+export { ShipmentInformationPage } from './ShipmentInformationPage';
