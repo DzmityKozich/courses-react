@@ -1,4 +1,3 @@
-import { FormikErrors } from 'formik';
 import { create } from 'zustand';
 
 type FormValues = { firstName?: string; lastName?: string; email?: string; phone?: string };

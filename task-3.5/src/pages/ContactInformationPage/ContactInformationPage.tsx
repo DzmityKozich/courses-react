@@ -6,10 +6,6 @@ import { useContactInfoForm } from '../../hooks/useContactInfoForm';
 export const ContactInformationPage: React.FC = () => {
 	const { valid, value } = useContactInfoForm(({ valid, value }) => ({ valid, value }));
 
-	useEffect(() => {
-		console.log(valid);
-	}, [valid]);
-
 	// TODO: use this value
 	useEffect(() => {
 		console.log(value);

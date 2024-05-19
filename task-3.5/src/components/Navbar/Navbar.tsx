@@ -4,8 +4,12 @@ import { StoreLinkBtn } from '../../share';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 import './Navbar.scss';
+import { useCart } from '../../hooks/useCart';
 
 export const Navbar: React.FC = () => {
+	const { totalItems } = useCart(({ totalItems }) => ({ totalItems }));
+	const amount = totalItems();
+
 	return (
 		<AppBar position="static" sx={{ bgcolor: '#171717' }}>
 			<Toolbar>
@@ -15,7 +19,7 @@ export const Navbar: React.FC = () => {
 					News
 				</Typography>
 
-				<StoreLinkBtn icon={<ShoppingCartIcon fontSize="small" />} to="/order/cart">
+				<StoreLinkBtn icon={<ShoppingCartIcon fontSize="small" />} badgeContent={amount > 0 ? amount.toString() : ''} to="/order/cart">
 					Cart
 				</StoreLinkBtn>
 			</Toolbar>
