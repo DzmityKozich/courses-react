@@ -6,6 +6,7 @@ import { ItemsPage } from '../ItemsPage/ItemsPage';
 import { OrderPage } from '../OrderPage';
 
 import './Layout.scss';
+import { OrderInformationPage } from '../OrderInformationPage';
 
 export const Layout: React.FC = () => {
 	return (
@@ -16,6 +17,7 @@ export const Layout: React.FC = () => {
 				<Routes>
 					<Route path="/" element={<ItemsPage />} />
 					<Route path="/order/*" element={<OrderPage />} />
+					<Route path="/order-info" element={<OrderInformationPage />} />
 				</Routes>
 			</div>
 		</Box>

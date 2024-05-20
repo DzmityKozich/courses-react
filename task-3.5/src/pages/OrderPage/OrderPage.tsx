@@ -10,7 +10,7 @@ type Props = {};
 
 export const OrderPage: React.FC<Props> = () => {
 	return (
-		<div className="px-[15rem]">
+		<div className="px-[15rem] mb-10">
 			<StoreBreadcrumbs
 				breadcrumbs={[
 					<StoreLink key="1" to="/order/cart">

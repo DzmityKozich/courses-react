@@ -12,7 +12,7 @@ export const ShipmentInformationPage: React.FC = () => {
 			<div className="mb-8">
 				<ShipmentInfoForm />
 			</div>
-			<StoreLinkBtn to="" disabled={!valid}>
+			<StoreLinkBtn to="/order-info" disabled={!valid}>
 				Submit order
 			</StoreLinkBtn>
 		</>
