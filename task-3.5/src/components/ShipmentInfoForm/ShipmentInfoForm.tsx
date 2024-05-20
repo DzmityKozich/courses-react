@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Card, CardContent, MenuItem } from '@mui/material';
 import { useFormik } from 'formik';
 import { StoreInput, StoreSelect } from '../../share';
 import * as yup from 'yup';
 
 import './ShipmentInfoForm.scss';
+import { useShipmentInfoForm } from '../../hooks/useShipmentInfoForm';
 
 const validationSchema = yup.object({
 	address: yup.string().required('Address is required!'),
@@ -16,6 +17,7 @@ const validationSchema = yup.object({
 });
 
 export const ShipmentInfoForm: React.FC = () => {
+	const { setValid, setValue } = useShipmentInfoForm(({ setValid, setValue }) => ({ setValid, setValue }));
 	const formik = useFormik({
 		initialValues: {
 			address: '',
@@ -26,16 +28,25 @@ export const ShipmentInfoForm: React.FC = () => {
 			zip: '',
 		},
 		validationSchema,
+		validateOnBlur: true,
+		validate: (values) => {
+			setValue(values);
+		},
 		onSubmit: (value) => {
 			console.log(value);
 		},
 	});
 
+	useEffect(() => {
+		setValid(formik.dirty && formik.isValid);
+	}, [formik.dirty, formik.isValid]);
+
 	return (
 		<Card sx={{ borderRadius: '8px' }}>
 			<CardContent sx={{ padding: '2rem' }}>
-				<form onSubmit={formik.handleSubmit}>
+				<form onSubmit={formik.handleSubmit} noValidate className="shipmentInfoForm">
 					<StoreInput
+						className="mb-8"
 						label="Address (No P. O. Boxes)"
 						placeholder="Enter your address"
 						{...formik.getFieldProps('address')}
@@ -61,46 +72,50 @@ export const ShipmentInfoForm: React.FC = () => {
 						required
 					/>
 
-					<StoreSelect
-						label="Country/Region"
-						placeholder="Select your country/region"
-						{...formik.getFieldProps('country')}
-						error={formik.touched.country && !!formik.errors.country}
-						helperText={formik.touched.country && formik.errors.country}
-						required
-					>
-						<MenuItem disabled value="" selected>
-							Select your country/region
-						</MenuItem>
-						<MenuItem value={'A'}>A</MenuItem>
-						<MenuItem value={'B'}>B</MenuItem>
-						<MenuItem value={'C'}>C</MenuItem>
-					</StoreSelect>
+					<div className="flex flex-row justify-between">
+						<StoreSelect
+							label="Country/Region"
+							placeholder="Select your country/region"
+							{...formik.getFieldProps('country')}
+							error={formik.touched.country && !!formik.errors.country}
+							helperText={formik.touched.country && formik.errors.country}
+							displayEmpty
+							required
+						>
+							<MenuItem value="" disabled>
+								Select your country/region
+							</MenuItem>
+							<MenuItem value={'A'}>A</MenuItem>
+							<MenuItem value={'B'}>B</MenuItem>
+							<MenuItem value={'C'}>C</MenuItem>
+						</StoreSelect>
 
-					<StoreSelect
-						label="State"
-						placeholder="Select your state"
-						{...formik.getFieldProps('state')}
-						error={formik.touched.state && !!formik.errors.state}
-						helperText={formik.touched.state && formik.errors.state}
-						required
-					>
-						<MenuItem disabled value="">
-							Select your state
-						</MenuItem>
-						<MenuItem value={'A'}>A</MenuItem>
-						<MenuItem value={'B'}>B</MenuItem>
-						<MenuItem value={'C'}>C</MenuItem>
-					</StoreSelect>
+						<StoreSelect
+							label="State"
+							placeholder="Select your state"
+							{...formik.getFieldProps('state')}
+							error={formik.touched.state && !!formik.errors.state}
+							helperText={formik.touched.state && formik.errors.state}
+							displayEmpty
+							required
+						>
+							<MenuItem disabled value="">
+								Select your state
+							</MenuItem>
+							<MenuItem value={'A'}>A</MenuItem>
+							<MenuItem value={'B'}>B</MenuItem>
+							<MenuItem value={'C'}>C</MenuItem>
+						</StoreSelect>
 
-					<StoreInput
-						label="ZIP code"
-						placeholder="Enter your ZIP code"
-						{...formik.getFieldProps('zip')}
-						error={formik.touched.zip && !!formik.errors.zip}
-						helperText={formik.touched.zip && formik.errors.zip}
-						required
-					/>
+						<StoreInput
+							label="ZIP code"
+							placeholder="Enter your ZIP code"
+							{...formik.getFieldProps('zip')}
+							error={formik.touched.zip && !!formik.errors.zip}
+							helperText={formik.touched.zip && formik.errors.zip}
+							required
+						/>
+					</div>
 				</form>
 			</CardContent>
 		</Card>

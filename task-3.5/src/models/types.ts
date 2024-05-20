@@ -11,3 +11,10 @@ export interface StoreItem {
 	thumbnail: string;
 	images: string[];
 }
+
+export type FormStore<FormValues> = {
+	valid: boolean;
+	value: FormValues;
+	setValue: (value: FormValues) => void;
+	setValid: (valid: boolean) => void;
+};

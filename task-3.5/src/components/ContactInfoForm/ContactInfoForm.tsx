@@ -42,7 +42,7 @@ export const ContactInfoForm: React.FC<Props> = () => {
 	return (
 		<Card sx={{ borderRadius: '8px' }}>
 			<CardContent sx={{ padding: '2rem' }}>
-				<form onSubmit={formik.handleSubmit} className="contactInfoForm">
+				<form onSubmit={formik.handleSubmit} noValidate className="contactInfoForm">
 					<StoreInput
 						label="First Name"
 						placeholder="Enter your first name"

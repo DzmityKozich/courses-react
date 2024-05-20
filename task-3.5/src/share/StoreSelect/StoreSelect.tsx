@@ -16,6 +16,7 @@ const CustomSelect = styled(Select)({
 		paddingTop: '0.25rem',
 		paddingBottom: '0.5rem',
 		paddingLeft: 0,
+		color: '#243573',
 	},
 
 	'& .MuiOutlinedInput-notchedOutline': {
@@ -23,8 +24,6 @@ const CustomSelect = styled(Select)({
 		borderTop: 0,
 		borderLeft: 0,
 		borderRight: 0,
-		// border: 0
-		// borderBottom: '1px',
 	},
 });
 
