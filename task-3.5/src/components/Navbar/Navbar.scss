@@ -1,0 +1,35 @@
+.logo {
+	font-size: 1.25rem;
+	font-weight: 400;
+	line-height: 1.75rem;
+	flex-grow: 1;
+	padding-left: 45px;
+	position: relative;
+	color: #fff;
+
+	&::after {
+		content: '';
+		display: block;
+		position: absolute;
+		border-radius: 5px;
+		width: 27px;
+		height: 27px;
+		rotate: 45deg;
+		left: 0;
+		top: 0;
+		background-color: #00ae1c;
+	}
+
+	&::before {
+		content: '';
+		display: block;
+		position: absolute;
+		border-radius: 5px;
+		width: 27px;
+		height: 27px;
+		rotate: 45deg;
+		left: 10px;
+		top: 0;
+		background-color: #004c0c;
+	}
+}

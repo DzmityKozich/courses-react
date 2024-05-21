@@ -9,9 +9,11 @@ import { useStoreItems } from '../../hooks/useStoreItems';
 
 import './OrderInformationPage.scss';
 import { OrderItemCard } from '../../components/OrderItemCard';
+import { useCart } from '../../hooks/useCart';
 
 export const OrderInformationPage: React.FC = () => {
-	const { items } = useStoreItems();
+	// const { items } = useStoreItems();
+	const { items, sum } = useCart(({ items, sum }) => ({ items, sum }));
 
 	return (
 		<div className="px-[15rem] mb-8">
@@ -55,8 +57,8 @@ export const OrderInformationPage: React.FC = () => {
 						titleTypographyProps={{ color: '#243573', fontSize: '1rem', fontWeight: 700 }}
 					/>
 					<CardContent>
-						{items.splice(0, 3).map((item) => (
-							<OrderItemCard key={item.id} item={item} amount={5} />
+						{items.map(({ item, amount }) => (
+							<OrderItemCard key={item.id} item={item} amount={amount} />
 						))}
 
 						<Box sx={{ paddingTop: '0.75rem', width: '50%' }}>
@@ -68,10 +70,10 @@ export const OrderInformationPage: React.FC = () => {
 									<p className="font-bold">Grand Total:</p>
 								</Box>
 								<Box>
-									<p>$000</p>
-									<p>$000</p>
-									<p>$000</p>
-									<p className="font-bold">$000</p>
+									<p>${sum().toFixed(2)}</p>
+									<p>$0.00</p>
+									<p>$0.00</p>
+									<p className="font-bold">${sum().toFixed(2)}</p>
 								</Box>
 							</Box>
 						</Box>
