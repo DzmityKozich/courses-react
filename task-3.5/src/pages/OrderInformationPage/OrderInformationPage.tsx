@@ -5,14 +5,12 @@ import { Box, Card, CardContent, CardHeader } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import InfoIcon from '@mui/icons-material/Info';
-import { useStoreItems } from '../../hooks/useStoreItems';
-
-import './OrderInformationPage.scss';
 import { OrderItemCard } from '../../components/OrderItemCard';
 import { useCart } from '../../hooks/useCart';
 
+import './OrderInformationPage.scss';
+
 export const OrderInformationPage: React.FC = () => {
-	// const { items } = useStoreItems();
 	const { items, sum } = useCart(({ items, sum }) => ({ items, sum }));
 
 	return (

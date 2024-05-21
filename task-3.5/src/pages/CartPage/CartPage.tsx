@@ -20,6 +20,7 @@ export const CartPage: React.FC = () => {
 			<div className="container mx-auto">
 				<PageTitle title="Cart" />
 				<div className="flex flex-col gap-4 mb-8">
+					{!items.length && <div className="text-3xl">The Cart is Empty</div>}
 					{items.map(({ item, amount }) => (
 						<CartItemCard
 							key={item.id}
@@ -41,7 +42,9 @@ export const CartPage: React.FC = () => {
 					</div>
 				</div>
 
-				<StoreLinkBtn to="/order/contact-information">Next step</StoreLinkBtn>
+				<StoreLinkBtn to="/order/contact-information" disabled={!items.length}>
+					Next step
+				</StoreLinkBtn>
 			</div>
 		</>
 	);
