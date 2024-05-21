@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { CartItemCard } from '../../components/CartItemCard';
 import { useCart } from '../../hooks/useCart';
 import { PageTitle, StoreLinkBtn } from '../../share';
+import { useRoutGuard } from '../../hooks/useRouteGuard';
 
 export const CartPage: React.FC = () => {
+	const { setContactInfoPageAccess } = useRoutGuard(({ setContactInfoPageAccess }) => ({ setContactInfoPageAccess }));
 	const { items, addItem, deleteItem, subtractItem, sum, totalItems } = useCart(
 		({ items, sum, totalItems, deleteItem, addItem, subtractItem }) => ({
 			items,
@@ -14,6 +16,10 @@ export const CartPage: React.FC = () => {
 			totalItems,
 		})
 	);
+
+	useEffect(() => {
+		setContactInfoPageAccess(!!items.length);
+	}, [items, setContactInfoPageAccess]);
 
 	return (
 		<>

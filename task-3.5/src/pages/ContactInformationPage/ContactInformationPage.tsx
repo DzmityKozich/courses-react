@@ -2,14 +2,15 @@ import React, { useEffect } from 'react';
 import { PageTitle, StoreLinkBtn } from '../../share';
 import { ContactInfoForm } from '../../components/ContactInfoForm';
 import { useContactInfoForm } from '../../hooks/useContactInfoForm';
+import { useRoutGuard } from '../../hooks/useRouteGuard';
 
 export const ContactInformationPage: React.FC = () => {
 	const { valid, value } = useContactInfoForm(({ valid, value }) => ({ valid, value }));
+	const { setShipmentInfoPageAccess } = useRoutGuard(({ setShipmentInfoPageAccess }) => ({ setShipmentInfoPageAccess }));
 
-	// TODO: use this value
 	useEffect(() => {
-		console.log(value);
-	}, [value]);
+		setShipmentInfoPageAccess(valid);
+	}, [value, valid, setShipmentInfoPageAccess]);
 
 	return (
 		<>
@@ -19,7 +20,7 @@ export const ContactInformationPage: React.FC = () => {
 				<ContactInfoForm />
 			</div>
 
-			<StoreLinkBtn to="/" disabled={!valid}>
+			<StoreLinkBtn to="/order/shipment-information" disabled={!valid}>
 				Next step
 			</StoreLinkBtn>
 		</>

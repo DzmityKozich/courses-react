@@ -9,9 +9,13 @@ import { OrderItemCard } from '../../components/OrderItemCard';
 import { useCart } from '../../hooks/useCart';
 
 import './OrderInformationPage.scss';
+import { useShipmentInfoForm } from '../../hooks/useShipmentInfoForm';
+import { useContactInfoForm } from '../../hooks/useContactInfoForm';
 
 export const OrderInformationPage: React.FC = () => {
 	const { items, sum } = useCart(({ items, sum }) => ({ items, sum }));
+	const { shipmentValue } = useShipmentInfoForm(({ value }) => ({ shipmentValue: value }));
+	const { contactValue } = useContactInfoForm(({ value }) => ({ contactValue: value }));
 
 	return (
 		<div className="px-[15rem] mb-8">
