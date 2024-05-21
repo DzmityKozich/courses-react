@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { CartPage } from '../CartPage';
 import { ContactInformationPage } from '../ContactInformationPage';
-import { StoreBreadcrumbs } from '../../components/StoreBreadcrumbs';
+import { StoreBreadcrumbs } from '../../share/StoreBreadcrumbs';
 import { ShipmentInformationPage } from '../ShipmentInformationPage';
 import { StoreLink } from '../../share';
 
