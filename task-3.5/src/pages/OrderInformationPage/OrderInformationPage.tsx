@@ -44,8 +44,8 @@ export const OrderInformationPage: React.FC = () => {
 					<CardContent>
 						{contactFormText(contactValue)
 							.split('\n')
-							.map((text) => (
-								<p>{text}</p>
+							.map((text, i) => (
+								<p key={i}>{text}</p>
 							))}
 					</CardContent>
 				</StoreCard>
@@ -59,8 +59,8 @@ export const OrderInformationPage: React.FC = () => {
 					<CardContent>
 						{shipmentFormText(shipmentValue)
 							.split('\n')
-							.map((text) => (
-								<p>{text}</p>
+							.map((text, i) => (
+								<p key={i}>{text}</p>
 							))}
 					</CardContent>
 				</StoreCard>

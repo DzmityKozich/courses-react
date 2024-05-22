@@ -4,11 +4,12 @@ import { Navbar } from '../../components/Navbar';
 import { Route, Routes } from 'react-router-dom';
 import { ItemsPage } from '../ItemsPage/ItemsPage';
 import { OrderPage } from '../OrderPage';
-
-import './Layout.scss';
 import { OrderInformationPage } from '../OrderInformationPage';
 import { RouteGuard } from '../../share';
 import { useRoutGuard } from '../../hooks/useRouteGuard';
+import { Paths } from '../../routes/routes';
+
+import './Layout.scss';
 
 export const Layout: React.FC = () => {
 	const { orderInfoPageAccess } = useRoutGuard(({ orderInfoPageAccess }) => ({ orderInfoPageAccess }));
@@ -22,7 +23,7 @@ export const Layout: React.FC = () => {
 					<Route path="/" element={<ItemsPage />} />
 					<Route path="/order/*" element={<OrderPage />} />
 					<Route
-						path="/order-info"
+						path={Paths.orderInfoPage}
 						element={
 							<RouteGuard access={orderInfoPageAccess}>
 								<OrderInformationPage />

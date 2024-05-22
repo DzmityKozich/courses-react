@@ -6,6 +6,9 @@ import { StoreBreadcrumbs } from '../../share/StoreBreadcrumbs';
 import { ShipmentInformationPage } from '../ShipmentInformationPage';
 import { StoreLink, RouteGuard } from '../../share';
 import { useRoutGuard } from '../../hooks/useRouteGuard';
+import { Paths } from '../../routes/routes';
+
+import './OrderPage.scss';
 
 type Props = {};
 
@@ -19,21 +22,21 @@ export const OrderPage: React.FC<Props> = () => {
 		<div className="px-[15rem] mb-10">
 			<StoreBreadcrumbs
 				breadcrumbs={[
-					<StoreLink key="1" to="/order/cart">
+					<StoreLink key="1" to={Paths.cartPage}>
 						Cart
 					</StoreLink>,
-					<StoreLink key="2" to="/order/contact-information" disabled={!contactInfoPageAccess}>
+					<StoreLink key="2" to={Paths.contactInfoPage} disabled={!contactInfoPageAccess}>
 						Contact information
 					</StoreLink>,
-					<StoreLink key="3" to="/order/shipment-information" disabled={!shipmentInfoPageAccess}>
+					<StoreLink key="3" to={Paths.shipmentInfoPage} disabled={!shipmentInfoPageAccess}>
 						Shipment information
 					</StoreLink>,
 				]}
 			></StoreBreadcrumbs>
 			<Routes>
-				<Route path="/cart" element={<CartPage />} />
+				<Route path={Paths.cartPageShort} element={<CartPage />} />
 				<Route
-					path="/contact-information"
+					path={Paths.contactInfoPageShort}
 					element={
 						<RouteGuard access={contactInfoPageAccess}>
 							<ContactInformationPage />
@@ -41,7 +44,7 @@ export const OrderPage: React.FC<Props> = () => {
 					}
 				/>
 				<Route
-					path="/shipment-information"
+					path={Paths.shipmentInfoPageShort}
 					element={
 						<RouteGuard access={contactInfoPageAccess}>
 							<ShipmentInformationPage />

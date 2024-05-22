@@ -3,6 +3,7 @@ import { CartItemCard } from '../../components/CartItemCard';
 import { useCart } from '../../hooks/useCart';
 import { PageTitle, StoreLinkBtn } from '../../share';
 import { useRoutGuard } from '../../hooks/useRouteGuard';
+import { Paths } from '../../routes/routes';
 
 export const CartPage: React.FC = () => {
 	const { setContactInfoPageAccess } = useRoutGuard(({ setContactInfoPageAccess }) => ({ setContactInfoPageAccess }));
@@ -48,7 +49,7 @@ export const CartPage: React.FC = () => {
 					</div>
 				</div>
 
-				<StoreLinkBtn to="/order/contact-information" disabled={!items.length}>
+				<StoreLinkBtn to={Paths.contactInfoPage} disabled={!items.length}>
 					Next step
 				</StoreLinkBtn>
 			</div>

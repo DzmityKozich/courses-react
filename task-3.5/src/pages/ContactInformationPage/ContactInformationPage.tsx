@@ -3,6 +3,7 @@ import { PageTitle, StoreLinkBtn } from '../../share';
 import { ContactInfoForm } from '../../components/ContactInfoForm';
 import { useContactInfoForm } from '../../hooks/useContactInfoForm';
 import { useRoutGuard } from '../../hooks/useRouteGuard';
+import { Paths } from '../../routes/routes';
 
 export const ContactInformationPage: React.FC = () => {
 	const { valid, value } = useContactInfoForm(({ valid, value }) => ({ valid, value }));
@@ -20,7 +21,7 @@ export const ContactInformationPage: React.FC = () => {
 				<ContactInfoForm />
 			</div>
 
-			<StoreLinkBtn to="/order/shipment-information" disabled={!valid}>
+			<StoreLinkBtn to={Paths.shipmentInfoPage} disabled={!valid}>
 				Next step
 			</StoreLinkBtn>
 		</>
