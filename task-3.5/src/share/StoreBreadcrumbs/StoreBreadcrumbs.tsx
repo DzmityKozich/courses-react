@@ -4,8 +4,6 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 import './StoreBreadcrumbs.scss';
 
-// TODO: move to share
-
 type Props = {
 	breadcrumbs: ReactNode[];
 };

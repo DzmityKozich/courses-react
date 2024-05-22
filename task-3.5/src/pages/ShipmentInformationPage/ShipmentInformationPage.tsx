@@ -3,14 +3,20 @@ import { PageTitle, StoreLinkBtn } from '../../share';
 import { ShipmentInfoForm } from '../../components/ShipmentInfoForm';
 import { useShipmentInfoForm } from '../../hooks/useShipmentInfoForm';
 import { useRoutGuard } from '../../hooks/useRouteGuard';
+import { useLocation } from 'react-router-dom';
 
 export const ShipmentInformationPage: React.FC = () => {
-	const { valid } = useShipmentInfoForm(({ valid }) => ({ valid }));
+	const { state } = useLocation();
+	const { valid, value } = useShipmentInfoForm(({ valid, value }) => ({ valid, value }));
 	const { setOrderInfoPageAccess } = useRoutGuard(({ setOrderInfoPageAccess }) => ({ setOrderInfoPageAccess }));
 
 	useEffect(() => {
 		setOrderInfoPageAccess(valid);
 	}, [valid, setOrderInfoPageAccess]);
+
+	useEffect(() => {
+		console.log(state);
+	}, [state]);
 
 	return (
 		<>
@@ -18,7 +24,7 @@ export const ShipmentInformationPage: React.FC = () => {
 			<div className="mb-8">
 				<ShipmentInfoForm />
 			</div>
-			<StoreLinkBtn to="/order-info" disabled={!valid}>
+			<StoreLinkBtn to="/order-info" disabled={!valid} state={{ ...state, shipmentFormValue: value }}>
 				Submit order
 			</StoreLinkBtn>
 		</>

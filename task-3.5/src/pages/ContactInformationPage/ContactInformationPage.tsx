@@ -4,8 +4,10 @@ import { ContactInfoForm } from '../../components/ContactInfoForm';
 import { useContactInfoForm } from '../../hooks/useContactInfoForm';
 import { useRoutGuard } from '../../hooks/useRouteGuard';
 import { Paths } from '../../routes/routes';
+import { useLocation } from 'react-router-dom';
 
 export const ContactInformationPage: React.FC = () => {
+	const { state = {} } = useLocation();
 	const { valid, value } = useContactInfoForm(({ valid, value }) => ({ valid, value }));
 	const { setShipmentInfoPageAccess } = useRoutGuard(({ setShipmentInfoPageAccess }) => ({ setShipmentInfoPageAccess }));
 
@@ -21,7 +23,7 @@ export const ContactInformationPage: React.FC = () => {
 				<ContactInfoForm />
 			</div>
 
-			<StoreLinkBtn to={Paths.shipmentInfoPage} disabled={!valid}>
+			<StoreLinkBtn to={Paths.shipmentInfoPage} disabled={!valid} state={{ ...state, conatctFormValue: value }}>
 				Next step
 			</StoreLinkBtn>
 		</>

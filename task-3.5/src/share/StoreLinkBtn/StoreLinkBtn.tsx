@@ -11,13 +11,13 @@ type Props = NavLinkProps & {
 	disabled?: boolean;
 };
 
-export const StoreLinkBtn: React.FC<Props> = ({ to, children, icon, badgeContent, disabled }) => {
+export const StoreLinkBtn: React.FC<Props> = ({ to, children, icon, badgeContent, disabled, ...linkProps }) => {
 	const toLink = useMemo(() => {
 		return disabled ? '' : to;
 	}, [disabled, to]);
 
 	return (
-		<NavLink to={toLink}>
+		<NavLink to={toLink} {...linkProps}>
 			<div className={classNames('storeLinkBtn', { disabled })}>
 				{icon}
 				{children}

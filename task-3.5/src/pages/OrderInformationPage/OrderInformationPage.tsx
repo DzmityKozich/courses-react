@@ -7,16 +7,16 @@ import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import InfoIcon from '@mui/icons-material/Info';
 import { OrderItemCard } from '../../components/OrderItemCard';
 import { useCart } from '../../hooks/useCart';
-import { useShipmentInfoForm } from '../../hooks/useShipmentInfoForm';
-import { useContactInfoForm } from '../../hooks/useContactInfoForm';
 import { contactFormText, shipmentFormText } from '../../utils/form-data';
+import { useLocation } from 'react-router-dom';
 
 import './OrderInformationPage.scss';
 
 export const OrderInformationPage: React.FC = () => {
+	const {
+		state: { shipmentFormValue, conatctFormValue },
+	} = useLocation();
 	const { items, sum } = useCart(({ items, sum }) => ({ items, sum }));
-	const { contactValue } = useContactInfoForm(({ value }) => ({ contactValue: value }));
-	const { shipmentValue } = useShipmentInfoForm(({ value }) => ({ shipmentValue: value }));
 
 	return (
 		<div className="px-[15rem] mb-8">
@@ -42,7 +42,7 @@ export const OrderInformationPage: React.FC = () => {
 						avatar={<PersonIcon color="success" />}
 					/>
 					<CardContent>
-						{contactFormText(contactValue)
+						{contactFormText(conatctFormValue)
 							.split('\n')
 							.map((text, i) => (
 								<p key={i}>{text}</p>
@@ -57,7 +57,7 @@ export const OrderInformationPage: React.FC = () => {
 						titleTypographyProps={{ color: '#243573', fontSize: '1rem', fontWeight: 700 }}
 					/>
 					<CardContent>
-						{shipmentFormText(shipmentValue)
+						{shipmentFormText(shipmentFormValue)
 							.split('\n')
 							.map((text, i) => (
 								<p key={i}>{text}</p>
