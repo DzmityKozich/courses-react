@@ -1,9 +1,7 @@
 import { create } from 'zustand';
-import { FormStore } from '../models/types';
+import { ContactForm, FormStore } from '../models/types';
 
-type FormValues = { firstName?: string; lastName?: string; email?: string; phone?: string };
-
-export const useContactInfoForm = create<FormStore<FormValues>>((set) => ({
+export const useContactInfoForm = create<FormStore<Partial<ContactForm>>>((set) => ({
 	valid: false,
 	value: {},
 	setValue: (value) => set(() => ({ value })),

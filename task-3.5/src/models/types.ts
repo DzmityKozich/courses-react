@@ -12,9 +12,25 @@ export interface StoreItem {
 	images: string[];
 }
 
-export type FormStore<FormValues> = {
+export interface FormStore<FormValues> {
 	valid: boolean;
 	value: FormValues;
 	setValue: (value: FormValues) => void;
 	setValid: (valid: boolean) => void;
-};
+}
+
+export interface ContactForm {
+	firstName: string;
+	lastName: string;
+	email: string;
+	phone: string;
+}
+
+export interface ShipmentForm {
+	address: string;
+	apartment: string;
+	city: string;
+	country: string;
+	state: string;
+	zip: string;
+}

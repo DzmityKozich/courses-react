@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { ReactNode, useRef, useState } from 'react';
 import { CardMedia, CardContent, Card, CardActions } from '@mui/material';
 import { StoreBtn } from '../../share';
 import AddIcon from '@mui/icons-material/Add';
@@ -14,16 +14,21 @@ type Props = {
 	onAdd: React.MouseEventHandler<HTMLButtonElement>;
 };
 
+interface AddBtnContent {
+	icon: ReactNode;
+	text: string;
+}
+
 export const ItemCard: React.FC<Props> = ({ imgSrc, price, text, title, onAdd }) => {
 	const timerId = useRef<number>();
-	const [btnIcon, setBtnIcon] = useState(<AddIcon />);
+	const [btnContent, setBtnContent] = useState<AddBtnContent>({ icon: <AddIcon />, text: 'Add to cart' });
 
 	const addItem = (event: any) => {
 		clearTimeout(timerId.current);
 		onAdd(event);
-		setBtnIcon(<CheckIcon />);
+		setBtnContent({ icon: <CheckIcon />, text: 'Added' });
 		timerId.current = setTimeout(() => {
-			setBtnIcon(<AddIcon />);
+			setBtnContent({ icon: <AddIcon />, text: 'Add to cart' });
 		}, 500);
 	};
 
@@ -37,8 +42,8 @@ export const ItemCard: React.FC<Props> = ({ imgSrc, price, text, title, onAdd })
 			</CardContent>
 
 			<CardActions>
-				<StoreBtn onClick={addItem} sx={{ width: '100%' }} startIcon={btnIcon}>
-					Add to cart
+				<StoreBtn onClick={addItem} sx={{ width: '100%' }} startIcon={btnContent.icon}>
+					{btnContent.text}
 				</StoreBtn>
 			</CardActions>
 		</Card>

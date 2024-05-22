@@ -7,15 +7,16 @@ import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import InfoIcon from '@mui/icons-material/Info';
 import { OrderItemCard } from '../../components/OrderItemCard';
 import { useCart } from '../../hooks/useCart';
-
-import './OrderInformationPage.scss';
 import { useShipmentInfoForm } from '../../hooks/useShipmentInfoForm';
 import { useContactInfoForm } from '../../hooks/useContactInfoForm';
+import { contactFormText, shipmentFormText } from '../../utils/form-data';
+
+import './OrderInformationPage.scss';
 
 export const OrderInformationPage: React.FC = () => {
 	const { items, sum } = useCart(({ items, sum }) => ({ items, sum }));
-	const { shipmentValue } = useShipmentInfoForm(({ value }) => ({ shipmentValue: value }));
 	const { contactValue } = useContactInfoForm(({ value }) => ({ contactValue: value }));
+	const { shipmentValue } = useShipmentInfoForm(({ value }) => ({ shipmentValue: value }));
 
 	return (
 		<div className="px-[15rem] mb-8">
@@ -40,7 +41,13 @@ export const OrderInformationPage: React.FC = () => {
 						titleTypographyProps={{ color: '#243573', fontSize: '1rem', fontWeight: 700 }}
 						avatar={<PersonIcon color="success" />}
 					/>
-					<CardContent>Emily Andersonemily.anderson@example.com(555) 123-4567</CardContent>
+					<CardContent>
+						{contactFormText(contactValue)
+							.split('\n')
+							.map((text) => (
+								<p>{text}</p>
+							))}
+					</CardContent>
 				</Card>
 
 				<Card>
@@ -49,7 +56,13 @@ export const OrderInformationPage: React.FC = () => {
 						avatar={<LocalShippingIcon color="success" />}
 						titleTypographyProps={{ color: '#243573', fontSize: '1rem', fontWeight: 700 }}
 					/>
-					<CardContent>123 Elm Street, Apt 4BSpringfield, Illinois, 62701United States</CardContent>
+					<CardContent>
+						{shipmentFormText(shipmentValue)
+							.split('\n')
+							.map((text) => (
+								<p>{text}</p>
+							))}
+					</CardContent>
 				</Card>
 
 				<Card className="col-span-2">

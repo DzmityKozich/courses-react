@@ -7,8 +7,12 @@ import { OrderPage } from '../OrderPage';
 
 import './Layout.scss';
 import { OrderInformationPage } from '../OrderInformationPage';
+import { RouteGuard } from '../../share';
+import { useRoutGuard } from '../../hooks/useRouteGuard';
 
 export const Layout: React.FC = () => {
+	const { orderInfoPageAccess } = useRoutGuard(({ orderInfoPageAccess }) => ({ orderInfoPageAccess }));
+
 	return (
 		<Box sx={{ flexGrow: 1 }} className="w-full">
 			<Navbar />
@@ -17,7 +21,14 @@ export const Layout: React.FC = () => {
 				<Routes>
 					<Route path="/" element={<ItemsPage />} />
 					<Route path="/order/*" element={<OrderPage />} />
-					<Route path="/order-info" element={<OrderInformationPage />} />
+					<Route
+						path="/order-info"
+						element={
+							<RouteGuard access={orderInfoPageAccess}>
+								<OrderInformationPage />
+							</RouteGuard>
+						}
+					/>
 				</Routes>
 			</div>
 		</Box>

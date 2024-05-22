@@ -1,16 +1,7 @@
 import { create } from 'zustand';
-import { FormStore } from '../models/types';
+import { FormStore, ShipmentForm } from '../models/types';
 
-interface ShipmentFormValues {
-	address?: string;
-	apartment?: string;
-	city?: string;
-	country?: string;
-	state?: string;
-	zip?: string;
-}
-
-export const useShipmentInfoForm = create<FormStore<ShipmentFormValues>>((set) => ({
+export const useShipmentInfoForm = create<FormStore<Partial<ShipmentForm>>>((set) => ({
 	valid: false,
 	value: {},
 	setValid: (valid) => set(() => ({ valid })),
