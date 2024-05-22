@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { Card, CardContent } from '@mui/material';
-import { StoreInput } from '../../share';
+import { CardContent } from '@mui/material';
+import { StoreCard, StoreInput } from '../../share';
 import { useFormik } from 'formik';
 import { useContactInfoForm } from '../../hooks/useContactInfoForm';
 import * as yup from 'yup';
@@ -40,7 +40,7 @@ export const ContactInfoForm: React.FC<Props> = () => {
 	}, [formik.isValid, formik.dirty]);
 
 	return (
-		<Card sx={{ borderRadius: '8px' }}>
+		<StoreCard>
 			<CardContent sx={{ padding: '2rem' }}>
 				<form onSubmit={formik.handleSubmit} noValidate className="contactInfoForm">
 					<StoreInput
@@ -77,6 +77,6 @@ export const ContactInfoForm: React.FC<Props> = () => {
 					/>
 				</form>
 			</CardContent>
-		</Card>
+		</StoreCard>
 	);
 };

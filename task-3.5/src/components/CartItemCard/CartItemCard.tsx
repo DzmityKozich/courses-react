@@ -1,7 +1,7 @@
 import { Box, Card, CardMedia, Typography } from '@mui/material';
 import React from 'react';
 import { StoreItem } from '../../models/types';
-import { StoreBtn, StoreIconBtn } from '../../share';
+import { StoreBtn, StoreCard, StoreIconBtn } from '../../share';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -26,7 +26,7 @@ export const CartItemCard: React.FC<Props> = ({ item, amount, deleteItem, increa
 	};
 
 	return (
-		<Card sx={{ minHeight: 150, borderRadius: '8px' }} className="cartItemCard">
+		<StoreCard sx={{ minHeight: 150 }} className="cartItemCard">
 			<CardMedia component="div" image={thumbnail} sx={{ height: '100%', minWidth: 130, borderRadius: '8px' }} className="row-span-2" />
 
 			<Box className="flex flex-row justify-between items-start">
@@ -55,6 +55,6 @@ export const CartItemCard: React.FC<Props> = ({ item, amount, deleteItem, increa
 					Price: <span className="text-2xl">${price}</span>
 				</Typography>
 			</Box>
-		</Card>
+		</StoreCard>
 	);
 };

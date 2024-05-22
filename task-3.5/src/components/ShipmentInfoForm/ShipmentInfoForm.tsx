@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { Card, CardContent, MenuItem } from '@mui/material';
+import { CardContent, MenuItem } from '@mui/material';
 import { useFormik } from 'formik';
-import { StoreInput, StoreSelect } from '../../share';
+import { StoreCard, StoreInput, StoreSelect } from '../../share';
 import * as yup from 'yup';
 
 import './ShipmentInfoForm.scss';
@@ -42,7 +42,7 @@ export const ShipmentInfoForm: React.FC = () => {
 	}, [formik.dirty, formik.isValid]);
 
 	return (
-		<Card sx={{ borderRadius: '8px' }}>
+		<StoreCard>
 			<CardContent sx={{ padding: '2rem' }}>
 				<form onSubmit={formik.handleSubmit} noValidate className="shipmentInfoForm">
 					<StoreInput
@@ -118,6 +118,6 @@ export const ShipmentInfoForm: React.FC = () => {
 					</div>
 				</form>
 			</CardContent>
-		</Card>
+		</StoreCard>
 	);
 };

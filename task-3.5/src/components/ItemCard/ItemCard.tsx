@@ -1,6 +1,6 @@
 import React, { ReactNode, useRef, useState } from 'react';
-import { CardMedia, CardContent, Card, CardActions } from '@mui/material';
-import { StoreBtn } from '../../share';
+import { CardMedia, CardContent, CardActions } from '@mui/material';
+import { StoreBtn, StoreCard } from '../../share';
 import AddIcon from '@mui/icons-material/Add';
 import CheckIcon from '@mui/icons-material/Check';
 
@@ -33,7 +33,7 @@ export const ItemCard: React.FC<Props> = ({ imgSrc, price, text, title, onAdd })
 	};
 
 	return (
-		<Card sx={{ height: '100%', maxWidth: 240, borderRadius: '8px' }}>
+		<StoreCard sx={{ height: '100%', maxWidth: 240 }}>
 			<CardMedia component="div" image={imgSrc} title="chair item" sx={{ height: 250, width: 224, margin: 'auto' }} />
 			<CardContent>
 				<div className="itemTitle">{title}</div>
@@ -46,6 +46,6 @@ export const ItemCard: React.FC<Props> = ({ imgSrc, price, text, title, onAdd })
 					{btnContent.text}
 				</StoreBtn>
 			</CardActions>
-		</Card>
+		</StoreCard>
 	);
 };

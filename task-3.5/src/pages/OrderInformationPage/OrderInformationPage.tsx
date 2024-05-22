@@ -1,7 +1,7 @@
 import React from 'react';
 import CheckIcon from '@mui/icons-material/Check';
-import { PageTitle, StoreLinkBtn } from '../../share';
-import { Box, Card, CardContent, CardHeader } from '@mui/material';
+import { PageTitle, StoreCard, StoreLinkBtn } from '../../share';
+import { Box, CardContent, CardHeader } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import InfoIcon from '@mui/icons-material/Info';
@@ -35,7 +35,7 @@ export const OrderInformationPage: React.FC = () => {
 			</div>
 
 			<div className="grid grid-cols-2 grid-rows-[auto_auto] gap-8 my-8">
-				<Card>
+				<StoreCard>
 					<CardHeader
 						title="Contact information"
 						titleTypographyProps={{ color: '#243573', fontSize: '1rem', fontWeight: 700 }}
@@ -48,9 +48,9 @@ export const OrderInformationPage: React.FC = () => {
 								<p>{text}</p>
 							))}
 					</CardContent>
-				</Card>
+				</StoreCard>
 
-				<Card>
+				<StoreCard>
 					<CardHeader
 						title="Shipment information"
 						avatar={<LocalShippingIcon color="success" />}
@@ -63,9 +63,9 @@ export const OrderInformationPage: React.FC = () => {
 								<p>{text}</p>
 							))}
 					</CardContent>
-				</Card>
+				</StoreCard>
 
-				<Card className="col-span-2">
+				<StoreCard className="col-span-2">
 					<CardHeader
 						title="Order summary"
 						avatar={<InfoIcon color="success" />}
@@ -93,7 +93,7 @@ export const OrderInformationPage: React.FC = () => {
 							</Box>
 						</Box>
 					</CardContent>
-				</Card>
+				</StoreCard>
 			</div>
 
 			<StoreLinkBtn to="/">Continue shopping</StoreLinkBtn>
