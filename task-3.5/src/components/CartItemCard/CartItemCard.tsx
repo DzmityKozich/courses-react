@@ -1,4 +1,4 @@
-import { Box, Card, CardMedia, Typography } from '@mui/material';
+import { Box, CardMedia, Typography } from '@mui/material';
 import React from 'react';
 import { StoreItem } from '../../models/types';
 import { StoreBtn, StoreCard, StoreIconBtn } from '../../share';

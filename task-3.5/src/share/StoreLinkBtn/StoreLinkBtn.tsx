@@ -1,4 +1,4 @@
-import React, { ReactNode, useMemo } from 'react';
+import React, { ReactNode } from 'react';
 import { NavLink, NavLinkProps } from 'react-router-dom';
 import classNames from 'classNames';
 
@@ -12,12 +12,8 @@ type Props = NavLinkProps & {
 };
 
 export const StoreLinkBtn: React.FC<Props> = ({ to, children, icon, badgeContent, disabled, ...linkProps }) => {
-	const toLink = useMemo(() => {
-		return disabled ? '' : to;
-	}, [disabled, to]);
-
 	return (
-		<NavLink to={toLink} {...linkProps}>
+		<NavLink to={to} {...linkProps} onClick={(event) => (disabled ? event.preventDefault() : true)}>
 			<div className={classNames('storeLinkBtn', { disabled })}>
 				{icon}
 				{children}
