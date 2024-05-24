@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useMemo } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import './StoreLink.scss';
@@ -10,9 +10,13 @@ type Props = {
 };
 
 export const StoreLink: React.FC<Props> = ({ to, children, disabled }) => {
+	const toLink = useMemo(() => {
+		return disabled ? '' : to;
+	}, [to, disabled]);
+
 	return (
 		<NavLink
-			to={to}
+			to={toLink}
 			className={({ isActive }) => {
 				const activeClass = isActive ? 'activeLink' : '';
 				const disabledClass = disabled ? 'disabled' : '';
