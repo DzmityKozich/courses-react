@@ -1,11 +1,10 @@
-import { Button } from '@mui/material';
-import PanToolAltIcon from '@mui/icons-material/PanToolAlt';
 import './App.scss';
+import { Layout } from './pages/Layout';
 
 function App() {
 	return (
 		<>
-			<Button startIcon={<PanToolAltIcon />}>Click on Me!</Button>
+			<Layout />
 		</>
 	);
 }
