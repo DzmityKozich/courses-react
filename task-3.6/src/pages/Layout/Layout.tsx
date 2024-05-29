@@ -6,8 +6,12 @@ import './Layout.scss';
 export const Layout: React.FC = () => {
 	return (
 		<>
-			<Button color="primary">Kit Button</Button>
-			<Button color="secondary">Kit Button</Button>
+			<Button color="primary" disabled>
+				Kit Button
+			</Button>
+			<Button color="secondary" disabled>
+				Kit Button
+			</Button>
 		</>
 	);
 };
