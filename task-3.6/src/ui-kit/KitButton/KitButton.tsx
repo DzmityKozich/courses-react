@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 // import { KitButtonColor } from './types';
 import { Colors, THEME } from '../../themes/types';
 import { themes } from '../../themes/themes';
+import React from 'react';
 
 // 1) выделить какие поля нам нужны для темы
 // 2) выделить какие цвета нам нужны для какой темы и распределить из по полям темы
@@ -44,3 +45,18 @@ export const KitButton = styled.button<Props>`
 		}
 	`}
 `;
+
+export const IconBtn: React.FC<any> = ({ color, icon, children }: any) => {
+	console.log(icon.props);
+
+	const updatedIcon = React.cloneElement(icon, { color: 'red' });
+
+	return (
+		<KitButton color={color}>
+			<div className="flex flex-row justify-center items-center gap-1">
+				{updatedIcon}
+				{children}
+			</div>
+		</KitButton>
+	);
+};
