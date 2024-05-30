@@ -10,7 +10,7 @@ export const Layout: React.FC = () => {
 		<>
 			<KitButton color="primary">Kit Button</KitButton>
 			<KitButton color="secondary">Kit Button</KitButton>
-			<IconBtn color="primary" icon={<PlayIcon color="blue" />}>
+			<IconBtn color="primary" icon={<PlayIcon color="inherit" />}>
 				Coco
 			</IconBtn>
 		</>

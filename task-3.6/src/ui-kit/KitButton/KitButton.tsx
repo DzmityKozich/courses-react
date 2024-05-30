@@ -47,14 +47,10 @@ export const KitButton = styled.button<Props>`
 `;
 
 export const IconBtn: React.FC<any> = ({ color, icon, children }: any) => {
-	console.log(icon.props);
-
-	const updatedIcon = React.cloneElement(icon, { color: 'red' });
-
 	return (
 		<KitButton color={color}>
 			<div className="flex flex-row justify-center items-center gap-1">
-				{updatedIcon}
+				{icon}
 				{children}
 			</div>
 		</KitButton>
