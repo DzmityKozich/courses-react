@@ -1,16 +1,14 @@
-import { themes } from '../../themes/themes';
-import { THEME } from '../../themes/types';
+import { Colors, Theme, ThemeColors } from '../../themes/types';
 import { IconColors } from './types';
 
-export const getColor = (iconColor: IconColors, theme: THEME): string => {
-	switch (iconColor) {
-		case 'primary':
-			return themes[theme].defaultColors.green[500];
-		case 'secondary':
-			return themes[theme].defaultColors.gray[500];
-		case 'inherit':
-			return 'currentColor';
-		default:
-			return iconColor;
+export const getColor = (iconColor: IconColors, theme: Theme): string => {
+	if (iconColor === 'inherit') return 'currentColor';
+	if (isThemeColor(iconColor, theme.themeColors)) {
+		return theme.themeColors[iconColor];
 	}
+	return iconColor;
 };
+
+function isThemeColor(color: string, themeColors: ThemeColors): color is Colors {
+	return Object.prototype.hasOwnProperty.call(themeColors, color);
+}

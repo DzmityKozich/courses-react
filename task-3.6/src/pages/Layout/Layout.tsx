@@ -1,18 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { KitButton } from '../../ui-kit';
+import { PlayIcon } from '../../ui-kit/icons';
+import { ThemeContext } from '../../Context/ThemeContext';
+import { themes } from '../../themes/themes';
 
 import './Layout.scss';
-import { IconBtn } from '../../ui-kit/KitButton/KitButton';
-import { PlayIcon } from '../../ui-kit/icons';
 
 export const Layout: React.FC = () => {
+	const [theme, setTheme] = useState(themes.light);
+
 	return (
-		<>
+		<ThemeContext.Provider value={theme}>
 			<KitButton color="primary">Kit Button</KitButton>
-			<KitButton color="secondary">Kit Button</KitButton>
-			<IconBtn color="primary" icon={<PlayIcon color="inherit" />}>
-				Coco
-			</IconBtn>
-		</>
+			<KitButton color="secondary" icon={<PlayIcon color="primary" />}>
+				Kit Button
+			</KitButton>
+		</ThemeContext.Provider>
 	);
 };

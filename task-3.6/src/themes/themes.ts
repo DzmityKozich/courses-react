@@ -1,7 +1,7 @@
 import { darken, lighten } from 'polished';
 import { ColorTones, DefaultColors, Themes } from './types';
 
-const defaultColors: DefaultColors = {
+const defaultColorsLight: DefaultColors = {
 	gray: { ...generateShades('#EFEFEF') },
 	green: { ...generateShades('#00AE1C') },
 	white: { ...generateShades('#FFFFFF') },
@@ -25,46 +25,50 @@ export function generateShades(color: string): ColorTones {
 
 export const themes: Themes = {
 	light: {
-		defaultColors,
+		themeColors: {
+			primary: defaultColorsLight.green[500],
+			secondary: defaultColorsLight.gray[500],
+		},
+		defaultColors: defaultColorsLight,
 		buttons: {
 			primary: {
-				bgColor: defaultColors.green[500],
-				borderColor: defaultColors.green[500],
-				textColor: defaultColors.white[500],
+				bgColor: defaultColorsLight.green[500],
+				borderColor: defaultColorsLight.green[500],
+				textColor: defaultColorsLight.white[500],
 				active: {
-					bgColor: defaultColors.green[400],
-					borderColor: defaultColors.green[400],
-					textColor: defaultColors.white[500],
+					bgColor: defaultColorsLight.green[400],
+					borderColor: defaultColorsLight.green[400],
+					textColor: defaultColorsLight.white[500],
 				},
 				disabled: {
-					bgColor: defaultColors.green[600],
-					borderColor: defaultColors.green[600],
-					textColor: defaultColors.gray[600],
+					bgColor: defaultColorsLight.green[600],
+					borderColor: defaultColorsLight.green[600],
+					textColor: defaultColorsLight.gray[600],
 				},
 				hover: {
-					bgColor: defaultColors.green[500],
-					borderColor: defaultColors.green[300],
-					textColor: defaultColors.white[500],
+					bgColor: defaultColorsLight.green[500],
+					borderColor: defaultColorsLight.green[300],
+					textColor: defaultColorsLight.white[500],
 				},
 			},
 			secondary: {
-				bgColor: defaultColors.white[500],
-				borderColor: defaultColors.gray[600],
-				textColor: defaultColors.black[500],
+				bgColor: defaultColorsLight.white[500],
+				borderColor: defaultColorsLight.gray[600],
+				textColor: defaultColorsLight.black[500],
 				active: {
-					bgColor: defaultColors.gray[600],
-					borderColor: defaultColors.gray[600],
-					textColor: defaultColors.black[500],
+					bgColor: defaultColorsLight.gray[600],
+					borderColor: defaultColorsLight.gray[600],
+					textColor: defaultColorsLight.black[500],
 				},
 				disabled: {
-					bgColor: defaultColors.gray[600],
-					borderColor: defaultColors.gray[700],
-					textColor: defaultColors.gray[700],
+					bgColor: defaultColorsLight.gray[600],
+					borderColor: defaultColorsLight.gray[700],
+					textColor: defaultColorsLight.gray[700],
 				},
 				hover: {
-					bgColor: defaultColors.gray[500],
-					borderColor: defaultColors.gray[400],
-					textColor: defaultColors.black[500],
+					bgColor: defaultColorsLight.gray[500],
+					borderColor: defaultColorsLight.gray[400],
+					textColor: defaultColorsLight.black[500],
 				},
 			},
 		},

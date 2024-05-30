@@ -7,6 +7,7 @@ export enum THEME {
 export type Themes = Record<THEME, Theme>;
 
 export interface Theme {
+	themeColors: ThemeColors;
 	defaultColors: DefaultColors;
 	buttons: ButtonThemes;
 }
@@ -19,6 +20,8 @@ export interface GeneralStyles {
 }
 
 export type ColorTones = Record<50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900, string>;
+
+export type ThemeColors = Record<Colors, string>;
 
 export interface DefaultColors {
 	green: ColorTones;
