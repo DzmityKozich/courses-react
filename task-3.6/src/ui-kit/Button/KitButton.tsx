@@ -3,11 +3,6 @@ import { Colors, Theme } from '../../themes/types';
 import React, { ReactNode, useContext } from 'react';
 import { ThemeContext } from '../../Context/ThemeContext';
 
-// 1) выделить какие поля нам нужны для темы
-// 2) выделить какие цвета нам нужны для какой темы и распределить из по полям темы
-// 3) использовать styled-components для стилей компонентов
-// 4) использовать темы как background-color: ${theme[`btn-${primary}-bgc`]};
-
 type KitButtonProps = {
 	color: Colors;
 	icon?: ReactNode;
@@ -47,7 +42,7 @@ const StyledButton = styled.button<KitButtonProps & { theme: Theme }>`
 	`}
 `;
 
-export const KitButton: React.FC<KitButtonProps & ButtonProps> = ({ color, icon, children, ...btnProps }) => {
+export const Button: React.FC<KitButtonProps & ButtonProps> = ({ color, icon, children, ...btnProps }) => {
 	const theme = useContext(ThemeContext);
 
 	return (
