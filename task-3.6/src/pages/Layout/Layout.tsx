@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { KitButton } from '../../ui-kit';
-import { PlayIcon } from '../../ui-kit/icons';
+import { EyeCloseIcon, PlayIcon } from '../../ui-kit/icons';
 import { ThemeContext } from '../../Context/ThemeContext';
 import { themes } from '../../themes/themes';
 
@@ -11,7 +11,9 @@ export const Layout: React.FC = () => {
 
 	return (
 		<ThemeContext.Provider value={theme}>
-			<KitButton color="primary">Kit Button</KitButton>
+			<KitButton color="primary" icon={<EyeCloseIcon color="#fff" />}>
+				{/* Kit Button */}
+			</KitButton>
 			<KitButton color="secondary" icon={<PlayIcon color="primary" />}>
 				Kit Button
 			</KitButton>
