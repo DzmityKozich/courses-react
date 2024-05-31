@@ -9,7 +9,7 @@ type KitButtonProps = {
 	children?: ReactNode;
 };
 
-type ButtonProps = React.HTMLAttributes<HTMLButtonElement>;
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 const StyledButton = styled.button<KitButtonProps & { theme: Theme }>`
 	padding: 0.5rem 0.75rem;
