@@ -1,12 +1,14 @@
 // Theme
 export enum THEME {
 	LIGHT = 'light',
-	// DARK = 'dark',
+	DARK = 'dark',
 }
 
 export type Themes = Record<THEME, Theme>;
 
 export interface Theme {
+	themeName: THEME;
+	bgColor: string;
 	themeColors: ThemeColors;
 	defaultColors: DefaultColors;
 	buttons: ButtonThemes;

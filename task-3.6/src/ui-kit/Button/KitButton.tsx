@@ -46,7 +46,7 @@ export const Button: React.FC<KitButtonProps & ButtonProps> = ({ color, icon, ch
 	const theme = useContext(ThemeContext);
 
 	return (
-		<StyledButton color={color} {...btnProps} theme={theme as any}>
+		<StyledButton color={color} {...btnProps} theme={theme}>
 			<div className="flex flex-row justify-center items-center gap-1">
 				{icon && icon}
 				{children}
