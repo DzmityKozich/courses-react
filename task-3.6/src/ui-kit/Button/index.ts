@@ -1,1 +1,1 @@
-export { Button } from './KitButton';
+export { Button } from './Button';

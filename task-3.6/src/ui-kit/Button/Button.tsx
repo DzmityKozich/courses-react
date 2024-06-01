@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components';
+import styled, { ThemeContext, css } from 'styled-components';
 import { Colors, Theme } from '../../themes/types';
 import React, { ReactNode, useContext } from 'react';
-import { ThemeContext } from '../../Context/ThemeContext';
+// import { ThemeContext } from '../../Context/ThemeContext';
 
 type KitButtonProps = {
 	color: Colors;
