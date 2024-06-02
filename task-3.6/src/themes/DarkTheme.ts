@@ -10,7 +10,10 @@ const defaultColors: DefaultColors = {
 
 export const darkTheme: Theme = {
 	themeName: THEME.DARK,
-	bgColor: defaultColors.black[400],
+	defaultStyles: {
+		bgColor: defaultColors.black[400],
+		textColor: defaultColors.white[500],
+	},
 	themeColors: {
 		primary: defaultColors.green[500],
 		secondary: defaultColors.gray[700],

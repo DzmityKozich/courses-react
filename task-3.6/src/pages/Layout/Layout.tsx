@@ -4,18 +4,23 @@ import { Navbar } from '../../components/Navbar';
 import { ButtonPage } from '../ButtonPage';
 import { THEME } from '../../themes/types';
 import { ThemeContext } from 'styled-components';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { Paths } from '../../routes/paths';
 import { LinkPage } from '../LinkPage';
+import { DropdownPage } from '../DropdownPage/DropdownPage';
 
 import './Layout.scss';
 
 export const Layout: React.FC = () => {
 	const [theme, setTheme] = useState(themes.light);
 	const navigate = useNavigate();
+	const { pathname } = useLocation();
 
+	// TODO: use loader https://reactrouter.com/en/main/fetch/redirect#redirect
 	useEffect(() => {
-		navigate('/button');
+		if (pathname === '/') {
+			navigate('/button');
+		}
 	}, []);
 
 	const toggleTheme = () => {
@@ -25,13 +30,14 @@ export const Layout: React.FC = () => {
 
 	return (
 		<ThemeContext.Provider value={theme}>
-			<div className="layout" style={{ backgroundColor: theme.bgColor }}>
+			<div className="layout" style={{ backgroundColor: theme.defaultStyles.bgColor }}>
 				<Navbar changeTheme={toggleTheme} />
 
 				<div className="flex justify-center items-center h-full">
 					<Routes>
 						<Route element={<ButtonPage />} path={Paths.button} />
 						<Route element={<LinkPage />} path={Paths.link} />
+						<Route element={<DropdownPage />} path={Paths.dropdown} />
 					</Routes>
 				</div>
 			</div>

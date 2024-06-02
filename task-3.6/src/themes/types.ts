@@ -8,7 +8,7 @@ export type Themes = Record<THEME, Theme>;
 
 export interface Theme {
 	themeName: THEME;
-	bgColor: string;
+	defaultStyles: DefaultStyles;
 	themeColors: ThemeColors;
 	defaultColors: DefaultColors;
 	buttons: ButtonThemes;
@@ -19,6 +19,11 @@ export type Colors = 'primary' | 'secondary';
 
 export interface GeneralStyles {
 	bgColor: string;
+}
+
+export interface DefaultStyles {
+	bgColor: string;
+	textColor: string;
 }
 
 export type ColorTones = Record<50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900, string>;
