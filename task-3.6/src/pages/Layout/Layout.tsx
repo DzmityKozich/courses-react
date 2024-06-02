@@ -6,6 +6,7 @@ import { THEME } from '../../themes/types';
 import { ThemeContext } from 'styled-components';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { Paths } from '../../routes/paths';
+import { LinkPage } from '../LinkPage';
 
 import './Layout.scss';
 
@@ -30,6 +31,7 @@ export const Layout: React.FC = () => {
 				<div className="flex justify-center items-center h-full">
 					<Routes>
 						<Route element={<ButtonPage />} path={Paths.button} />
+						<Route element={<LinkPage />} path={Paths.link} />
 					</Routes>
 				</div>
 			</div>

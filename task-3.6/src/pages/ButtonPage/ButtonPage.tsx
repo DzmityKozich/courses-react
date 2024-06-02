@@ -1,4 +1,5 @@
 import { PageTitle } from '../../components/PageTitle';
+import { PageLayout } from '../../share';
 import { Button } from '../../ui-kit';
 import { PlayIcon } from '../../ui-kit/icons';
 
@@ -6,7 +7,7 @@ import './ButtonPage.scss';
 
 export const ButtonPage: React.FC = () => {
 	return (
-		<div className="flex flex-col gap-10">
+		<PageLayout>
 			<PageTitle title="Buttons" />
 
 			<table className="table">
@@ -66,6 +67,6 @@ export const ButtonPage: React.FC = () => {
 					</tr>
 				</tbody>
 			</table>
-		</div>
+		</PageLayout>
 	);
 };
