@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react';
 import { NavLink, NavLinkProps } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import { Theme } from '../../themes/types';
 
 type Props = NavLinkProps & {
 	children: ReactNode;
@@ -37,10 +36,10 @@ export const Link = styled(LinkComponent)`
 			text-decoration: none;
 			color: ${theme.defaultColors.green[500]};
 			font-weight: 700;
+			font-size: 1rem;
 
 			&:hover {
 				text-decoration: underline;
-				/* color: #243573; */
 			}
 
 			&:active {

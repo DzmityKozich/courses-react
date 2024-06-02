@@ -1,5 +1,5 @@
 import { useContext, useMemo } from 'react';
-import { ThemeContext } from '../../Context/ThemeContext';
+import { ThemeContext } from 'styled-components';
 import { IconProps } from './types';
 import { getColor } from './icon-utils';
 
@@ -7,7 +7,7 @@ export const EyeCloseIcon: React.FC<IconProps> = ({ color }) => {
 	const theme = useContext(ThemeContext);
 
 	const iconColor = useMemo(() => {
-		return getColor(color, theme);
+		return getColor(color, theme!);
 	}, [color]);
 
 	return (

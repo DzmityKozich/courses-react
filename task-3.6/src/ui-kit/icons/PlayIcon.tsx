@@ -1,13 +1,13 @@
 import React, { useContext, useMemo } from 'react';
 import { IconProps } from './types';
 import { getColor } from './icon-utils';
-import { ThemeContext } from '../../Context/ThemeContext';
+import { ThemeContext } from 'styled-components';
 
 export const PlayIcon: React.FC<IconProps> = ({ color = '#fff' }) => {
 	const theme = useContext(ThemeContext);
 
 	const iconColor = useMemo(() => {
-		return getColor(color, theme);
+		return getColor(color, theme!);
 	}, [color]);
 
 	return (

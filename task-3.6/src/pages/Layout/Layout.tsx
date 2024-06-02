@@ -1,16 +1,21 @@
-import React, { useState } from 'react';
-// import { ThemeContext } from '../../Context/ThemeContext';
+import React, { useEffect, useState } from 'react';
 import { themes } from '../../themes/themes';
 import { Navbar } from '../../components/Navbar';
 import { ButtonPage } from '../ButtonPage';
 import { THEME } from '../../themes/types';
-import { Link } from '../../ui-kit/Link';
+import { ThemeContext } from 'styled-components';
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Paths } from '../../routes/paths';
 
 import './Layout.scss';
-import { ThemeContext } from 'styled-components';
 
 export const Layout: React.FC = () => {
 	const [theme, setTheme] = useState(themes.light);
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		navigate('/button');
+	}, []);
 
 	const toggleTheme = () => {
 		const newTheme = theme.themeName === THEME.LIGHT ? THEME.DARK : THEME.LIGHT;
@@ -21,12 +26,11 @@ export const Layout: React.FC = () => {
 		<ThemeContext.Provider value={theme}>
 			<div className="layout" style={{ backgroundColor: theme.bgColor }}>
 				<Navbar changeTheme={toggleTheme} />
-				<Link to="">Next</Link>
-				<Link to="/store" disabled>
-					Prev
-				</Link>
+
 				<div className="flex justify-center items-center h-full">
-					<ButtonPage />
+					<Routes>
+						<Route element={<ButtonPage />} path={Paths.button} />
+					</Routes>
 				</div>
 			</div>
 		</ThemeContext.Provider>
