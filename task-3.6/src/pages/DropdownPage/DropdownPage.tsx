@@ -12,11 +12,29 @@ export const DropdownPage: React.FC = () => {
 			<PageTitle title="Dropdown" />
 
 			<Dropdown>
-				<DropdownButton />
+				<DropdownButton color="secondary">Click Me!</DropdownButton>
 				<Menu>
-					<MenuItem>1</MenuItem>
-					<MenuItem>2</MenuItem>
-					<MenuItem>3</MenuItem>
+					<MenuItem
+						onClick={() => {
+							console.log('first item');
+						}}
+					>
+						lorem12
+					</MenuItem>
+					<MenuItem
+						onClick={() => {
+							console.log('second item');
+						}}
+					>
+						2
+					</MenuItem>
+					<MenuItem
+						onClick={() => {
+							console.log('3th item');
+						}}
+					>
+						3
+					</MenuItem>
 				</Menu>
 			</Dropdown>
 		</PageLayout>
