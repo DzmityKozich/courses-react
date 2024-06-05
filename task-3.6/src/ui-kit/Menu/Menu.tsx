@@ -10,13 +10,13 @@ type Props = {
 };
 
 const StyledDiv = styled.div`
-	/* padding: 0.5rem; */
 	border: 1px #dee0e5 solid;
 	border-radius: 8px;
 	background-color: #fff;
 	position: fixed;
 	min-width: 200px;
 	transform: translateX(-50%);
+	z-index: 1000;
 `;
 
 const StyledUl = styled.ul`
@@ -33,9 +33,14 @@ export const Menu: React.FC<Props> = ({ children }) => {
 	const menuRef = useRef<HTMLDivElement>(null);
 	const documentRef = useRef(document);
 
-	const onBlur = useCallback(() => {
-		context?.toggleState();
-	}, [context?.toggleState]);
+	const onBlur = useCallback(
+		(event: FocusEvent) => {
+			if (!context?.triggerElement?.contains(event.relatedTarget as HTMLElement)) {
+				context?.toggleState();
+			}
+		},
+		[context?.toggleState, context?.triggerElement],
+	);
 
 	const escClose = useCallback(
 		(event: KeyboardEvent) => {
