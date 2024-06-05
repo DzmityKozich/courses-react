@@ -2,6 +2,7 @@ import { forwardRef, useContext, useRef } from 'react';
 import { Button } from '../Button';
 import { DropdownContext } from '../hooks/useDropdown/DropdownContext';
 import { ButtonProps } from '../Button/types';
+import { mergeRefs } from 'react-merge-refs';
 
 export const DropdownButton = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 	const { onClick, children, ...btnProps } = props;
@@ -16,7 +17,7 @@ export const DropdownButton = forwardRef<HTMLButtonElement, ButtonProps>((props,
 	};
 
 	return (
-		<Button onClick={handleClick} ref={btnRef} {...btnProps}>
+		<Button onClick={handleClick} ref={mergeRefs([ref, btnRef])} {...btnProps}>
 			{children}
 		</Button>
 	);
