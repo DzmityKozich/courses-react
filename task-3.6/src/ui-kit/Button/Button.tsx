@@ -8,6 +8,7 @@ const StyledButton = styled.button<KitButtonProps & { theme: Theme }>`
 	border-radius: 8px;
 	border-width: 1px;
 	border-style: solid;
+	width: fit-content;
 
 	${({ color, theme }) => css`
 		background-color: ${theme.buttons[color].bgColor};

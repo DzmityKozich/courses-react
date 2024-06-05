@@ -25,7 +25,7 @@ export const Navbar: React.FC<Props> = ({ changeTheme }) => {
 		<div className="w-full p-4 bg-black">
 			<div className="flex flex-row justify-between items-center">
 				<Link to={prev} disabled={!prev}>
-					Prev
+					&lt; Prev
 				</Link>
 
 				<Button color="secondary" onClick={changeTheme}>
@@ -33,7 +33,7 @@ export const Navbar: React.FC<Props> = ({ changeTheme }) => {
 				</Button>
 
 				<Link to={next} disabled={!next}>
-					Next
+					Next &gt;
 				</Link>
 			</div>
 		</div>

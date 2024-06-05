@@ -1,13 +1,15 @@
-import React from 'react';
+import styled, { css } from 'styled-components';
 
 import './PageTitle.scss';
 
-type Props = {
-	title: string;
-};
+// TODO: move to share
 
-// TOOD: move to share
+export const PageTitle = styled.h1`
+	font-weight: 600;
+	width: 100%;
+	text-align: center;
 
-export const PageTitle: React.FC<Props> = ({ title }) => {
-	return <h1 className="font-semibold w-full text-center">{title}</h1>;
-};
+	${({ theme }) => css`
+		color: ${theme.defaultStyles.textColor};
+	`}
+`;

@@ -8,7 +8,7 @@ import './ButtonPage.scss';
 export const ButtonPage: React.FC = () => {
 	return (
 		<PageLayout>
-			<PageTitle title="Buttons" />
+			<PageTitle>Buttons</PageTitle>
 
 			<table className="table">
 				<thead>

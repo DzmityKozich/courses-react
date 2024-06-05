@@ -8,7 +8,7 @@ import './LinkPage.scss';
 export const LinkPage: React.FC = () => {
 	return (
 		<PageLayout>
-			<PageTitle title="Links" />
+			<PageTitle>Links</PageTitle>
 
 			<table className="table">
 				<thead>
