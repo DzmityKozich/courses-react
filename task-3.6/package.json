@@ -12,6 +12,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "classnames": "^2.5.1",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",
     "polished": "^4.3.1",

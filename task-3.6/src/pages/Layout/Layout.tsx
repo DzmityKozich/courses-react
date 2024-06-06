@@ -10,6 +10,7 @@ import { LinkPage } from '../LinkPage';
 import { DropdownPage } from '../DropdownPage/DropdownPage';
 
 import './Layout.scss';
+import { InputFieldPage } from '../InputFieldPage/InputFieldPage';
 
 export const Layout: React.FC = () => {
 	const [theme, setTheme] = useState(themes.light);
@@ -38,6 +39,7 @@ export const Layout: React.FC = () => {
 						<Route element={<ButtonPage />} path={Paths.button} />
 						<Route element={<LinkPage />} path={Paths.link} />
 						<Route element={<DropdownPage />} path={Paths.dropdown} />
+						<Route element={<InputFieldPage />} path={Paths.input} />
 					</Routes>
 				</div>
 			</div>

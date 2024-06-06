@@ -1,9 +1,10 @@
-type Pages = 'button' | 'link' | 'dropdown';
+type Pages = 'button' | 'link' | 'dropdown' | 'input';
 
 export const Paths: Record<Pages, string> = {
 	button: 'button',
 	link: 'link',
 	dropdown: 'dropdown',
+	input: 'input',
 };
 
 interface Navigation {
@@ -14,5 +15,6 @@ interface Navigation {
 export const Navigations: Record<Pages | string, Navigation> = {
 	button: { next: Paths.link },
 	link: { prev: Paths.button, next: Paths.dropdown },
-	dropdown: { prev: Paths.link },
+	dropdown: { prev: Paths.link, next: Paths.input },
+	input: { prev: Paths.dropdown },
 };
