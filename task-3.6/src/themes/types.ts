@@ -24,6 +24,8 @@ export interface GeneralStyles {
 export interface DefaultStyles {
 	bgColor: string;
 	textColor: string;
+	listItemHoverColor: string;
+	listItemActiveColor: string;
 }
 
 export type ColorTones = Record<50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900, string>;

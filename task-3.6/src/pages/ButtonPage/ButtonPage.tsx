@@ -28,7 +28,7 @@ export const ButtonPage: React.FC = () => {
 								<Button color="primary">Button</Button>
 							</td>
 							<td>
-								<Button color="primary" icon={<PlayIcon color="inherit" />}>
+								<Button color="primary" startIcon={<PlayIcon color="inherit" />}>
 									Button
 								</Button>
 							</td>
@@ -36,7 +36,7 @@ export const ButtonPage: React.FC = () => {
 								<Button color="secondary">Button</Button>
 							</td>
 							<td>
-								<Button color="secondary" icon={<PlayIcon color="inherit" />}>
+								<Button color="secondary" startIcon={<PlayIcon color="inherit" />}>
 									Button
 								</Button>
 							</td>
@@ -50,7 +50,7 @@ export const ButtonPage: React.FC = () => {
 								</Button>
 							</td>
 							<td>
-								<Button disabled color="primary" icon={<PlayIcon color="inherit" />}>
+								<Button disabled color="primary" startIcon={<PlayIcon color="inherit" />}>
 									Button
 								</Button>
 							</td>
@@ -60,7 +60,7 @@ export const ButtonPage: React.FC = () => {
 								</Button>
 							</td>
 							<td>
-								<Button disabled color="secondary" icon={<PlayIcon color="inherit" />}>
+								<Button disabled color="secondary" startIcon={<PlayIcon color="inherit" />}>
 									Button
 								</Button>
 							</td>

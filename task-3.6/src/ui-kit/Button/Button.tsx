@@ -35,14 +35,16 @@ const StyledButton = styled.button<KitButtonProps & { theme: Theme }>`
 	`}
 `;
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ color, icon, children, ...btnProps }, ref) => {
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+	const { color, startIcon, children, endIcon, ...btnProps } = props;
 	const theme = useContext(ThemeContext);
 
 	return (
 		<StyledButton color={color} {...btnProps} theme={theme} ref={ref}>
 			<div className="flex flex-row justify-center items-center gap-1">
-				{icon && icon}
+				{startIcon}
 				{children}
+				{endIcon}
 			</div>
 		</StyledButton>
 	);

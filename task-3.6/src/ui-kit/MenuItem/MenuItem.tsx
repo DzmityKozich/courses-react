@@ -1,21 +1,23 @@
 import React, { ReactNode, useContext } from 'react';
+import styled, { css } from 'styled-components';
+import { DropdownContext } from '../hooks/useDropdown/DropdownContext';
 
 import './MenuItem.scss';
-import styled from 'styled-components';
-import { DropdownContext } from '../hooks/useDropdown/DropdownContext';
 
 const StyledLi = styled.li`
 	padding: 0.45rem;
 	cursor: pointer;
 	transition: background-color 0.15s ease;
 
-	&:hover {
-		background-color: #f6f6f6;
-	}
+	${({ theme }) => css`
+		&:hover {
+			background-color: ${theme.defaultStyles.listItemHoverColor};
+		}
 
-	&:active {
-		background-color: #e3e3e3;
-	}
+		&:active {
+			background-color: ${theme.defaultStyles.listItemActiveColor};
+		}
+	`}
 `;
 
 type Props = React.HTMLAttributes<HTMLLIElement> & {

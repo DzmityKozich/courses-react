@@ -13,6 +13,8 @@ export const darkTheme: Theme = {
 	defaultStyles: {
 		bgColor: defaultColors.black[400],
 		textColor: defaultColors.white[500],
+		listItemActiveColor: defaultColors.black[300],
+		listItemHoverColor: defaultColors.black[200],
 	},
 	themeColors: {
 		primary: defaultColors.green[500],

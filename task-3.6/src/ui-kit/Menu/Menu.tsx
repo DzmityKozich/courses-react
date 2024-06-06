@@ -1,5 +1,5 @@
 import React, { CSSProperties, ReactNode, useCallback, useContext, useEffect, useRef, useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { DropdownContext } from '../hooks/useDropdown/DropdownContext';
 import { calculateMenuSettings } from './utils';
 
@@ -12,11 +12,17 @@ type Props = {
 const StyledDiv = styled.div`
 	border: 1px #dee0e5 solid;
 	border-radius: 8px;
-	background-color: #fff;
+	box-shadow: 0px 8px 16px 0px #3131311a;
 	position: fixed;
 	min-width: 200px;
 	transform: translateX(-50%);
 	z-index: 1000;
+	overflow: hidden;
+
+	${({ theme }) => css`
+		background-color: ${theme.defaultStyles.bgColor};
+		color: ${theme.defaultStyles.textColor};
+	`}
 `;
 
 const StyledUl = styled.ul`

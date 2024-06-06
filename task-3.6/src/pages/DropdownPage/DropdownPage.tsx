@@ -5,6 +5,7 @@ import { Dropdown } from '../../ui-kit/Dropdown';
 import { Menu } from '../../ui-kit/Menu';
 import { MenuItem } from '../../ui-kit/MenuItem/MenuItem';
 import { DropdownButton } from '../../ui-kit/DropdownButton/DropdownButton';
+import { ArrowDown } from '../../ui-kit/icons/ArrowDown';
 
 export const DropdownPage: React.FC = () => {
 	return (
@@ -17,7 +18,9 @@ export const DropdownPage: React.FC = () => {
 
 			<div className="flex justify-center">
 				<Dropdown>
-					<DropdownButton color="secondary">Click Me!</DropdownButton>
+					<DropdownButton color="secondary" endIcon={<ArrowDown color="inherit" />}>
+						Click Me!
+					</DropdownButton>
 					<Menu>
 						<MenuItem
 							onClick={() => {

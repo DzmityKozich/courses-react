@@ -13,6 +13,8 @@ export const lightTheme: Theme = {
 	defaultStyles: {
 		bgColor: defaultColors.white[500],
 		textColor: defaultColors.black[500],
+		listItemActiveColor: defaultColors.gray[700],
+		listItemHoverColor: defaultColors.gray[600],
 	},
 	themeColors: {
 		primary: defaultColors.green[500],

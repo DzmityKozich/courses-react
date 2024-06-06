@@ -3,8 +3,9 @@ import { Colors } from '../../themes/types';
 
 export type KitButtonProps = {
 	color: Colors;
-	icon?: ReactNode;
+	startIcon?: ReactNode;
 	children?: ReactNode;
+	endIcon?: ReactNode;
 };
 
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & KitButtonProps;
