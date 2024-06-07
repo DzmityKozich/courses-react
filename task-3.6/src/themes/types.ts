@@ -12,6 +12,7 @@ export interface Theme {
 	themeColors: ThemeColors;
 	defaultColors: DefaultColors;
 	buttons: ButtonThemes;
+	inputs: InputThemeProps;
 }
 
 // General
@@ -37,6 +38,7 @@ export interface DefaultColors {
 	gray: ColorTones;
 	white: ColorTones;
 	black: ColorTones;
+	blue: ColorTones;
 }
 
 // Buttons
@@ -62,3 +64,21 @@ export interface ButtonThemeProps {
 }
 
 export type ButtonThemes = Record<Colors, ButtonThemeProps>;
+
+// Inputs
+export interface InputThemeProps {
+	color: string;
+	placeholderColor: string;
+	borderColor: string;
+	labelColor: string;
+
+	focused: {
+		borderColor: string;
+	};
+
+	disbled: {
+		color: string;
+		borderColor: string;
+		labelColor: string;
+	};
+}

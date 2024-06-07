@@ -1,5 +1,5 @@
 import { forwardRef, useMemo, useState, FocusEvent } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { InputProps } from './types';
 import classNames from 'classnames';
 
@@ -7,32 +7,36 @@ const StyledInput = styled.input`
 	outline: none;
 	font-weight: 400;
 	font-size: 1rem;
+	min-height: 30px;
+	background-color: transparent;
 	line-height: 1.5rem;
 	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-	color: #000;
 
-	&:-moz-placeholder {
-		color: #323749;
-	}
+	${({ theme }) => css`
+		color: ${theme.inputs.color};
 
-	&:focus {
-		/* border-bottom-color: blue; */
-	}
+		&:-moz-placeholder {
+			color: ${theme.inputs.placeholderColor};
+		}
 
-	&:disabled {
-		/* border-bottom-color: #737373; */
-		background-color: transparent;
-		color: #737373;
-	}
+		&:disabled {
+			background-color: transparent;
+			color: ${theme.inputs.disbled.color};
+		}
+	`}
 `;
 
 const StyledLabel = styled.label`
 	font-weight: 700;
 	font-size: 0.75rem;
 
-	&.disabled {
-		color: #737373;
-	}
+	${({ theme }) => css`
+		color: ${theme.inputs.color};
+
+		&.disabled {
+			color: ${theme.inputs.disbled.labelColor};
+		}
+	`}
 `;
 
 const InputHolder = styled.div`
@@ -41,15 +45,19 @@ const InputHolder = styled.div`
 	gap: 0.2rem;
 	align-items: center;
 	padding-bottom: 0.5rem;
-	border-bottom: 1px #737373 solid;
-
-	&.focused {
-		border-color: blue;
-	}
 
 	&.error {
 		border-color: #ff5620;
 	}
+
+	${({ theme }) => css`
+		border-bottom: 1px ${theme.inputs.borderColor} solid;
+		color: ${theme.inputs.color};
+
+		&.focused {
+			border-color: ${theme.inputs.focused.borderColor};
+		}
+	`}
 `;
 
 export const InputField = forwardRef<HTMLInputElement, InputProps>((props, ref) => {

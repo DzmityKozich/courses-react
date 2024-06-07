@@ -6,6 +6,7 @@ const defaultColors: DefaultColors = {
 	green: { ...generateShades('#00AE1C') },
 	white: { ...generateShades('#FFFFFF') },
 	black: { ...generateShades('#000000') },
+	blue: { ...generateShades('#0000FF') },
 };
 
 export const darkTheme: Theme = {
@@ -61,6 +62,20 @@ export const darkTheme: Theme = {
 				borderColor: defaultColors.white[500],
 				textColor: defaultColors.white[500],
 			},
+		},
+	},
+	inputs: {
+		color: defaultColors.white[500],
+		borderColor: defaultColors.gray[600],
+		labelColor: defaultColors.white[500],
+		placeholderColor: defaultColors.white[600],
+		disbled: {
+			borderColor: defaultColors.blue[500],
+			color: defaultColors.gray[700],
+			labelColor: defaultColors.gray[700],
+		},
+		focused: {
+			borderColor: defaultColors.blue[500],
 		},
 	},
 };
