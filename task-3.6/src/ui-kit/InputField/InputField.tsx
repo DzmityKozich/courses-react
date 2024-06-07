@@ -5,7 +5,6 @@ import classNames from 'classnames';
 
 const StyledInput = styled.input`
 	outline: none;
-	padding-bottom: 0.7rem;
 	font-weight: 400;
 	font-size: 1rem;
 	line-height: 1.5rem;
@@ -37,6 +36,11 @@ const StyledLabel = styled.label`
 `;
 
 const InputHolder = styled.div`
+	display: inline-flex;
+	flex-direction: row;
+	gap: 0.2rem;
+	align-items: center;
+	padding-bottom: 0.5rem;
 	border-bottom: 1px #737373 solid;
 
 	&.focused {
@@ -49,7 +53,7 @@ const InputHolder = styled.div`
 `;
 
 export const InputField = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-	const { label, error, helpText, ...inputProps } = props;
+	const { label, error, helpText, startElement, endElement, ...inputProps } = props;
 
 	const inputLabel = useMemo(() => {
 		return inputProps.required ? `${label}*` : label;
@@ -75,7 +79,9 @@ export const InputField = forwardRef<HTMLInputElement, InputProps>((props, ref) 
 				</StyledLabel>
 			)}
 			<InputHolder className={classNames({ focused, error })}>
+				{startElement}
 				<StyledInput {...inputProps} ref={ref} onFocus={handleFocus} onBlur={handleBlur} />
+				{endElement}
 			</InputHolder>
 			{helpText && <div className={classNames('text-xs font-semibold mt-1', { 'text-red-500': error })}>{helpText}</div>}
 		</div>
