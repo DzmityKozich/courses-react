@@ -6,8 +6,8 @@ import { PageTitle } from '../../components/PageTitle';
 
 export const InputFieldPage: React.FC = () => {
 	return (
-		<PageLayout>
-			<ThemeContainer>
+		<ThemeContainer>
+			<PageLayout>
 				<PageTitle>Input Field</PageTitle>
 
 				<table className="table">
@@ -97,7 +97,7 @@ export const InputFieldPage: React.FC = () => {
 						</tr>
 					</tbody>
 				</table>
-			</ThemeContainer>
-		</PageLayout>
+			</PageLayout>
+		</ThemeContainer>
 	);
 };

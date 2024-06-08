@@ -78,4 +78,23 @@ export const lightTheme: Theme = {
 			borderColor: defaultColors.blue[500],
 		},
 	},
+	checkbox: {
+		borderColor: defaultColors.black[500],
+		labelColor: defaultColors.black[500],
+		checked: {
+			bgColor: defaultColors.green[500],
+			borderColor: defaultColors.green[500],
+			markerColor: defaultColors.white[500],
+		},
+		disabled: {
+			labelColor: defaultColors.gray[700],
+			borderColor: defaultColors.gray[600],
+
+			checked: {
+				bgColor: defaultColors.green[600],
+				borderColor: defaultColors.green[600],
+				markerColor: defaultColors.gray[500],
+			},
+		},
+	},
 };

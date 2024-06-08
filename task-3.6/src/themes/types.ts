@@ -13,6 +13,7 @@ export interface Theme {
 	defaultColors: DefaultColors;
 	buttons: ButtonThemes;
 	inputs: InputThemeProps;
+	checkbox: CheckboxThemeProps;
 }
 
 // General
@@ -80,5 +81,28 @@ export interface InputThemeProps {
 		color: string;
 		borderColor: string;
 		labelColor: string;
+	};
+}
+
+// Checkbox
+export interface CheckboxThemeProps {
+	borderColor: string;
+	labelColor: string;
+
+	checked: {
+		borderColor: string;
+		markerColor: string;
+		bgColor: string;
+	};
+
+	disabled: {
+		labelColor: string;
+		borderColor: string;
+
+		checked: {
+			borderColor: string;
+			markerColor: string;
+			bgColor: string;
+		};
 	};
 }

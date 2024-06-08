@@ -2,6 +2,7 @@ import { forwardRef } from 'react';
 import styled, { css } from 'styled-components';
 import { CheckboxProps } from './types';
 import { CheckIcon } from '../icons';
+import classNames from 'classnames';
 
 const StyledInput = styled.input`
 	position: absolute;
@@ -13,11 +14,19 @@ const StyledInput = styled.input`
 	z-index: 1;
 	cursor: pointer;
 
-	&:checked ~ div {
-		background-color: green;
-		color: #fff;
-		border-color: green;
-	}
+	${({ theme, checked }) => css`
+		&:checked ~ div {
+			background-color: ${theme.checkbox.checked.bgColor};
+			color: ${theme.checkbox.checked.markerColor};
+			border-color: ${theme.checkbox.checked.borderColor};
+		}
+
+		&:disabled ~ div {
+			background-color: ${checked ? theme.checkbox.disabled.checked.bgColor : 'transparent'};
+			color: ${checked ? theme.checkbox.disabled.checked.markerColor : 'transparent'};
+			border-color: ${checked ? theme.checkbox.disabled.checked.borderColor : theme.checkbox.disabled.borderColor};
+		}
+	`}
 `;
 
 const StyledLabel = styled.label`
@@ -25,7 +34,11 @@ const StyledLabel = styled.label`
 	font-size: 1rem;
 
 	${({ theme }) => css`
-		color: ${theme.defaultStyles.textColor};
+		color: ${theme.checkbox.labelColor};
+
+		&.disabled {
+			color: ${theme.checkbox.disabled.labelColor};
+		}
 	`}
 `;
 
@@ -36,10 +49,13 @@ const MockCheckbox = styled.div`
 	width: 15px;
 	height: 15px;
 	padding-bottom: 2px;
-	border: 1px #000 solid;
 	border-radius: 3px;
 	background-color: transparent;
 	color: transparent;
+
+	${({ theme }) => css`
+		border: 1px ${theme.checkbox.borderColor} solid;
+	`}
 `;
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
@@ -53,7 +69,11 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref)
 					<CheckIcon color="inherit" />
 				</MockCheckbox>
 			</div>
-			<StyledLabel htmlFor={props.id}>{label}</StyledLabel>
+			{label && (
+				<StyledLabel htmlFor={props.id} className={classNames({ disabled: checkboxProps.disabled })}>
+					{label}
+				</StyledLabel>
+			)}
 		</div>
 	);
 });
