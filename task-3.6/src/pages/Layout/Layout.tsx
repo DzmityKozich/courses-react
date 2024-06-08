@@ -11,6 +11,7 @@ import { DropdownPage } from '../DropdownPage/DropdownPage';
 
 import './Layout.scss';
 import { InputFieldPage } from '../InputFieldPage/InputFieldPage';
+import { CheckboxPage } from '../CheckboxPage';
 
 export const Layout: React.FC = () => {
 	const [theme, setTheme] = useState(themes.light);
@@ -40,6 +41,7 @@ export const Layout: React.FC = () => {
 						<Route element={<LinkPage />} path={Paths.link} />
 						<Route element={<DropdownPage />} path={Paths.dropdown} />
 						<Route element={<InputFieldPage />} path={Paths.input} />
+						<Route element={<CheckboxPage />} path={Paths.checkbox} />
 					</Routes>
 				</div>
 			</div>

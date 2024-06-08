@@ -2,11 +2,14 @@ import React from 'react';
 import { PageLayout, ThemeContainer } from '../../share';
 import { InputField } from '../../ui-kit/InputField';
 import { PasswordInput } from '../../components/PasswordInput';
+import { PageTitle } from '../../components/PageTitle';
 
 export const InputFieldPage: React.FC = () => {
 	return (
 		<PageLayout>
 			<ThemeContainer>
+				<PageTitle>Input Field</PageTitle>
+
 				<table className="table">
 					<thead>
 						<tr>
