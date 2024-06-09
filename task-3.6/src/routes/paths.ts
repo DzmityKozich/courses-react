@@ -1,4 +1,4 @@
-type Pages = 'button' | 'link' | 'dropdown' | 'input' | 'checkbox';
+type Pages = 'button' | 'link' | 'dropdown' | 'input' | 'checkbox' | 'textarea';
 
 export const Paths: Record<Pages, string> = {
 	button: 'button',
@@ -6,6 +6,7 @@ export const Paths: Record<Pages, string> = {
 	dropdown: 'dropdown',
 	input: 'input',
 	checkbox: 'checkbox',
+	textarea: 'textarea',
 };
 
 interface Navigation {

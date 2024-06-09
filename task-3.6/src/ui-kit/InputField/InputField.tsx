@@ -2,6 +2,7 @@ import { forwardRef, useMemo, useState, FocusEvent } from 'react';
 import styled, { css } from 'styled-components';
 import { InputProps } from './types';
 import classNames from 'classnames';
+import { Label } from '../Label';
 
 const StyledInput = styled.input`
 	outline: none;
@@ -22,19 +23,6 @@ const StyledInput = styled.input`
 		&:disabled {
 			background-color: transparent;
 			color: ${theme.inputs.disbled.color};
-		}
-	`}
-`;
-
-const StyledLabel = styled.label`
-	font-weight: 700;
-	font-size: 0.75rem;
-
-	${({ theme }) => css`
-		color: ${theme.inputs.color};
-
-		&.disabled {
-			color: ${theme.inputs.disbled.labelColor};
 		}
 	`}
 `;
@@ -82,9 +70,9 @@ export const InputField = forwardRef<HTMLInputElement, InputProps>((props, ref) 
 	return (
 		<div className="inline-flex flex-col items-start w-full">
 			{label && (
-				<StyledLabel htmlFor={inputProps.id} className={classNames({ disabled: inputProps.disabled })}>
+				<Label htmlFor={inputProps.id} className={classNames({ disabled: inputProps.disabled })}>
 					{inputLabel}
-				</StyledLabel>
+				</Label>
 			)}
 			<InputHolder className={classNames({ focused, error })}>
 				{startElement}
