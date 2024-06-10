@@ -1,4 +1,7 @@
 export const calculateHeight = (textarea: HTMLTextAreaElement, shadowTextarea: HTMLTextAreaElement, rows: number): number => {
+	const { height } = getComputedStyle(textarea, null);
+	if (height === '0px') return 0;
+
 	shadowTextarea.value = 'x';
 	const singleRowHeight = shadowTextarea.scrollHeight;
 	const minHeight = rows * singleRowHeight;

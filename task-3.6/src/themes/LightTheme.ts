@@ -70,7 +70,7 @@ export const lightTheme: Theme = {
 		labelColor: defaultColors.black[500],
 		placeholderColor: defaultColors.black[300],
 		disbled: {
-			borderColor: defaultColors.blue[500],
+			borderColor: defaultColors.gray[700],
 			color: defaultColors.gray[700],
 			labelColor: defaultColors.gray[700],
 		},
