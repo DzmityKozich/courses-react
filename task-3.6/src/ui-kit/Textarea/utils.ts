@@ -7,7 +7,6 @@ export const calculateHeight = (textarea: HTMLTextAreaElement, shadowTextarea: H
 	const minHeight = rows * singleRowHeight;
 	const maxHeight = 10 * singleRowHeight;
 
-	console.log({ singleRowHeight });
 	if (!textarea.value) {
 		return minHeight;
 	}

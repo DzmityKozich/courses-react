@@ -13,6 +13,7 @@ import './Layout.scss';
 import { InputFieldPage } from '../InputFieldPage/InputFieldPage';
 import { CheckboxPage } from '../CheckboxPage';
 import { TextareaPage } from '../TextareaPage';
+import { SelectPage } from '../SelectPage';
 
 export const Layout: React.FC = () => {
 	const [theme, setTheme] = useState(themes.light);
@@ -44,6 +45,7 @@ export const Layout: React.FC = () => {
 						<Route element={<InputFieldPage />} path={Paths.input} />
 						<Route element={<CheckboxPage />} path={Paths.checkbox} />
 						<Route element={<TextareaPage />} path={Paths.textarea} />
+						<Route element={<SelectPage />} path={Paths.select} />
 					</Routes>
 				</div>
 			</div>
