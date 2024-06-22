@@ -1,8 +1,5 @@
 import { useCallback, useState } from 'react';
-
-interface DropdownState {
-	open: boolean;
-}
+import { DropdownState } from './types';
 
 export const useDropdown = () => {
 	const [state, toggle] = useState<DropdownState>({ open: false });

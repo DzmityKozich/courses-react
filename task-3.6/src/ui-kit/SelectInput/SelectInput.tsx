@@ -1,8 +1,9 @@
-import React, { useContext, useRef } from 'react';
+import React, { forwardRef, useContext, useRef } from 'react';
 import { InputField } from '../InputField';
 import { DropdownContext } from '../hooks/useDropdown/DropdownContext';
 import { ArrowDown } from '../icons/ArrowDown';
 import styled from 'styled-components';
+import { mergeRefs } from 'react-merge-refs';
 
 const StyledDiv = styled.div`
 	content: '';
@@ -15,7 +16,7 @@ const StyledDiv = styled.div`
 	z-index: 1;
 `;
 
-export const SelectInput: React.FC = () => {
+export const SelectInput = forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLInputElement>>((props, ref) => {
 	const context = useContext(DropdownContext);
 
 	const inputRef = useRef<HTMLInputElement>(null);
@@ -24,20 +25,18 @@ export const SelectInput: React.FC = () => {
 		const parent = inputRef.current?.parentElement || null;
 		context?.registerTrigger(parent);
 		context?.toggleState(!context?.state.open);
-		// onClick?.(event);
 	};
 
 	return (
-		// <div className="relative" onClick={handleClick} ref={inputRef}>
 		<InputField
 			className="cursor-pointer"
 			label="Time"
 			onClick={handleClick}
-			ref={inputRef}
+			ref={mergeRefs([ref, inputRef])}
 			endElement={<ArrowDown color="inherit" />}
 			placeholder="Select"
+			value={props.value}
 			readOnly
 		/>
-		// </div>
 	);
-};
+});

@@ -1,8 +1,14 @@
 import React from 'react';
 
+export interface DropdownState {
+	open: boolean;
+}
+
 export interface DropdownContextValue {
-	state: { open: boolean };
+	state: DropdownState;
 	toggleState: (force?: boolean) => void;
 	triggerElement: HTMLElement | null;
 	registerTrigger: React.Dispatch<React.SetStateAction<HTMLElement | null>>;
+	onSelect?: (value: any) => void;
+	selectedValue?: any;
 }

@@ -1,18 +1,29 @@
-import React from 'react';
-import { Dropdown } from '../Dropdown';
+import React, { ReactNode, useEffect, useRef } from 'react';
 import { Menu } from '../Menu';
-import { MenuItem } from '../MenuItem/MenuItem';
 import { SelectInput } from '../SelectInput';
+import { DropdownContext } from '../hooks/useDropdown/DropdownContext';
+import { useSelect } from '../hooks/useSelect';
 
-export const Select: React.FC = () => {
+type Props = {
+	children: ReactNode[];
+	value?: any;
+};
+
+export const Select: React.FC<Props> = ({ children }) => {
+	const contextValue = useSelect();
+	const inputRef = useRef<HTMLInputElement>(null);
+
+	useEffect(() => {
+		console.log(contextValue.selectedValue);
+		if (inputRef.current && contextValue.selectedValue?.text) {
+			inputRef.current.value = contextValue.selectedValue.text;
+		}
+	}, [contextValue.selectedValue]);
+
 	return (
-		<Dropdown>
-			<SelectInput />
-			<Menu>
-				<MenuItem>1</MenuItem>
-				<MenuItem>2</MenuItem>
-				<MenuItem>3</MenuItem>
-			</Menu>
-		</Dropdown>
+		<DropdownContext.Provider value={contextValue}>
+			<SelectInput ref={inputRef} />
+			<Menu>{children}</Menu>
+		</DropdownContext.Provider>
 	);
 };

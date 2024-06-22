@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import { DropdownContext } from '../hooks/useDropdown/DropdownContext';
 
 import './MenuItem.scss';
+import classNames from 'classnames';
 
 const StyledLi = styled.li`
 	padding: 0.45rem;
@@ -17,11 +18,16 @@ const StyledLi = styled.li`
 		&:active {
 			background-color: ${theme.defaultStyles.listItemActiveColor};
 		}
+
+		&.selected {
+			background-color: ${theme.defaultStyles.listItemActiveColor};
+		}
 	`}
 `;
 
 type Props = React.HTMLAttributes<HTMLLIElement> & {
 	children: ReactNode;
+	value?: any;
 };
 
 export const MenuItem: React.FC<Props> = (props) => {
@@ -31,13 +37,18 @@ export const MenuItem: React.FC<Props> = (props) => {
 
 	const handleClick = (event: any) => {
 		onClick?.(event);
+		context?.onSelect?.({ value: props.value, text: event.target.textContent });
 		setTimeout(() => {
 			context?.toggleState();
 		}, 150);
 	};
 
 	return (
-		<StyledLi {...liProps} onClick={handleClick}>
+		<StyledLi
+			{...liProps}
+			onClick={handleClick}
+			className={classNames({ selected: props.value ? context?.selectedValue?.value === props.value : false })}
+		>
 			{children}
 		</StyledLi>
 	);
