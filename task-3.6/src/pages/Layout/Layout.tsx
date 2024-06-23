@@ -14,6 +14,7 @@ import { InputFieldPage } from '../InputFieldPage/InputFieldPage';
 import { CheckboxPage } from '../CheckboxPage';
 import { TextareaPage } from '../TextareaPage';
 import { SelectPage } from '../SelectPage';
+import { ModalPage } from '../ModalPage/ModalPage';
 
 export const Layout: React.FC = () => {
 	const [theme, setTheme] = useState(themes.light);
@@ -46,6 +47,7 @@ export const Layout: React.FC = () => {
 						<Route element={<CheckboxPage />} path={Paths.checkbox} />
 						<Route element={<TextareaPage />} path={Paths.textarea} />
 						<Route element={<SelectPage />} path={Paths.select} />
+						<Route element={<ModalPage />} path={Paths.modal} />
 					</Routes>
 				</div>
 			</div>
