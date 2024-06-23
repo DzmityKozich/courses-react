@@ -9,7 +9,7 @@ type Props = {
 	value?: any;
 };
 
-export const Select: React.FC<Props> = ({ children }) => {
+export const Select: React.FC<Props> = ({ children, value }) => {
 	const contextValue = useSelect();
 	const inputRef = useRef<HTMLInputElement>(null);
 

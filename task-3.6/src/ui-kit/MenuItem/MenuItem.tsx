@@ -31,13 +31,13 @@ type Props = React.HTMLAttributes<HTMLLIElement> & {
 };
 
 export const MenuItem: React.FC<Props> = (props) => {
-	const { children, onClick, ...liProps } = props;
+	const { children, onClick, value, ...liProps } = props;
 
 	const context = useContext(DropdownContext);
 
 	const handleClick = (event: any) => {
 		onClick?.(event);
-		context?.onSelect?.({ value: props.value, text: event.target.textContent });
+		context?.onSelect?.({ value, text: children });
 		setTimeout(() => {
 			context?.toggleState();
 		}, 150);
