@@ -7,3 +7,17 @@
 	background-color: #00000080;
 	z-index: 98;
 }
+
+.appearance-animate {
+	animation: appearance 0.15s ease;
+}
+
+@keyframes appearance {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}

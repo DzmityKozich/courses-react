@@ -8,13 +8,13 @@ import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { Paths } from '../../routes/paths';
 import { LinkPage } from '../LinkPage';
 import { DropdownPage } from '../DropdownPage/DropdownPage';
-
-import './Layout.scss';
 import { InputFieldPage } from '../InputFieldPage/InputFieldPage';
 import { CheckboxPage } from '../CheckboxPage';
 import { TextareaPage } from '../TextareaPage';
 import { SelectPage } from '../SelectPage';
-import { ModalPage } from '../ModalPage/ModalPage';
+import { ModalPage } from '../ModalPage';
+
+import './Layout.scss';
 
 export const Layout: React.FC = () => {
 	const [theme, setTheme] = useState(themes.light);

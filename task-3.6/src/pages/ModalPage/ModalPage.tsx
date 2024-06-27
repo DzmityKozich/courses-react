@@ -3,12 +3,20 @@ import { PageTitle } from '../../components/PageTitle';
 import { PageLayout, ThemeContainer } from '../../share';
 import { Button } from '../../ui-kit';
 import { Modal } from '../../ui-kit/Modal';
+import { ModalHeader } from '../../ui-kit/ModalHeader';
+import { ModalBody } from '../../ui-kit/MoadlBody';
+import { ModalFooter } from '../../ui-kit/ModalFooter';
 
 export const ModalPage: React.FC = () => {
 	const [open, setOpen] = useState(false);
 
-	const toggleModal = () => {
-		setOpen((prevValue) => !prevValue);
+	const openModal = () => {
+		setOpen(true);
+	};
+
+	const closeModal = () => {
+		console.log(event);
+		setOpen(false);
 	};
 
 	return (
@@ -16,11 +24,27 @@ export const ModalPage: React.FC = () => {
 			<PageLayout>
 				<PageTitle>Modal</PageTitle>
 
-				<Button color="secondary" onClick={toggleModal}>
-					Open modal
-				</Button>
+				<div className="flex justify-center">
+					<Button color="secondary" onClick={openModal}>
+						Open modal
+					</Button>
+				</div>
 
-				<Modal open={open}></Modal>
+				<Modal open={open} onClose={closeModal}>
+					<ModalHeader>Title</ModalHeader>
+					<ModalBody>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+						enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+						in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+					</ModalBody>
+					<ModalFooter>
+						<div className="flex flex-row justify-end gap-3">
+							<Button color="secondary" onClick={closeModal}>
+								Close
+							</Button>
+						</div>
+					</ModalFooter>
+				</Modal>
 			</PageLayout>
 		</ThemeContainer>
 	);
