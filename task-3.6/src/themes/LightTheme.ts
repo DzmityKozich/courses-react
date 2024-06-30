@@ -97,4 +97,9 @@ export const lightTheme: Theme = {
 			},
 		},
 	},
+	toast: {
+		color: defaultColors.black[500],
+		bgColor: defaultColors.white[500],
+		borderColor: defaultColors.white[500],
+	},
 };

@@ -14,6 +14,7 @@ export interface Theme {
 	buttons: ButtonThemes;
 	inputs: InputThemeProps;
 	checkbox: CheckboxThemeProps;
+	toast: ToastThemeProps;
 }
 
 // General
@@ -105,4 +106,11 @@ export interface CheckboxThemeProps {
 			bgColor: string;
 		};
 	};
+}
+
+// Toast
+export interface ToastThemeProps {
+	bgColor: string;
+	color: string;
+	borderColor: string;
 }

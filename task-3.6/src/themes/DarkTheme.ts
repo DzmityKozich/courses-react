@@ -97,4 +97,9 @@ export const darkTheme: Theme = {
 			},
 		},
 	},
+	toast: {
+		color: defaultColors.white[500],
+		bgColor: defaultColors.black[500],
+		borderColor: defaultColors.gray[500],
+	},
 };

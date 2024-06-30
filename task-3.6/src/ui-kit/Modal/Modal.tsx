@@ -1,9 +1,9 @@
 import React, { ReactNode } from 'react';
 import styled, { css } from 'styled-components';
-
-import './Modals.scss';
 import { ModalContext, useModal } from '../hooks/useModal';
 import { useEscKeydown } from '../hooks/useEscKeydown';
+
+import './Modals.scss';
 
 const ModalContainer = styled.div`
 	position: fixed;

@@ -15,6 +15,7 @@ import { SelectPage } from '../SelectPage';
 import { ModalPage } from '../ModalPage';
 
 import './Layout.scss';
+import { ToastPage } from '../ToastPage';
 
 export const Layout: React.FC = () => {
 	const [theme, setTheme] = useState(themes.light);
@@ -48,6 +49,7 @@ export const Layout: React.FC = () => {
 						<Route element={<TextareaPage />} path={Paths.textarea} />
 						<Route element={<SelectPage />} path={Paths.select} />
 						<Route element={<ModalPage />} path={Paths.modal} />
+						<Route element={<ToastPage />} path={Paths.toast} />
 					</Routes>
 				</div>
 			</div>
