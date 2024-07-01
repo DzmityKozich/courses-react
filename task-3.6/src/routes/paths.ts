@@ -1,4 +1,4 @@
-type Pages = 'button' | 'link' | 'dropdown' | 'input' | 'checkbox' | 'textarea' | 'select' | 'modal' | 'toast';
+type Pages = 'button' | 'link' | 'dropdown' | 'input' | 'checkbox' | 'textarea' | 'select' | 'modal' | 'toast' | 'colorpicker';
 
 export const Paths: Record<Pages, string> = {
 	button: 'button',
@@ -10,6 +10,7 @@ export const Paths: Record<Pages, string> = {
 	select: 'select',
 	modal: 'modal',
 	toast: 'toast',
+	colorpicker: 'colorpicker',
 };
 
 interface Navigation {
@@ -26,5 +27,6 @@ export const Navigations: Record<Pages | string, Navigation> = {
 	textarea: { prev: Paths.checkbox, next: Paths.select },
 	select: { prev: Paths.textarea, next: Paths.modal },
 	modal: { prev: Paths.select, next: Paths.toast },
-	toast: { prev: Paths.modal },
+	toast: { prev: Paths.modal, next: Paths.colorpicker },
+	colorpicker: { prev: Paths.toast },
 };
