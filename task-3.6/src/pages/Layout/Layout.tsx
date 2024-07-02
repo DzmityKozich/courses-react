@@ -13,10 +13,11 @@ import { CheckboxPage } from '../CheckboxPage';
 import { TextareaPage } from '../TextareaPage';
 import { SelectPage } from '../SelectPage';
 import { ModalPage } from '../ModalPage';
-
-import './Layout.scss';
 import { ToastPage } from '../ToastPage';
 import { ColorpickerPage } from '../ColorpickerPage';
+import { DatepickerPage } from '../DatepickerPage';
+
+import './Layout.scss';
 
 export const Layout: React.FC = () => {
 	const [theme, setTheme] = useState(themes.light);
@@ -52,6 +53,7 @@ export const Layout: React.FC = () => {
 						<Route element={<ModalPage />} path={Paths.modal} />
 						<Route element={<ToastPage />} path={Paths.toast} />
 						<Route element={<ColorpickerPage />} path={Paths.colorpicker} />
+						<Route element={<DatepickerPage />} path={Paths.datepicker} />
 					</Routes>
 				</div>
 			</div>

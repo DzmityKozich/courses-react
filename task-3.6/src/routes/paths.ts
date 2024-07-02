@@ -1,4 +1,15 @@
-type Pages = 'button' | 'link' | 'dropdown' | 'input' | 'checkbox' | 'textarea' | 'select' | 'modal' | 'toast' | 'colorpicker';
+type Pages =
+	| 'button'
+	| 'link'
+	| 'dropdown'
+	| 'input'
+	| 'checkbox'
+	| 'textarea'
+	| 'select'
+	| 'modal'
+	| 'toast'
+	| 'colorpicker'
+	| 'datepicker';
 
 export const Paths: Record<Pages, string> = {
 	button: 'button',
@@ -11,6 +22,7 @@ export const Paths: Record<Pages, string> = {
 	modal: 'modal',
 	toast: 'toast',
 	colorpicker: 'colorpicker',
+	datepicker: 'datepicker',
 };
 
 interface Navigation {
@@ -28,5 +40,6 @@ export const Navigations: Record<Pages | string, Navigation> = {
 	select: { prev: Paths.textarea, next: Paths.modal },
 	modal: { prev: Paths.select, next: Paths.toast },
 	toast: { prev: Paths.modal, next: Paths.colorpicker },
-	colorpicker: { prev: Paths.toast },
+	colorpicker: { prev: Paths.toast, next: Paths.datepicker },
+	datepicker: { prev: Paths.colorpicker },
 };
