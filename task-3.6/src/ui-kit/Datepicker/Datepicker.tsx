@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import styled from 'styled-components';
 import { IconBtn } from '../IconBtn';
 import { ChevronLeftIcon, ChevronRightIcon } from '../icons';
+import { DatepickerDate } from './DatepikerDate';
+import { getMonthData } from './utils';
+import classNames from 'classnames';
 
 import './Datepicker.scss';
 
-const mockDates = new Array(42).fill(0).map((_, i) => ++i);
-
 const DatepickerCard = styled.div`
-	/* width: 250px; */
 	box-shadow: 0px 4px 4px 0px #0000001a;
 	display: flex;
 	flex-direction: column;
@@ -20,9 +20,17 @@ const DatepickerCard = styled.div`
 const DatepickerCardHeader = styled.div`
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 `;
 
-const DatepickerBtn = styled.button``;
+const DatepickerBtn = styled.button`
+	background-color: transparent;
+	font-weight: 700;
+
+	&:active {
+		background-color: #ccc;
+	}
+`;
 
 const DatepickerTable = styled.table`
 	& th {
@@ -35,29 +43,39 @@ const DatepickerTable = styled.table`
 	}
 `;
 
-export const Datepicker: React.FC = () => {
-	const splitByWeeks = mockDates.reduce((weeks, date, i) => {
-		let lastWeek = weeks.at(-1);
-		if (!lastWeek) {
-			lastWeek = [];
-			weeks.push(lastWeek);
-		}
-		if (lastWeek.length < 7) {
-			lastWeek.push(date);
-		} else {
-			lastWeek = [date];
-			weeks.push(lastWeek);
-		}
-		return weeks;
-	}, [] as number[][]);
+const DateBtn = styled.button`
+	width: 24px;
+	height: 24px;
+	border-radius: 8px;
+	margin: auto;
+	background-color: transparent;
 
-	console.log({ splitByWeeks });
+	&.selected {
+		background-color: #00ae1c;
+		color: #fff;
+		font-weight: 700;
+	}
+
+	&:disabled {
+		opacity: 0.2;
+	}
+`;
+
+export const Datepicker: React.FC = () => {
+	const [date, setDate] = useState(new DatepickerDate());
+	const dates = useMemo(() => {
+		return getMonthData(date.year, date.month);
+	}, [date]);
+
+	const selectDate = (date: DatepickerDate) => {
+		setDate(date);
+	};
 
 	return (
 		<DatepickerCard>
 			<DatepickerCardHeader>
-				<div className="">
-					<DatepickerBtn>November</DatepickerBtn>
+				<div className="pl-[5px]">
+					<DatepickerBtn className="mr-1">November</DatepickerBtn>
 					<DatepickerBtn>2024</DatepickerBtn>
 				</div>
 				<div className="">
@@ -80,11 +98,17 @@ export const Datepicker: React.FC = () => {
 				</thead>
 
 				<tbody>
-					{splitByWeeks.map((week, i) => (
+					{dates.map((week, i) => (
 						<tr key={i}>
-							{week.map((date) => (
-								<td key={date} className="text-center">
-									<div className="holder active">{date}</div>
+							{week.map((d) => (
+								<td key={d.timestamp} className="text-center">
+									<DateBtn
+										className={classNames({ selected: d.isSameDate(date) })}
+										onClick={() => selectDate(d)}
+										disabled={!d.isDayOfMonth(date.year, date.month)}
+									>
+										{d.monthDate}
+									</DateBtn>
 								</td>
 							))}
 						</tr>
