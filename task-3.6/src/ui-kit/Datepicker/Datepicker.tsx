@@ -1,10 +1,12 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import { IconBtn } from '../IconBtn';
 import { ChevronLeftIcon, ChevronRightIcon } from '../icons';
 import { DatepickerDate } from './DatepikerDate';
 import { getMonthData } from './utils';
 import classNames from 'classnames';
+import { months, years } from './constants';
+import { useDatepicker } from '../hooks/useDatepicker';
 
 import './Datepicker.scss';
 
@@ -23,13 +25,10 @@ const DatepickerCardHeader = styled.div`
 	align-items: center;
 `;
 
-const DatepickerBtn = styled.button`
+const DatepickerSelect = styled.select`
 	background-color: transparent;
 	font-weight: 700;
-
-	&:active {
-		background-color: #ccc;
-	}
+	outline: none;
 `;
 
 const DatepickerTable = styled.table`
@@ -63,9 +62,15 @@ const DateBtn = styled.button`
 
 export const Datepicker: React.FC = () => {
 	const [date, setDate] = useState(new DatepickerDate());
+	const { month, setMonth, setYear, year } = useDatepicker();
+
 	const dates = useMemo(() => {
-		return getMonthData(date.year, date.month);
-	}, [date]);
+		return getMonthData(year, month);
+	}, [year, month]);
+
+	useEffect(() => {
+		console.log(month, year);
+	}, [month, year]);
 
 	const selectDate = (date: DatepickerDate) => {
 		setDate(date);
@@ -75,8 +80,21 @@ export const Datepicker: React.FC = () => {
 		<DatepickerCard>
 			<DatepickerCardHeader>
 				<div className="pl-[5px]">
-					<DatepickerBtn className="mr-1">November</DatepickerBtn>
-					<DatepickerBtn>2024</DatepickerBtn>
+					<DatepickerSelect className="mr-1" onChange={({ target }) => setMonth(+target.value)} value={month}>
+						{months.map((month, i) => (
+							<option value={i} key={i}>
+								{month}
+							</option>
+						))}
+					</DatepickerSelect>
+
+					<DatepickerSelect onChange={({ target }) => setYear(+target.value)} value={year}>
+						{years.map((year, i) => (
+							<option value={year} key={i}>
+								{year}
+							</option>
+						))}
+					</DatepickerSelect>
 				</div>
 				<div className="">
 					<IconBtn icon={<ChevronLeftIcon color="inherit" />} />
@@ -105,7 +123,7 @@ export const Datepicker: React.FC = () => {
 									<DateBtn
 										className={classNames({ selected: d.isSameDate(date) })}
 										onClick={() => selectDate(d)}
-										disabled={!d.isDayOfMonth(date.year, date.month)}
+										disabled={!d.isDayOfMonth(year, month)}
 									>
 										{d.monthDate}
 									</DateBtn>

@@ -1,6 +1,8 @@
-export const useDatepicker = () => {
-	const today = new Date();
-	const dayOfWeek = today.getDay();
-	const date = today.getDate();
-	const year = today.getFullYear();
+import { useState } from 'react';
+
+export const useDatepicker = (date: Date = new Date()) => {
+	const [month, setMonth] = useState(date.getMonth());
+	const [year, setYear] = useState(date.getFullYear());
+
+	return { month, setMonth, year, setYear };
 };
