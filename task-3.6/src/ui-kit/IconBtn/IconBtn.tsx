@@ -23,6 +23,11 @@ const StyledBtn = styled.button`
 		&:active {
 			background-color: ${theme.defaultStyles.listItemActiveColor};
 		}
+
+		&:disabled {
+			background-color: transparent;
+			color: ${theme.buttons.secondary.disabled.textColor};
+		}
 	`}
 `;
 

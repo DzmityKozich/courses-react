@@ -1,12 +1,13 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import { IconBtn } from '../IconBtn';
 import { ChevronLeftIcon, ChevronRightIcon } from '../icons';
 import { DatepickerDate } from './DatepikerDate';
 import { getMonthData } from './utils';
 import classNames from 'classnames';
-import { months, years } from './constants';
+import { months } from './constants';
 import { useDatepicker } from '../hooks/useDatepicker';
+import { KitDatepicker } from './types';
 
 import './Datepicker.scss';
 
@@ -60,20 +61,20 @@ const DateBtn = styled.button`
 	}
 `;
 
-export const Datepicker: React.FC = () => {
-	const [date, setDate] = useState(new DatepickerDate());
-	const { month, setMonth, setYear, year } = useDatepicker();
+export const Datepicker: React.FC<KitDatepicker> = ({ defaultDate, selectDate, lastYear, firstYear }) => {
+	const { month, setMonth, setYear, year, date, setDate, prevMonth, nextMonth, years, isFirstMonth, isLastMonth } = useDatepicker({
+		defaultDate,
+		firstYear,
+		lastYear,
+	});
 
 	const dates = useMemo(() => {
 		return getMonthData(year, month);
 	}, [year, month]);
 
-	useEffect(() => {
-		console.log(month, year);
-	}, [month, year]);
-
-	const selectDate = (date: DatepickerDate) => {
+	const handleDateSelect = (date: DatepickerDate) => {
 		setDate(date);
+		selectDate(date.toDate());
 	};
 
 	return (
@@ -97,8 +98,8 @@ export const Datepicker: React.FC = () => {
 					</DatepickerSelect>
 				</div>
 				<div className="">
-					<IconBtn icon={<ChevronLeftIcon color="inherit" />} />
-					<IconBtn icon={<ChevronRightIcon color="inherit" />} />
+					<IconBtn icon={<ChevronLeftIcon color="inherit" />} onClick={prevMonth} disabled={isFirstMonth} title="Previous month" />
+					<IconBtn icon={<ChevronRightIcon color="inherit" />} onClick={nextMonth} disabled={isLastMonth} title="Next month" />
 				</div>
 			</DatepickerCardHeader>
 
@@ -122,7 +123,7 @@ export const Datepicker: React.FC = () => {
 								<td key={d.timestamp} className="text-center">
 									<DateBtn
 										className={classNames({ selected: d.isSameDate(date) })}
-										onClick={() => selectDate(d)}
+										onClick={() => handleDateSelect(d)}
 										disabled={!d.isDayOfMonth(year, month)}
 									>
 										{d.monthDate}

@@ -42,4 +42,8 @@ export class DatepickerDate {
 		const isSameDate = this.monthDate === date.monthDate;
 		return isSameYear && isSameMonth && isSameDate;
 	}
+
+	public toDate(): Date {
+		return new Date(this.date);
+	}
 }

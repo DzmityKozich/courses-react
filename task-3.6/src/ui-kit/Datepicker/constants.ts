@@ -13,4 +13,5 @@ export const months = [
 	'December',
 ];
 
-export const years = [2024, 2023, 2022, 2021, 2020];
+export const firstYear = 1990;
+export const lastYear = 2030;
