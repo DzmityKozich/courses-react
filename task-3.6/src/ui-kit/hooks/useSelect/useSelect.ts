@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useDropdown } from '../useDropdown';
-import { DropdownContextValue } from '../useDropdown/types';
+import { SelectContextProps } from './types';
 
-export const useSelect = (): DropdownContextValue => {
+export const useSelect = (): SelectContextProps => {
 	const { registerTrigger, state, toggleState, triggerElement } = useDropdown();
 
 	const [selectedValue, setSelectedValue] = useState();

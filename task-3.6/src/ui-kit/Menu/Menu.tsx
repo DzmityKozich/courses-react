@@ -4,6 +4,7 @@ import { DropdownContext } from '../hooks/useDropdown/DropdownContext';
 import { calculateMenuSettings } from './utils';
 
 import './Menu.scss';
+import { Popover } from '../Popover';
 
 type Props = {
 	children: ReactNode | ReactNode[];
@@ -13,11 +14,12 @@ const StyledDiv = styled.div`
 	border: 1px #dee0e5 solid;
 	border-radius: 8px;
 	box-shadow: 0px 8px 16px 0px #3131311a;
-	position: fixed;
-	min-width: 200px;
-	transform: translateX(-50%);
-	z-index: 1000;
-	overflow: hidden;
+	overflow: auto;
+	/* position: fixed; */
+	/* min-width: 200px; */
+	/* transform: translateX(-50%); */
+	/* z-index: 1000; */
+	/* overflow: hidden; */
 
 	${({ theme }) => css`
 		background-color: ${theme.defaultStyles.bgColor};
@@ -89,12 +91,20 @@ export const Menu: React.FC<Props> = ({ children }) => {
 	}, [context?.state.open]);
 
 	return (
-		<>
-			{context?.state.open && (
-				<StyledDiv style={{ ...settings }} tabIndex={0} ref={menuRef}>
-					<StyledUl>{children}</StyledUl>
-				</StyledDiv>
-			)}
-		</>
+		<Popover open={context?.state.open!} toggleState={context?.toggleState!} triggerElement={context?.triggerElement!}>
+			<StyledDiv tabIndex={0}>
+				<StyledUl>{children}</StyledUl>
+			</StyledDiv>
+		</Popover>
 	);
+
+	// return (
+	// 	<>
+	// 		{context?.state.open && (
+	// 			<StyledDiv style={{ ...settings }} tabIndex={0} ref={menuRef}>
+	// 				<StyledUl>{children}</StyledUl>
+	// 			</StyledDiv>
+	// 		)}
+	// 	</>
+	// );
 };
