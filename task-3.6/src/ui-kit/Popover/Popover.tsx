@@ -1,4 +1,4 @@
-import React, { CSSProperties, ReactChild, ReactChildren, ReactNode, useCallback, useEffect, useRef, useState } from 'react';
+import React, { CSSProperties, ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { useEscKeydown } from '../hooks/useEscKeydown';
 import { calculatePopoverSettings } from './utils';

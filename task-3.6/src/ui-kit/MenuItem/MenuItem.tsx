@@ -1,9 +1,12 @@
 import React, { ReactNode, useContext } from 'react';
 import styled, { css } from 'styled-components';
 import { DropdownContext } from '../hooks/useDropdown/DropdownContext';
+import classNames from 'classnames';
 
 import './MenuItem.scss';
-import classNames from 'classnames';
+import { MenuItemProps } from './types';
+import { DropdownMenuItem } from './DropdownMenuItem';
+import { SelectMenuItem } from './SelectMenuItem';
 
 const StyledLi = styled.li`
 	padding: 0.45rem;
@@ -30,26 +33,38 @@ type Props = React.HTMLAttributes<HTMLLIElement> & {
 	value?: any;
 };
 
-export const MenuItem: React.FC<Props> = (props) => {
-	const { children, onClick, value, ...liProps } = props;
+export const MenuItem: React.FC<MenuItemProps> = (props) => {
+	const { value, children, ...others } = props;
 
-	const context = useContext(DropdownContext);
+	if (value === undefined) {
+		return <DropdownMenuItem {...others}>{children}</DropdownMenuItem>;
+	} else {
+		return (
+			<SelectMenuItem value={value} {...others}>
+				{children}
+			</SelectMenuItem>
+		);
+	}
 
-	const handleClick = (event: any) => {
-		onClick?.(event);
-		context?.onSelect?.({ value, text: children });
-		setTimeout(() => {
-			context?.toggleState();
-		}, 150);
-	};
+	// const { children, onClick, value, ...liProps } = props;
 
-	return (
-		<StyledLi
-			{...liProps}
-			onClick={handleClick}
-			className={classNames({ selected: props.value ? context?.selectedValue?.value === props.value : false })}
-		>
-			{children}
-		</StyledLi>
-	);
+	// const context = useContext(DropdownContext);
+
+	// const handleClick = (event: any) => {
+	// 	onClick?.(event);
+	// 	context?.onSelect?.({ value, text: children });
+	// 	setTimeout(() => {
+	// 		context?.toggleState();
+	// 	}, 150);
+	// };
+
+	// return (
+	// 	<StyledLi
+	// 		{...liProps}
+	// 		onClick={handleClick}
+	// 		className={classNames({ selected: props.value ? context?.selectedValue?.value === props.value : false })}
+	// 	>
+	// 		{children}
+	// 	</StyledLi>
+	// );
 };

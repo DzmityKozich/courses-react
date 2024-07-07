@@ -1,0 +1,34 @@
+import React, { useContext, useEffect } from 'react';
+import { ListItem } from './ListItem';
+import { MenuItemProps } from './types';
+import { SelectContext } from '../hooks/useSelect/SelectContext';
+import classNames from 'classnames';
+import { useSelectMenuItem } from '../hooks/useMenuItem';
+
+export const SelectMenuItem: React.FC<MenuItemProps> = (props) => {
+	const { children, value, onClick, ...liProps } = props;
+
+	const context = useContext(SelectContext);
+	const { selected } = useSelectMenuItem({ context, value });
+
+	const handleClick = (event: any) => {
+		onClick?.(event);
+		context?.onSelect?.({ value, text: children });
+		setTimeout(() => {
+			context?.toggleState();
+		}, 150);
+	};
+
+	useEffect(() => {
+		if (context?.compareFn!(context.defaultValue, value)) {
+			context.onSelect?.({ value, text: children });
+		}
+	}, [context?.compareFn, context?.defaultValue]);
+
+	return (
+		<ListItem {...liProps} className={classNames({ selected })} onClick={handleClick}>
+			select
+			{children}
+		</ListItem>
+	);
+};

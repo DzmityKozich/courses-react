@@ -5,4 +5,6 @@ export type SelectContextProps = {
 	registerTrigger: React.Dispatch<React.SetStateAction<HTMLElement | null>>;
 	onSelect?: (value: any) => void;
 	selectedValue?: any;
+	compareFn?: (valueA: any, valueB: any) => boolean;
+	defaultValue?: any;
 };

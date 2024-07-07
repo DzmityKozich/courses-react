@@ -2,9 +2,9 @@ import React, { CSSProperties, ReactNode, useCallback, useContext, useEffect, us
 import styled, { css } from 'styled-components';
 import { DropdownContext } from '../hooks/useDropdown/DropdownContext';
 import { calculateMenuSettings } from './utils';
+import { Popover } from '../Popover';
 
 import './Menu.scss';
-import { Popover } from '../Popover';
 
 type Props = {
 	children: ReactNode | ReactNode[];
@@ -37,62 +37,62 @@ const StyledUl = styled.ul`
 
 export const Menu: React.FC<Props> = ({ children }) => {
 	const context = useContext(DropdownContext);
-	const [settings, setSettings] = useState<CSSProperties>();
-	const menuRef = useRef<HTMLDivElement>(null);
-	const documentRef = useRef(document);
+	// const [settings, setSettings] = useState<CSSProperties>();
+	// const menuRef = useRef<HTMLDivElement>(null);
+	// const documentRef = useRef(document);
 
-	const onBlur = useCallback(
-		(event: FocusEvent) => {
-			if (!context?.triggerElement?.contains(event.relatedTarget as HTMLElement)) {
-				context?.toggleState();
-			}
-		},
-		[context?.toggleState, context?.triggerElement],
-	);
+	// const onBlur = useCallback(
+	// 	(event: FocusEvent) => {
+	// 		if (!context?.triggerElement?.contains(event.relatedTarget as HTMLElement)) {
+	// 			context?.toggleState();
+	// 		}
+	// 	},
+	// 	[context?.toggleState, context?.triggerElement],
+	// );
 
-	const escClose = useCallback(
-		(event: KeyboardEvent) => {
-			const isEsc = event.key === 'Escape';
-			if (isEsc && context?.state.open) {
-				context.toggleState();
-			}
-		},
-		[context?.toggleState, context?.state],
-	);
+	// const escClose = useCallback(
+	// 	(event: KeyboardEvent) => {
+	// 		const isEsc = event.key === 'Escape';
+	// 		if (isEsc && context?.state.open) {
+	// 			context.toggleState();
+	// 		}
+	// 	},
+	// 	[context?.toggleState, context?.state],
+	// );
 
-	useEffect(() => {
-		const {
-			minWidth,
-			position: { left, top },
-		} = calculateMenuSettings(context?.triggerElement);
-		setSettings({ minWidth, top, left });
-	}, [context]);
+	// useEffect(() => {
+	// 	const {
+	// 		minWidth,
+	// 		position: { left, top },
+	// 	} = calculateMenuSettings(context?.triggerElement);
+	// 	setSettings({ minWidth, top, left });
+	// }, [context]);
 
-	useEffect(() => {
-		documentRef.current?.addEventListener('keydown', escClose);
+	// useEffect(() => {
+	// 	documentRef.current?.addEventListener('keydown', escClose);
 
-		return () => {
-			documentRef.current?.removeEventListener('keydown', escClose);
-		};
-	});
+	// 	return () => {
+	// 		documentRef.current?.removeEventListener('keydown', escClose);
+	// 	};
+	// });
 
-	useEffect(() => {
-		menuRef.current?.addEventListener('blur', onBlur);
+	// useEffect(() => {
+	// 	menuRef.current?.addEventListener('blur', onBlur);
 
-		return () => {
-			menuRef.current?.removeEventListener('blur', onBlur);
-		};
-	});
+	// 	return () => {
+	// 		menuRef.current?.removeEventListener('blur', onBlur);
+	// 	};
+	// });
 
-	useEffect(() => {
-		if (context?.state.open) {
-			menuRef.current?.focus();
-		}
-	}, [context?.state.open]);
+	// useEffect(() => {
+	// 	if (context?.state.open) {
+	// 		menuRef.current?.focus();
+	// 	}
+	// }, [context?.state.open]);
 
 	return (
 		<Popover open={context?.state.open!} toggleState={context?.toggleState!} triggerElement={context?.triggerElement!}>
-			<StyledDiv tabIndex={0}>
+			<StyledDiv>
 				<StyledUl>{children}</StyledUl>
 			</StyledDiv>
 		</Popover>

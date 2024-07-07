@@ -1,9 +1,9 @@
 import React, { forwardRef, useContext, useRef } from 'react';
 import { InputField } from '../InputField';
-import { DropdownContext } from '../hooks/useDropdown/DropdownContext';
 import { ArrowDown } from '../icons/ArrowDown';
 import styled from 'styled-components';
 import { mergeRefs } from 'react-merge-refs';
+import { SelectContext } from '../hooks/useSelect';
 
 const StyledDiv = styled.div`
 	content: '';
@@ -17,7 +17,7 @@ const StyledDiv = styled.div`
 `;
 
 export const SelectInput = forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLInputElement>>((props, ref) => {
-	const context = useContext(DropdownContext);
+	const context = useContext(SelectContext);
 
 	const inputRef = useRef<HTMLInputElement>(null);
 
