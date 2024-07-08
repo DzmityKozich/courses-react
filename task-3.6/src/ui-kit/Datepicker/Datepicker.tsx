@@ -10,6 +10,8 @@ import { useDatepicker } from '../hooks/useDatepicker';
 import { KitDatepicker } from './types';
 
 import './Datepicker.scss';
+import { Select } from '../Select';
+import { MenuItem } from '../MenuItem';
 
 const DatepickerCard = styled.div`
 	box-shadow: 0px 4px 4px 0px #0000001a;
@@ -81,21 +83,21 @@ export const Datepicker: React.FC<KitDatepicker> = ({ defaultDate, selectDate, l
 		<DatepickerCard>
 			<DatepickerCardHeader>
 				<div className="pl-[5px]">
-					<DatepickerSelect className="mr-1" onChange={({ target }) => setMonth(+target.value)} value={month}>
+					<Select select={(value) => setMonth(+value)} value={month} className="border-0">
 						{months.map((month, i) => (
-							<option value={i} key={i}>
+							<MenuItem value={i} key={i}>
 								{month}
-							</option>
+							</MenuItem>
 						))}
-					</DatepickerSelect>
+					</Select>
 
-					<DatepickerSelect onChange={({ target }) => setYear(+target.value)} value={year}>
+					<Select select={(value) => setYear(+value)} value={year}>
 						{years.map((year, i) => (
-							<option value={year} key={i}>
+							<MenuItem value={year} key={i}>
 								{year}
-							</option>
+							</MenuItem>
 						))}
-					</DatepickerSelect>
+					</Select>
 				</div>
 				<div className="">
 					<IconBtn icon={<ChevronLeftIcon color="inherit" />} onClick={prevMonth} disabled={isFirstMonth} title="Previous month" />

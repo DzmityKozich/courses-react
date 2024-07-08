@@ -5,4 +5,5 @@ export type KitSelectProps = {
 	value?: any;
 	compareFn?: (valueA: any, valueB: any) => boolean;
 	select: (value: any) => void;
+	className?: string;
 };

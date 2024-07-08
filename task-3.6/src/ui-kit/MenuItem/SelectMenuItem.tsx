@@ -21,7 +21,6 @@ export const SelectMenuItem: React.FC<MenuItemProps> = (props) => {
 
 	return (
 		<ListItem {...liProps} className={classNames({ selected })} onClick={handleClick}>
-			select
 			{children}
 		</ListItem>
 	);

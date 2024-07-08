@@ -44,7 +44,7 @@ const addMissingDates = (dates: Date[]): Date[] => {
 
 	while (firstDate.getDay() !== 1) {
 		firstDate.setDate(firstDate.getDate() - 1);
-		startAdditional.push(new Date(firstDate));
+		startAdditional.unshift(new Date(firstDate));
 	}
 
 	while (lastDate.getDay() !== 0) {

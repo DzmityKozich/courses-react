@@ -23,7 +23,7 @@ const OptionList = styled.ul`
 	}
 `;
 
-export const Select: React.FC<KitSelectProps> = ({ children, value, compareFn, select }) => {
+export const Select: React.FC<KitSelectProps> = ({ children, value, compareFn, select, className }) => {
 	const contextValue = useSelect({ value, compareFn, select });
 	const inputRef = useRef<HTMLInputElement>(null);
 
@@ -36,7 +36,7 @@ export const Select: React.FC<KitSelectProps> = ({ children, value, compareFn, s
 
 	return (
 		<SelectContext.Provider value={contextValue}>
-			<SelectInput ref={inputRef} />
+			<SelectInput ref={inputRef} className={className} />
 			<Popover open={contextValue.state.open} toggleState={contextValue.toggleState} triggerElement={contextValue.triggerElement!}>
 				<StyledDiv>
 					<OptionList>{children}</OptionList>

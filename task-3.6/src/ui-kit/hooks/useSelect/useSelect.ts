@@ -2,7 +2,7 @@ import { useDropdown } from '../useDropdown';
 import { SelectContextProps } from './types';
 import { KitSelectProps } from '../../Select/types';
 
-type Props = Omit<KitSelectProps, 'children'>;
+type Props = Omit<KitSelectProps, 'children' | 'className'>;
 
 export const useSelect = ({ compareFn, value, select }: Props): SelectContextProps => {
 	const { registerTrigger, state, toggleState, triggerElement } = useDropdown();
