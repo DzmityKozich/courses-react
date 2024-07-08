@@ -1,14 +1,11 @@
-import { useState } from 'react';
 import { useDropdown } from '../useDropdown';
 import { SelectContextProps } from './types';
 import { KitSelectProps } from '../../Select/types';
 
 type Props = Omit<KitSelectProps, 'children'>;
 
-export const useSelect = ({ compareFn, value }: Props): SelectContextProps => {
+export const useSelect = ({ compareFn, value, select }: Props): SelectContextProps => {
 	const { registerTrigger, state, toggleState, triggerElement } = useDropdown();
-
-	const [selectedValue, setSelectedValue] = useState(value);
 
 	let compare = compareFn;
 	if (!compare) {
@@ -22,9 +19,8 @@ export const useSelect = ({ compareFn, value }: Props): SelectContextProps => {
 		state,
 		toggleState,
 		triggerElement,
-		selectedValue,
-		onSelect: setSelectedValue,
+		selectedValue: value,
+		onSelect: select,
 		compareFn: compare,
-		defaultValue: value,
 	};
 };

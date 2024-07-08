@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { ListItem } from './ListItem';
 import { MenuItemProps } from './types';
 import { SelectContext } from '../hooks/useSelect/SelectContext';
@@ -13,17 +13,11 @@ export const SelectMenuItem: React.FC<MenuItemProps> = (props) => {
 
 	const handleClick = (event: any) => {
 		onClick?.(event);
-		context?.onSelect?.({ value, text: children });
+		context?.onSelect?.(value);
 		setTimeout(() => {
 			context?.toggleState();
 		}, 150);
 	};
-
-	useEffect(() => {
-		if (context?.compareFn!(context.defaultValue, value)) {
-			context.onSelect?.({ value, text: children });
-		}
-	}, [context?.compareFn, context?.defaultValue]);
 
 	return (
 		<ListItem {...liProps} className={classNames({ selected })} onClick={handleClick}>

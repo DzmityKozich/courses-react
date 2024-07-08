@@ -12,11 +12,13 @@ type Props = {
 
 const PopoverContainer = styled.div`
 	max-height: 50vh;
-	/* width: fit-content; */
 	z-index: 1000;
 	transform: translateX(-50%);
 	position: fixed;
-	overflow: hidden;
+	overflow: auto;
+	border: 1px #dee0e5 solid;
+	box-shadow: 0px 8px 16px 0px #3131311a;
+	border-radius: 8px;
 	outline: none;
 `;
 

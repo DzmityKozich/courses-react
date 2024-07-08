@@ -9,6 +9,4 @@ export interface DropdownContextValue {
 	toggleState: (force?: boolean) => void;
 	triggerElement: HTMLElement | null;
 	registerTrigger: React.Dispatch<React.SetStateAction<HTMLElement | null>>;
-	onSelect?: (value: any) => void;
-	selectedValue?: any;
 }
