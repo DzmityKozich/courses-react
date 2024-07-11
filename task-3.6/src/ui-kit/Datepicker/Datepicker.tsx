@@ -8,10 +8,10 @@ import classNames from 'classnames';
 import { months } from './constants';
 import { useDatepicker } from '../hooks/useDatepicker';
 import { KitDatepicker } from './types';
-
-import './Datepicker.scss';
 import { Select } from '../Select';
 import { MenuItem } from '../MenuItem';
+
+import './Datepicker.scss';
 
 const DatepickerCard = styled.div`
 	box-shadow: 0px 4px 4px 0px #0000001a;
@@ -82,8 +82,8 @@ export const Datepicker: React.FC<KitDatepicker> = ({ defaultDate, selectDate, l
 	return (
 		<DatepickerCard>
 			<DatepickerCardHeader>
-				<div className="pl-[5px]">
-					<Select select={(value) => setMonth(+value)} value={month} className="border-0">
+				<div className="pl-[5px] dateSelectionPanel">
+					<Select select={(value) => setMonth(+value)} value={month} className="datepickerSelect">
 						{months.map((month, i) => (
 							<MenuItem value={i} key={i}>
 								{month}
@@ -91,7 +91,7 @@ export const Datepicker: React.FC<KitDatepicker> = ({ defaultDate, selectDate, l
 						))}
 					</Select>
 
-					<Select select={(value) => setYear(+value)} value={year}>
+					<Select select={(value) => setYear(+value)} value={year} className="datepickerSelect">
 						{years.map((year, i) => (
 							<MenuItem value={year} key={i}>
 								{year}

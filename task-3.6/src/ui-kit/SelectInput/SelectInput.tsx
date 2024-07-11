@@ -1,10 +1,12 @@
-import React, { forwardRef, useContext, useRef } from 'react';
+import { forwardRef, useContext, useRef } from 'react';
 import { InputField } from '../InputField';
 import { ArrowDown } from '../icons/ArrowDown';
 import { mergeRefs } from 'react-merge-refs';
 import { SelectContext } from '../hooks/useSelect';
+import classNames from 'classnames';
+import { InputProps } from '../InputField/types';
 
-export const SelectInput = forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLInputElement>>((props, ref) => {
+export const SelectInput = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 	const context = useContext(SelectContext);
 
 	const inputRef = useRef<HTMLInputElement>(null);
@@ -18,8 +20,8 @@ export const SelectInput = forwardRef<HTMLInputElement, React.InputHTMLAttribute
 
 	return (
 		<InputField
-			className="cursor-pointer"
-			label="Time"
+			className={classNames('cursor-pointer', props.className)}
+			label={props.label}
 			onClick={handleClick}
 			ref={mergeRefs([ref, inputRef])}
 			endElement={<ArrowDown color="inherit" />}

@@ -68,15 +68,21 @@ export const InputField = forwardRef<HTMLInputElement, InputProps>((props, ref) 
 	};
 
 	return (
-		<div className="inline-flex flex-col items-start w-full">
+		<div className={classNames('inline-flex flex-col items-start w-full', props.className)}>
 			{label && (
 				<Label htmlFor={inputProps.id} className={classNames({ disabled: inputProps.disabled })}>
 					{inputLabel}
 				</Label>
 			)}
-			<InputHolder className={classNames({ focused, error })}>
+			<InputHolder className={classNames('kit-input-holder', { focused, error })}>
 				{startElement}
-				<StyledInput {...inputProps} ref={ref} onFocus={handleFocus} onBlur={handleBlur} />
+				<StyledInput
+					{...inputProps}
+					ref={ref}
+					onFocus={handleFocus}
+					onBlur={handleBlur}
+					className={classNames(props.className, 'kit-input')}
+				/>
 				{endElement}
 			</InputHolder>
 			{helpText && <div className={classNames('text-xs font-semibold mt-1', { 'text-red-500': error })}>{helpText}</div>}
