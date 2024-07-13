@@ -1,0 +1,13 @@
+.entering {
+	animation: entering 0.15s ease;
+}
+
+@keyframes entering {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}

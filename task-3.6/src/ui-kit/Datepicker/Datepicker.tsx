@@ -13,6 +13,7 @@ import { MenuItem } from '../MenuItem';
 
 import './Datepicker.scss';
 
+// TODO: update for themes
 const DatepickerCard = styled.div`
 	box-shadow: 0px 4px 4px 0px #0000001a;
 	display: flex;
@@ -26,12 +27,6 @@ const DatepickerCardHeader = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-`;
-
-const DatepickerSelect = styled.select`
-	background-color: transparent;
-	font-weight: 700;
-	outline: none;
 `;
 
 const DatepickerTable = styled.table`
