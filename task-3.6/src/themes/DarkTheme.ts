@@ -102,4 +102,21 @@ export const darkTheme: Theme = {
 		bgColor: defaultColors.black[500],
 		borderColor: defaultColors.gray[500],
 	},
+	datepicker: {
+		bgColor: defaultColors.black[300],
+		color: defaultColors.white[500],
+		availableDate: {
+			bgColor: 'transparent',
+			color: defaultColors.black[500],
+		},
+		disabledDate: {
+			bgColor: 'transparent',
+			color: defaultColors.gray[700],
+		},
+		selectedDate: {
+			bgColor: defaultColors.green[500],
+			color: defaultColors.white[500],
+		},
+		shadow: 'none',
+	},
 };

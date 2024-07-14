@@ -102,4 +102,21 @@ export const lightTheme: Theme = {
 		bgColor: defaultColors.white[500],
 		borderColor: defaultColors.white[500],
 	},
+	datepicker: {
+		bgColor: defaultColors.white[500],
+		color: defaultColors.black[500],
+		availableDate: {
+			bgColor: 'transparent',
+			color: defaultColors.black[500],
+		},
+		disabledDate: {
+			bgColor: 'transparent',
+			color: defaultColors.gray[700],
+		},
+		selectedDate: {
+			bgColor: defaultColors.green[500],
+			color: defaultColors.white[500],
+		},
+		shadow: '0px 4px 4px 0px #0000001a',
+	},
 };

@@ -15,6 +15,7 @@ export interface Theme {
 	inputs: InputThemeProps;
 	checkbox: CheckboxThemeProps;
 	toast: ToastThemeProps;
+	datepicker: DatepickerThemeProps;
 }
 
 // General
@@ -113,4 +114,23 @@ export interface ToastThemeProps {
 	bgColor: string;
 	color: string;
 	borderColor: string;
+}
+
+// Datepicker
+export interface DatepickerThemeProps {
+	bgColor: string;
+	color: string;
+	selectedDate: {
+		color: string;
+		bgColor: string;
+	};
+	disabledDate: {
+		color: string;
+		bgColor: string;
+	};
+	availableDate: {
+		color: string;
+		bgColor: string;
+	};
+	shadow: string;
 }
