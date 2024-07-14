@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PageLayout, ThemeContainer } from '../../share';
-import { PageTitle } from '../../components/PageTitle';
+import { PageTitle } from '../../share/PageTitle';
 import { Datepicker } from '../../ui-kit/Datepicker';
 
 export const DatepickerPage: React.FC = () => {

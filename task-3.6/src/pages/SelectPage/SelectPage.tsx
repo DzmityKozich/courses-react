@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PageLayout, ThemeContainer } from '../../share';
-import { PageTitle } from '../../components/PageTitle';
+import { PageTitle } from '../../share/PageTitle';
 import { Select } from '../../ui-kit/Select';
 import { MenuItem } from '../../ui-kit/MenuItem';
 

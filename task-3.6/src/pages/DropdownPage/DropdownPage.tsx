@@ -1,6 +1,6 @@
 import React from 'react';
 import { PageDescription, PageLayout, ThemeContainer } from '../../share';
-import { PageTitle } from '../../components/PageTitle';
+import { PageTitle } from '../../share/PageTitle';
 import { Dropdown } from '../../ui-kit/Dropdown';
 import { Menu } from '../../ui-kit/Menu';
 import { MenuItem } from '../../ui-kit/MenuItem/MenuItem';

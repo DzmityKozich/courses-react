@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { PageTitle } from '../../components/PageTitle';
+import { PageTitle } from '../../share/PageTitle';
 import { PageLayout, ThemeContainer } from '../../share';
 import { Toast } from '../../ui-kit/Toast';
 

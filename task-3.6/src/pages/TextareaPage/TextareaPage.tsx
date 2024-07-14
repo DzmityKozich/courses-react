@@ -1,4 +1,4 @@
-import { PageTitle } from '../../components/PageTitle';
+import { PageTitle } from '../../share/PageTitle';
 import { PageLayout, ThemeContainer } from '../../share';
 import { Textarea } from '../../ui-kit/Textarea';
 

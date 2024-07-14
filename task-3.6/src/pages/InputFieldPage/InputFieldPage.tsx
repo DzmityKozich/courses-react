@@ -2,7 +2,7 @@ import React from 'react';
 import { PageLayout, ThemeContainer } from '../../share';
 import { InputField } from '../../ui-kit/InputField';
 import { PasswordInput } from '../../components/PasswordInput';
-import { PageTitle } from '../../components/PageTitle';
+import { PageTitle } from '../../share/PageTitle';
 
 export const InputFieldPage: React.FC = () => {
 	return (

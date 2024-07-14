@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { PageTitle } from '../../components/PageTitle';
+import { PageTitle } from '../../share/PageTitle';
 import { PageLayout, ThemeContainer } from '../../share';
 import { Button } from '../../ui-kit';
 import { Modal } from '../../ui-kit/Modal';

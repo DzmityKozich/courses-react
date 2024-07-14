@@ -1,5 +1,5 @@
 import React from 'react';
-import { PageTitle } from '../../components/PageTitle';
+import { PageTitle } from '../../share/PageTitle';
 import { Link } from '../../ui-kit/Link';
 import { PageLayout, ThemeContainer } from '../../share';
 

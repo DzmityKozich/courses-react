@@ -1,4 +1,4 @@
-import { PageTitle } from '../../components/PageTitle';
+import { PageTitle } from '../../share/PageTitle';
 import { PageLayout, ThemeContainer } from '../../share';
 import { Button } from '../../ui-kit';
 import { PlayIcon } from '../../ui-kit/icons';

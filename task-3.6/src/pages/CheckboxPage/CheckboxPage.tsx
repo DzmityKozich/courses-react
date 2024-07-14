@@ -1,7 +1,7 @@
 import React from 'react';
 import { PageLayout, ThemeContainer } from '../../share';
 import { Checkbox } from '../../ui-kit/Checkbox';
-import { PageTitle } from '../../components/PageTitle';
+import { PageTitle } from '../../share/PageTitle';
 
 export const CheckboxPage: React.FC = () => {
 	return (
