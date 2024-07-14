@@ -4,7 +4,6 @@ import { useEscKeydown } from '../hooks/useEscKeydown';
 import { calculatePopoverSettings } from './utils';
 
 import './Popover.scss';
-import { usePopover } from '../hooks/usePopover';
 
 type Props = {
 	children: ReactNode | ReactNode[];
@@ -25,11 +24,20 @@ const PopoverContainer = styled.div`
 	outline: none;
 `;
 
+const PopoverBackdrop = styled.div`
+	position: fixed;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	z-index: 999;
+`;
+
 export const Popover: React.FC<Props> = ({ children, open, triggerElement, toggleState }) => {
-	// const [settings, setSettings] = useState<CSSProperties>();
+	const [settings, setSettings] = useState<CSSProperties>();
 	const popoverRef = useRef<HTMLDivElement>(null);
-	const docRef = useRef(document);
-	const { settings } = usePopover({ triggerElement, docRef, open, popoverRef });
 
 	const onBlur = useCallback(
 		(event: FocusEvent) => {
@@ -57,13 +65,13 @@ export const Popover: React.FC<Props> = ({ children, open, triggerElement, toggl
 		}
 	}, [open]);
 
-	// useEffect(() => {
-	// 	const {
-	// 		minWidth,
-	// 		position: { left, top },
-	// 	} = calculatePopoverSettings(triggerElement);
-	// 	setSettings({ minWidth, top, left });
-	// }, [triggerElement]);
+	useEffect(() => {
+		const {
+			minWidth,
+			position: { left, top },
+		} = calculatePopoverSettings(triggerElement);
+		setSettings({ minWidth, top, left });
+	}, [triggerElement, open]);
 
 	useEffect(() => {
 		popoverRef.current?.addEventListener('blur', onBlur);
@@ -75,9 +83,12 @@ export const Popover: React.FC<Props> = ({ children, open, triggerElement, toggl
 
 	return (
 		open && (
-			<PopoverContainer ref={popoverRef} style={{ ...settings }} tabIndex={0}>
-				{children}
-			</PopoverContainer>
+			<>
+				<PopoverBackdrop />
+				<PopoverContainer ref={popoverRef} style={{ ...settings }} tabIndex={0}>
+					{children}
+				</PopoverContainer>
+			</>
 		)
 	);
 };

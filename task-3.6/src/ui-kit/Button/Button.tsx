@@ -9,6 +9,7 @@ const StyledButton = styled.button<KitButtonProps & { theme: Theme }>`
 	border-width: 1px;
 	border-style: solid;
 	width: fit-content;
+	height: fit-content;
 
 	${({ color, theme }) => css`
 		background-color: ${theme.buttons[color].bgColor};

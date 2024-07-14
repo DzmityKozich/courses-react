@@ -4,6 +4,8 @@ import { PageTitle } from '../../components/PageTitle';
 import { Select } from '../../ui-kit/Select';
 import { MenuItem } from '../../ui-kit/MenuItem';
 
+import '../DropdownPage/DropdownPage.scss';
+
 export const SelectPage: React.FC = () => {
 	const [selected, setSelected] = useState(2);
 
