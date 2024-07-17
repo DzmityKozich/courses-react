@@ -19,6 +19,7 @@ const DatepickerCard = styled.div`
 	gap: 1rem;
 	padding: 0.75rem 0.25rem;
 	border-radius: 8px;
+	max-width: fit-content;
 
 	${({ theme }) => css`
 		box-shadow: ${theme.datepicker.shadow};

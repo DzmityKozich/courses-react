@@ -1,5 +1,6 @@
 export interface MenuSettings {
 	minWidth: number;
+	height: number;
 	position: Position;
 }
 
@@ -10,8 +11,24 @@ export interface Position {
 
 type PotentialElement = HTMLElement | undefined | null;
 
-export const calculatePopoverSettings = (el?: PotentialElement): MenuSettings => {
-	if (!el) return { position: { left: 0, top: 0 }, minWidth: 200 };
-	const { x, y, height, width } = el.getBoundingClientRect();
-	return { position: { top: y + height + 2, left: x + width / 2 }, minWidth: width };
+export const calculatePopover = (targetEl: PotentialElement, popoverEl: PotentialElement): MenuSettings => {
+	if (popoverEl && targetEl) {
+		const { height: pHeight } = popoverEl.getBoundingClientRect();
+		const { x: targetX, y: targetY, height: targetHeight, width: targetWidth, bottom: py } = targetEl.getBoundingClientRect();
+		const viewHeight = window.innerHeight;
+		if (py + pHeight < viewHeight) {
+			return { position: { top: targetY + targetHeight + 2, left: targetX + targetWidth / 2 }, minWidth: targetWidth, height: 400 };
+		}
+		if (targetY > 410) {
+			const top = targetY - 402;
+			return { position: { left: targetX, top }, minWidth: targetWidth, height: 400 };
+		}
+		const posibleHeight = Math.max(viewHeight - py - 10, 100);
+		return {
+			minWidth: targetWidth,
+			position: { top: targetY + targetHeight + 2, left: targetX + targetWidth / 2 },
+			height: posibleHeight,
+		};
+	}
+	return { height: 400, minWidth: 200, position: { left: 0, top: 0 } };
 };

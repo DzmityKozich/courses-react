@@ -1,7 +1,7 @@
-import React, { CSSProperties, ReactNode, useCallback, useEffect, useRef, useState } from 'react';
+import React, { CSSProperties, ReactNode, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { useEscKeydown } from '../hooks/useEscKeydown';
-import { calculatePopoverSettings } from './utils';
+import { calculatePopover } from './utils';
 
 import './Popover.scss';
 
@@ -13,7 +13,7 @@ type Props = {
 };
 
 const PopoverContainer = styled.div`
-	max-height: 50vh;
+	max-height: 400px;
 	z-index: 1000;
 	transform: translateX(-50%);
 	position: fixed;
@@ -36,8 +36,8 @@ const PopoverBackdrop = styled.div`
 `;
 
 export const Popover: React.FC<Props> = ({ children, open, triggerElement, toggleState }) => {
-	const [settings, setSettings] = useState<CSSProperties>();
 	const popoverRef = useRef<HTMLDivElement>(null);
+	const [settings, setSettings] = useState<CSSProperties>();
 
 	const onBlur = useCallback(
 		(event: FocusEvent) => {
@@ -65,13 +65,17 @@ export const Popover: React.FC<Props> = ({ children, open, triggerElement, toggl
 		}
 	}, [open]);
 
-	useEffect(() => {
-		const {
-			minWidth,
-			position: { left, top },
-		} = calculatePopoverSettings(triggerElement);
-		setSettings({ minWidth, top, left });
-	}, [triggerElement, open]);
+	useLayoutEffect(() => {
+		if (open) {
+			const {
+				height,
+				minWidth,
+				position: { left, top },
+			} = calculatePopover(triggerElement, popoverRef.current);
+			setSettings({ height, minWidth, left, top });
+			console.log(settings);
+		}
+	}, [open]);
 
 	useEffect(() => {
 		popoverRef.current?.addEventListener('blur', onBlur);
