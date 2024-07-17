@@ -1,4 +1,3 @@
-import { position } from 'polished';
 import { useEffect, useRef } from 'react';
 
 type Props = {

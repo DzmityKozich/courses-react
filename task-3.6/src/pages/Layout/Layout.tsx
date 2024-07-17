@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { themes } from '../../themes/themes';
 import { Navbar } from '../../components/Navbar';
 import { ButtonPage } from '../ButtonPage';
 import { THEME } from '../../themes/types';
 import { ThemeContext } from 'styled-components';
-import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { Paths } from '../../routes/paths';
 import { LinkPage } from '../LinkPage';
 import { DropdownPage } from '../DropdownPage/DropdownPage';

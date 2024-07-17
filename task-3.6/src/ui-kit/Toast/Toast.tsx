@@ -1,4 +1,4 @@
-import { ReactNode, forwardRef } from 'react';
+import { forwardRef } from 'react';
 import styled, { css } from 'styled-components';
 import { IconBtn } from '../IconBtn';
 import { CloseIcon } from '../icons';
