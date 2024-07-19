@@ -1,6 +1,6 @@
 import { forwardRef, useContext, useRef } from 'react';
 import { Button } from '../Button';
-import { DropdownContext } from '../hooks/useDropdown/DropdownContext';
+import { DropdownContext } from '../Dropdown/DropdownContext';
 import { ButtonProps } from '../Button/types';
 import { mergeRefs } from 'react-merge-refs';
 

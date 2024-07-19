@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { ListItem } from './ListItem';
 import { MenuItemProps } from './types';
-import { SelectContext } from '../hooks/useSelect/SelectContext';
+import { SelectContext } from '../Select/SelectContext';
 import classNames from 'classnames';
-import { useSelectMenuItem } from '../hooks/useMenuItem';
+import { useSelectMenuItem } from './useSelectMenuItem';
 
 export const SelectMenuItem: React.FC<MenuItemProps> = (props) => {
 	const { children, value, onClick, ...liProps } = props;

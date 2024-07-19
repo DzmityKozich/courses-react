@@ -67,7 +67,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, r
 	const syncHeight = () => {
 		if (textareaRef.current && shadowTextareaRef.current) {
 			const height = calculateHeight(textareaRef.current, shadowTextareaRef.current, props.rows || 2);
-			console.log(height);
 			textareaRef.current.style.height = `${height}px`;
 		}
 	};

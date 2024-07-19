@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import styled, { css } from 'styled-components';
-import { ModalContext, useModal } from '../hooks/useModal';
+import { ModalContext } from './ModalContext';
+import { useModal } from './useModal';
 import { useEscKeydown } from '../hooks/useEscKeydown';
 
 import './Modals.scss';

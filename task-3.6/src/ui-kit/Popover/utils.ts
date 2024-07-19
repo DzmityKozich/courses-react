@@ -17,7 +17,8 @@ export const calculatePopover = (targetEl: PotentialElement, popoverEl: Potentia
 		const { x: targetX, y: targetY, height: targetHeight, width: targetWidth, bottom: py } = targetEl.getBoundingClientRect();
 		const viewHeight = window.innerHeight;
 		if (py + pHeight < viewHeight) {
-			return { position: { top: targetY + targetHeight + 2, left: targetX + targetWidth / 2 }, minWidth: targetWidth, height: 400 };
+			const height = Math.min(400, pHeight);
+			return { position: { top: targetY + targetHeight + 2, left: targetX + targetWidth / 2 }, minWidth: targetWidth, height };
 		}
 		if (targetY > 410) {
 			const top = targetY - 402;

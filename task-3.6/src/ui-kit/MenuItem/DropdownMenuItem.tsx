@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { DropdownContext } from '../hooks/useDropdown/DropdownContext';
+import { DropdownContext } from '../Dropdown/DropdownContext';
 import { ListItem } from './ListItem';
 import { MenuItemProps } from './types';
 

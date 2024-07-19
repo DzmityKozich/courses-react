@@ -1,10 +1,10 @@
 import React, { ReactNode, useContext } from 'react';
 import { CloseIcon } from '../icons';
 import { IconBtn } from '../IconBtn';
+import styled, { css } from 'styled-components';
+import { ModalContext } from '../Modal';
 
 import './ModalHeader.scss';
-import styled, { css } from 'styled-components';
-import { ModalContext } from '../hooks/useModal';
 
 const StyledDiv = styled.div`
 	display: flex;

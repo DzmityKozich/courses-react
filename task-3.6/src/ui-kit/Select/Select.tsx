@@ -1,7 +1,7 @@
 import React, { Children, useEffect, useRef } from 'react';
 import { SelectInput } from '../SelectInput';
-import { useSelect } from '../hooks/useSelect';
-import { SelectContext } from '../hooks/useSelect';
+import { useSelect } from './useSelect';
+import { SelectContext } from './SelectContext';
 import { Popover } from '../Popover';
 import styled, { css } from 'styled-components';
 import { KitSelectProps } from './types';

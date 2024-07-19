@@ -73,7 +73,6 @@ export const Popover: React.FC<Props> = ({ children, open, triggerElement, toggl
 				position: { left, top },
 			} = calculatePopover(triggerElement, popoverRef.current);
 			setSettings({ height, minWidth, left, top });
-			console.log(settings);
 		}
 	}, [open]);
 

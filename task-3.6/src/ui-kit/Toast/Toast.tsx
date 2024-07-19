@@ -4,7 +4,7 @@ import { IconBtn } from '../IconBtn';
 import { CloseIcon } from '../icons';
 
 import './Toast.scss';
-import { useToast } from '../hooks/useToast';
+import { useToast } from './useToast';
 import classNames from 'classnames';
 
 const ToastDiv = styled.div`

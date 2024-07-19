@@ -1,6 +1,5 @@
-import { useDropdown } from '../useDropdown';
-import { SelectContextProps } from './types';
-import { KitSelectProps } from '../../Select/types';
+import { useDropdown } from '../Dropdown/useDropdown';
+import { KitSelectProps, SelectContextProps } from './types';
 
 type Props = Omit<KitSelectProps, 'children' | 'className'>;
 

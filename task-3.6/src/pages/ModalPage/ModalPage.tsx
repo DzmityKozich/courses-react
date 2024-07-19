@@ -15,7 +15,6 @@ export const ModalPage: React.FC = () => {
 	};
 
 	const closeModal = () => {
-		console.log(event);
 		setOpen(false);
 	};
 

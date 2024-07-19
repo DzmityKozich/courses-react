@@ -6,7 +6,7 @@ import { DatepickerDate } from './DatepikerDate';
 import { getMonthData } from './utils';
 import classNames from 'classnames';
 import { months } from './constants';
-import { useDatepicker } from '../hooks/useDatepicker';
+import { useDatepicker } from './useDatepicker';
 import { KitDatepicker } from './types';
 import { Select } from '../Select';
 import { MenuItem } from '../MenuItem';

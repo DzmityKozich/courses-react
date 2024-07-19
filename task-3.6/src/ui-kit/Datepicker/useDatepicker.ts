@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from 'react';
-import { DatepickerDate } from '../../Datepicker/DatepikerDate';
-import { KitDatepicker } from '../../Datepicker/types';
+import { DatepickerDate } from './DatepikerDate';
+import { KitDatepicker } from './types';
 
 type Props = Omit<KitDatepicker, 'selectDate'>;
 

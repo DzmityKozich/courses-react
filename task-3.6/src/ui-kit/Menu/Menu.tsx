@@ -1,6 +1,6 @@
 import React, { ReactNode, useContext } from 'react';
 import styled, { css } from 'styled-components';
-import { DropdownContext } from '../hooks/useDropdown/DropdownContext';
+import { DropdownContext } from '../Dropdown/DropdownContext';
 import { Popover } from '../Popover';
 
 import './Menu.scss';

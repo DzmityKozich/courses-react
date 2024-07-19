@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
-import { DropdownContext } from '../hooks/useDropdown/DropdownContext';
-import { useDropdown } from '../hooks/useDropdown';
+import { DropdownContext } from './DropdownContext';
+import { useDropdown } from './useDropdown';
 
 type Props = {
 	children: ReactNode | ReactNode[];
