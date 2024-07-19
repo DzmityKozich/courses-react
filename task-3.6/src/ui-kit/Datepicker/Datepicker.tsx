@@ -9,7 +9,7 @@ import { months } from './constants';
 import { useDatepicker } from './useDatepicker';
 import { KitDatepicker } from './types';
 import { Select } from '../Select';
-import { MenuItem } from '../MenuItem';
+import { MenuItem } from '../Menu';
 
 import './Datepicker.scss';
 

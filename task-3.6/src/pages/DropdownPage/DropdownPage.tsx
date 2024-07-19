@@ -1,10 +1,8 @@
 import React from 'react';
 import { PageDescription, PageLayout, ThemeContainer } from '../../share';
 import { PageTitle } from '../../share/PageTitle';
-import { Dropdown } from '../../ui-kit/Dropdown';
-import { Menu } from '../../ui-kit/Menu';
-import { MenuItem } from '../../ui-kit/MenuItem/MenuItem';
-import { DropdownButton } from '../../ui-kit/DropdownButton/DropdownButton';
+import { Dropdown, DropdownButton } from '../../ui-kit/Dropdown';
+import { Menu, MenuItem } from '../../ui-kit/Menu';
 import { ArrowDown } from '../../ui-kit/icons/ArrowDown';
 
 import './DropdownPage.scss';

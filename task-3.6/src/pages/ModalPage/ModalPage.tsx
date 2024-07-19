@@ -2,10 +2,7 @@ import { useState } from 'react';
 import { PageTitle } from '../../share/PageTitle';
 import { PageLayout, ThemeContainer } from '../../share';
 import { Button } from '../../ui-kit';
-import { Modal } from '../../ui-kit/Modal';
-import { ModalHeader } from '../../ui-kit/ModalHeader';
-import { ModalBody } from '../../ui-kit/MoadlBody';
-import { ModalFooter } from '../../ui-kit/ModalFooter';
+import { Modal, ModalFooter, ModalBody, ModalHeader } from '../../ui-kit/Modal';
 
 export const ModalPage: React.FC = () => {
 	const [open, setOpen] = useState(false);

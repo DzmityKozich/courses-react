@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { ListItem } from './ListItem';
 import { MenuItemProps } from './types';
-import { SelectContext } from '../Select/SelectContext';
+import { SelectContext } from '../../Select/SelectContext';
 import classNames from 'classnames';
 import { useSelectMenuItem } from './useSelectMenuItem';
 

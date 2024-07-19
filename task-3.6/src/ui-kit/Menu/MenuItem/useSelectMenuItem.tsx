@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { SelectContextProps } from '../Select/types';
+import { SelectContextProps } from '../../Select/types';
 
 type Props = {
 	context: SelectContextProps | null;

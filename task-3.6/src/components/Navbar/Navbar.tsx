@@ -2,14 +2,12 @@ import React, { useMemo } from 'react';
 import { Button } from '../../ui-kit';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Link } from '../../ui-kit/Link';
+import { Navigations, Paths } from '../../routes/paths';
+import { Dropdown, DropdownButton } from '../../ui-kit/Dropdown';
+import { Menu, MenuItem } from '../../ui-kit/Menu';
+import { ArrowDown } from '../../ui-kit/icons/ArrowDown';
 
 import './Navbar.scss';
-import { Navigations, Paths } from '../../routes/paths';
-import { Dropdown } from '../../ui-kit/Dropdown';
-import { DropdownButton } from '../../ui-kit/DropdownButton/DropdownButton';
-import { Menu } from '../../ui-kit/Menu';
-import { MenuItem } from '../../ui-kit/MenuItem/MenuItem';
-import { ArrowDown } from '../../ui-kit/icons/ArrowDown';
 
 type Props = {
 	changeTheme?: React.MouseEventHandler<HTMLButtonElement>;
