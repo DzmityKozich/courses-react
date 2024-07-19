@@ -1,28 +1,10 @@
 import React, { ReactNode } from 'react';
-import styled, { css } from 'styled-components';
 import { ModalContext } from './ModalContext';
 import { useModal } from './useModal';
 import { useEscKeydown } from '../hooks/useEscKeydown';
 
 import './Modals.scss';
-
-const ModalContainer = styled.div`
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	padding: 1rem;
-	box-shadow: 0px 16px 50px 0px #0000003d;
-	z-index: 99;
-	border-radius: 8px;
-	padding: 1rem;
-	min-width: 250px;
-	max-width: 80%;
-
-	${({ theme }) => css`
-		background-color: ${theme.defaultStyles.bgColor};
-	`}
-`;
+import { ModalContainer } from './styled-components';
 
 type Props = {
 	open: boolean;

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { DropdownContext } from '../../Dropdown/DropdownContext';
-import { ListItem } from './ListItem';
+import { ListItem } from './styled-elements';
 import { MenuItemProps } from './types';
 
 import './MenuItem.scss';

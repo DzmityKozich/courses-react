@@ -1,3 +1,5 @@
+const BORDER_HEIGHT = 1;
+
 export const calculateHeight = (textarea: HTMLTextAreaElement, shadowTextarea: HTMLTextAreaElement, rows: number): number => {
 	const { height } = getComputedStyle(textarea, null);
 	if (height === '0px') return 0;
@@ -15,12 +17,12 @@ export const calculateHeight = (textarea: HTMLTextAreaElement, shadowTextarea: H
 	const shadowHeight = shadowTextarea.scrollHeight;
 
 	if (shadowHeight < minHeight) {
-		return minHeight;
+		return minHeight + BORDER_HEIGHT;
 	}
 
 	if (shadowHeight > maxHeight) {
-		return maxHeight;
+		return maxHeight + BORDER_HEIGHT;
 	}
 
-	return shadowHeight;
+	return shadowHeight + BORDER_HEIGHT;
 };

@@ -1,27 +1,10 @@
 import React, { Children, useEffect, useRef } from 'react';
-import { SelectInput } from '../SelectInput';
+import { SelectInput } from './SelectInput';
 import { useSelect } from './useSelect';
 import { SelectContext } from './SelectContext';
 import { Popover } from '../Popover';
-import styled, { css } from 'styled-components';
 import { KitSelectProps } from './types';
-
-const StyledDiv = styled.div`
-	overflow: auto;
-
-	${({ theme }) => css`
-		background-color: ${theme.defaultStyles.bgColor};
-		color: ${theme.defaultStyles.textColor};
-	`}
-`;
-
-const OptionList = styled.ul`
-	list-style-type: none;
-
-	& li {
-		text-align: start;
-	}
-`;
+import { OptionList, StyledDiv } from './styled-elements';
 
 export const Select: React.FC<KitSelectProps> = ({ children, value, compareFn, select, className }) => {
 	const contextValue = useSelect({ value, compareFn, select });

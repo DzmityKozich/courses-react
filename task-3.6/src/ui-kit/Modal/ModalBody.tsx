@@ -1,14 +1,10 @@
 import React, { ReactNode } from 'react';
-import styled from 'styled-components';
-
-const StyledDiv = styled.div`
-	margin: 1rem 0;
-`;
+import { ModalBodyContainer } from './styled-components';
 
 type Props = {
 	children: ReactNode[] | ReactNode;
 };
 
 export const ModalBody: React.FC<Props> = ({ children }) => {
-	return <StyledDiv>{children}</StyledDiv>;
+	return <ModalBodyContainer>{children}</ModalBodyContainer>;
 };

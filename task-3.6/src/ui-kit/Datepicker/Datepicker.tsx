@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import styled, { css } from 'styled-components';
 import { IconBtn } from '../IconBtn';
 import { ChevronLeftIcon, ChevronRightIcon } from '../icons';
 import { DatepickerDate } from './DatepikerDate';
@@ -12,59 +11,7 @@ import { Select } from '../Select';
 import { MenuItem } from '../Menu';
 
 import './Datepicker.scss';
-
-const DatepickerCard = styled.div`
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
-	padding: 0.75rem 0.25rem;
-	border-radius: 8px;
-	max-width: fit-content;
-
-	${({ theme }) => css`
-		box-shadow: ${theme.datepicker.shadow};
-		background-color: ${theme.datepicker.bgColor};
-		color: ${theme.datepicker.color};
-	`}
-`;
-
-const DatepickerCardHeader = styled.div`
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-`;
-
-const DatepickerTable = styled.table`
-	& th {
-		width: 40px;
-		padding: 5px;
-	}
-
-	& td {
-		padding: 5px;
-	}
-`;
-
-const DateBtn = styled.button`
-	width: 24px;
-	height: 24px;
-	border-radius: 8px;
-	margin: auto;
-	background-color: transparent;
-
-	${({ theme }) => css`
-		&.selected {
-			background-color: ${theme.datepicker.selectedDate.bgColor};
-			color: ${theme.datepicker.selectedDate.color};
-			font-weight: 700;
-		}
-
-		&:disabled {
-			color: ${theme.datepicker.disabledDate.color};
-			/* opacity: 0.2; */
-		}
-	`}
-`;
+import { DateBtn, DatepickerCard, DatepickerCardHeader, DatepickerTable } from './styled-components';
 
 export const Datepicker: React.FC<KitDatepicker> = ({ defaultDate, selectDate, lastYear, firstYear }) => {
 	const { month, setMonth, setYear, year, date, setDate, prevMonth, nextMonth, years, isFirstMonth, isLastMonth } = useDatepicker({

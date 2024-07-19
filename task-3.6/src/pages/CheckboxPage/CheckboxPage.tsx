@@ -13,7 +13,7 @@ export const CheckboxPage: React.FC = () => {
 					<div className="plaseholder"></div>
 					<div className="">
 						<Checkbox id="1" />
-						<Checkbox id="2" checked />
+						<Checkbox id="2" checked readOnly />
 
 						<Checkbox label="Text" id="3" />
 

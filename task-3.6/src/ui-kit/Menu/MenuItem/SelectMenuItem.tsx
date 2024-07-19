@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { ListItem } from './ListItem';
+import { ListItem } from './styled-elements';
 import { MenuItemProps } from './types';
 import { SelectContext } from '../../Select/SelectContext';
 import classNames from 'classnames';

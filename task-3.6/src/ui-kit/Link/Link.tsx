@@ -13,7 +13,7 @@ const LinkComponent: React.FC<Props> = ({ to, children, disabled, className }) =
 		<>
 			{disabled && (
 				<NavLink to={to} onClick={(event) => event.preventDefault()} className={`disabled ${className}`}>
-					<div className="storeLink">{children}</div>
+					<div className="kitLink">{children}</div>
 				</NavLink>
 			)}
 			{!disabled && (
@@ -23,7 +23,7 @@ const LinkComponent: React.FC<Props> = ({ to, children, disabled, className }) =
 						return isActive ? `activeLink ${className}` : className;
 					}}
 				>
-					<div className="storeLink">{children}</div>
+					<div className="kitLink">{children}</div>
 				</NavLink>
 			)}
 		</>
@@ -32,7 +32,7 @@ const LinkComponent: React.FC<Props> = ({ to, children, disabled, className }) =
 
 export const Link = styled(LinkComponent)`
 	${({ theme }) => css`
-		& .storeLink {
+		& .kitLink {
 			text-decoration: none;
 			color: ${theme.defaultColors.green[500]};
 			font-weight: 700;
@@ -47,7 +47,7 @@ export const Link = styled(LinkComponent)`
 			}
 		}
 
-		.activeLink .storeLink {
+		.activeLink .kitLink {
 			color: #00ae1c !important;
 
 			&:hover {
@@ -60,7 +60,7 @@ export const Link = styled(LinkComponent)`
 			pointer-events: none;
 		}
 
-		&.disabled .storeLink {
+		&.disabled .kitLink {
 			color: ${theme.defaultColors.green[600]} !important;
 			text-decoration: none !important;
 		}
