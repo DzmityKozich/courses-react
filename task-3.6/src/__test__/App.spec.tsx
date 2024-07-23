@@ -5,7 +5,6 @@ describe('Init App', () => {
 	it('should render App component', async () => {
 		render(<App />);
 		const element = await screen.findByText('Buttons');
-		screen.debug();
 		expect(element).toBeInTheDocument();
 	});
 });
