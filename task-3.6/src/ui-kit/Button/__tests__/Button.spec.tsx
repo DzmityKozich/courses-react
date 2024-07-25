@@ -2,6 +2,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { Button } from '../Button';
 import { ThemeContext } from 'styled-components';
 import { lightTheme } from '../../../themes/LightTheme';
+import { vi } from 'vitest';
 
 describe('Button test', () => {
 	it('should render primary Button', () => {
@@ -10,7 +11,6 @@ describe('Button test', () => {
 				<Button color="primary" type="button" data-testid="primary-btn">
 					Button
 				</Button>
-				,
 			</ThemeContext.Provider>,
 		);
 
@@ -20,7 +20,7 @@ describe('Button test', () => {
 	});
 
 	it('should handle click event', () => {
-		const mockHandle = jest.fn();
+		const mockHandle = vi.fn();
 
 		render(
 			<ThemeContext.Provider value={lightTheme}>
@@ -34,6 +34,6 @@ describe('Button test', () => {
 		const button = screen.queryByTestId('primary-btn');
 		fireEvent.click(button!);
 
-		expect(mockHandle).toHaveBeenCalled();
+		expect(mockHandle).toHaveBeenCalledTimes(1);
 	});
 });
