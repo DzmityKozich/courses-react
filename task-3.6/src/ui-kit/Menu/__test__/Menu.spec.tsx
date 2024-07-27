@@ -1,5 +1,5 @@
 import { screen } from '@testing-library/react';
-import { renderWithContext } from '../../../test/common';
+import { renderWithThemeContext } from '../../../test/common';
 import { Menu } from '../Menu';
 import { MenuItem } from '../MenuItem';
 import { DropdownContext } from '../../Dropdown/DropdownContext';
@@ -9,7 +9,7 @@ const contextValue: DropdownContextValue = { state: { open: true } } as Dropdown
 
 describe('Menu test', () => {
 	it('should render Menu', () => {
-		renderWithContext(
+		renderWithThemeContext(
 			<DropdownContext.Provider value={contextValue}>
 				<Menu>
 					<MenuItem>Test Menu Item</MenuItem>
