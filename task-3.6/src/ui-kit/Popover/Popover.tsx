@@ -16,14 +16,9 @@ export const Popover: React.FC<Props> = ({ children, open, triggerElement, toggl
 	const popoverRef = useRef<HTMLDivElement>(null);
 	const [settings, setSettings] = useState<CSSProperties>();
 
-	const onBlur = useCallback(
-		(event: FocusEvent) => {
-			if (!triggerElement?.contains(event.relatedTarget as HTMLElement)) {
-				toggleState();
-			}
-		},
-		[toggleState, triggerElement],
-	);
+	const onBlur = useCallback(() => {
+		toggleState();
+	}, [toggleState, triggerElement]);
 
 	const escClose = useCallback(() => {
 		if (open) {
