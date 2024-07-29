@@ -6,7 +6,7 @@ export const IconBtn = forwardRef<HTMLButtonElement, IconButtonProps>((props, re
 	const { icon, ...btnProps } = props;
 
 	return (
-		<StyledBtn {...btnProps} ref={ref}>
+		<StyledBtn {...btnProps} ref={ref} type="button">
 			{icon}
 		</StyledBtn>
 	);

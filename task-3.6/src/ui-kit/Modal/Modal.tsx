@@ -19,7 +19,7 @@ export const Modal: React.FC<Props> = ({ open, onClose, children }) => {
 	return (
 		open && (
 			<ModalContext.Provider value={{ onClose: handleClose }}>
-				<div className="backdrop appearance-animate" onClick={handleClose}></div>
+				<div className="backdrop appearance-animate" onClick={handleClose} role="backdrop"></div>
 				<ModalContainer className="appearance-animate">{children}</ModalContainer>
 			</ModalContext.Provider>
 		)
