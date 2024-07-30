@@ -3,7 +3,7 @@ import { IconProps } from './types';
 import { getColor } from './icon-utils';
 import { ThemeContext } from 'styled-components';
 
-export const PlayIcon: React.FC<IconProps> = ({ color = '#fff' }) => {
+export const PlayIcon: React.FC<IconProps> = ({ color }) => {
 	const theme = useContext(ThemeContext);
 
 	const iconColor = useMemo(() => {

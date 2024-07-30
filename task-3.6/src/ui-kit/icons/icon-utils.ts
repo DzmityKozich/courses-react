@@ -9,6 +9,6 @@ export const getColor = (iconColor: IconColors, theme: Theme): string => {
 	return iconColor;
 };
 
-function isThemeColor(color: string, themeColors: ThemeColors): color is Colors {
+const isThemeColor = (color: string, themeColors: ThemeColors): color is Colors => {
 	return Object.prototype.hasOwnProperty.call(themeColors, color);
-}
+};
