@@ -39,7 +39,6 @@ describe('useSelectMenuItem test', () => {
 		} = renderHook(() => useSelectMenuItem({ value: 1, context: createMockContext(2, null) }));
 
 		expect(current.selected).toBe(false);
-		expect(mockCompareFn).toHaveBeenCalled();
-		expect(mockCompareFn).toHaveBeenCalledWith(1, 2);
+		expect(mockCompareFn).not.toHaveBeenCalled();
 	});
 });

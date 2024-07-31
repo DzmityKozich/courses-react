@@ -10,6 +10,7 @@ export default defineConfig({
 		globals: true,
 		environment: 'jsdom',
 		setupFiles: './test-settings',
+		clearMocks: true,
 		coverage: {
 			provider: 'istanbul',
 		},

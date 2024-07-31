@@ -25,6 +25,6 @@ describe('useEscKeydown test', () => {
 
 		fireEvent.keyDown(document, { key: 'A' });
 
-		expect(mockHandler).toHaveBeenCalled();
+		expect(mockHandler).not.toHaveBeenCalled();
 	});
 });
