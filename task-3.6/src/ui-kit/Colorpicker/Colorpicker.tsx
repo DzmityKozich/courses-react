@@ -19,7 +19,7 @@ export const Colorpicker = forwardRef<HTMLDivElement, KitColorpickerProps>(({ co
 		<ColorpickerPanel ref={ref}>
 			{uniqueColors.map((color) => (
 				<ColorItemHolder key={color} className={classNames({ selected: color === selectedColor })} onClick={() => onColorSelect(color)}>
-					<ColorItem style={{ color }} />
+					<ColorItem style={{ color }}>{color}</ColorItem>
 				</ColorItemHolder>
 			))}
 		</ColorpickerPanel>

@@ -31,6 +31,7 @@ export const ColorItemHolder = styled.div`
 `;
 
 export const ColorItem = styled.div`
+	font-size: 0px;
 	width: 1rem;
 	height: 1rem;
 	border-radius: 4px;
