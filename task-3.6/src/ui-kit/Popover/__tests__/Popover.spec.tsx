@@ -8,10 +8,7 @@ vi.mock('../utils', () => ({
 }));
 
 const mockToggle = vi.fn();
-const mockTriggerElContaiins = vi.fn();
-const mockTriggerEl: HTMLElement = {
-	contains: mockTriggerElContaiins,
-} as any as HTMLElement;
+const mockTriggerEl: HTMLElement = {} as any as HTMLElement;
 
 const renderPopover = (open: boolean = true) => {
 	return renderWithThemeContext(
@@ -43,12 +40,12 @@ describe('Popover test', () => {
 		expect(popoverContent.parentElement).toHaveStyle({ height: '400px', 'min-width': '200px', left: '100px', top: '100px' });
 	});
 
-	it('should close Popover on blur event', () => {
-		mockTriggerElContaiins.mockReturnValueOnce(false);
-		const { getByTestId } = renderPopover();
+	it('should close Popover on backdrop click', () => {
+		const { getByText } = renderPopover();
 
-		const popoverContent = getByTestId('test-content');
-		fireEvent.blur(popoverContent.parentElement!);
+		const backdrop = getByText('backdrop');
+
+		fireEvent.click(backdrop!);
 		expect(mockToggle).toHaveBeenCalled();
 	});
 

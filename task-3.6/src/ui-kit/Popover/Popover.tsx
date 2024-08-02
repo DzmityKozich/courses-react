@@ -8,17 +8,13 @@ import './Popover.scss';
 type Props = {
 	children: ReactNode | ReactNode[];
 	open: boolean;
-	toggleState: () => void;
+	toggleState: (...args: any[]) => void;
 	triggerElement: HTMLElement;
 };
 
 export const Popover: React.FC<Props> = ({ children, open, triggerElement, toggleState }) => {
 	const popoverRef = useRef<HTMLDivElement>(null);
 	const [settings, setSettings] = useState<CSSProperties>();
-
-	const onBlur = useCallback(() => {
-		toggleState();
-	}, [toggleState, triggerElement]);
 
 	const escClose = useCallback(() => {
 		if (open) {
@@ -48,18 +44,10 @@ export const Popover: React.FC<Props> = ({ children, open, triggerElement, toggl
 		}
 	}, [open]);
 
-	useEffect(() => {
-		popoverRef.current?.addEventListener('blur', onBlur);
-
-		return () => {
-			popoverRef.current?.removeEventListener('blur', onBlur);
-		};
-	});
-
 	return (
 		open && (
 			<>
-				<PopoverBackdrop />
+				<PopoverBackdrop onClick={toggleState}>backdrop</PopoverBackdrop>
 				<PopoverContainer ref={popoverRef} style={{ ...settings }} tabIndex={0}>
 					{children}
 				</PopoverContainer>
