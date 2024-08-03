@@ -14,7 +14,7 @@ export const SelectInput = forwardRef<HTMLInputElement, InputProps>((props, ref)
 	const handleClick = (event: any) => {
 		const parent = inputRef.current?.parentElement || null;
 		context?.registerTrigger(parent);
-		context?.toggleState(!context?.state.open);
+		context?.toggleState();
 		props.onClick?.(event);
 	};
 
@@ -27,6 +27,7 @@ export const SelectInput = forwardRef<HTMLInputElement, InputProps>((props, ref)
 			endElement={<ArrowDown color="inherit" />}
 			placeholder="Select"
 			value={props.value}
+			{...props}
 			readOnly
 		/>
 	);

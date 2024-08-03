@@ -47,7 +47,7 @@ export const Popover: React.FC<Props> = ({ children, open, triggerElement, toggl
 	return (
 		open && (
 			<>
-				<PopoverBackdrop onClick={toggleState}>backdrop</PopoverBackdrop>
+				<PopoverBackdrop onClick={() => toggleState()}>backdrop</PopoverBackdrop>
 				<PopoverContainer ref={popoverRef} style={{ ...settings }} tabIndex={0}>
 					{children}
 				</PopoverContainer>
