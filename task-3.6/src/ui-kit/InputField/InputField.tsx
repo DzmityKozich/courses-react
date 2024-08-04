@@ -19,7 +19,7 @@ export const InputField = forwardRef<HTMLInputElement, InputProps>((props, ref) 
 	};
 
 	const handleBlur = (event: FocusEvent<HTMLInputElement>) => {
-		inputProps.onFocus?.(event);
+		inputProps.onBlur?.(event);
 		setFocused(false);
 	};
 
