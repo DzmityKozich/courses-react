@@ -17,10 +17,9 @@ describe('Toast test', () => {
 	});
 
 	it('should close Toast', () => {
-		const { queryByText } = renderWithThemeContext(<Toast messge="Test Toast" onClose={mockOnClose} open={true}></Toast>);
+		const { container } = renderWithThemeContext(<Toast messge="Test Toast" onClose={mockOnClose} open={true}></Toast>);
 
-		const toast = queryByText('Test Toast');
-		const closeBtn = toast?.querySelector('button');
+		const closeBtn = container.querySelector('button');
 
 		fireEvent.click(closeBtn!);
 
