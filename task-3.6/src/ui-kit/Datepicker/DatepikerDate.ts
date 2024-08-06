@@ -8,7 +8,12 @@ export class DatepickerDate {
 	}
 
 	public get isToday(): boolean {
-		return this.date.getTime() === new Date().getTime();
+		const today = new Date();
+		return (
+			this.date.getDate() === today.getDate() &&
+			this.date.getMonth() === today.getMonth() &&
+			this.date.getFullYear() === today.getFullYear()
+		);
 	}
 
 	public get dayOfWeek(): number {

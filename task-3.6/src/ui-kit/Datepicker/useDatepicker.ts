@@ -1,6 +1,7 @@
 import { useCallback, useMemo, useState } from 'react';
 import { DatepickerDate } from './DatepikerDate';
 import { KitDatepicker } from './types';
+import { isFirstAvailableMonth, getYearList } from './utils';
 
 type Props = Omit<KitDatepicker, 'selectDate'>;
 
@@ -14,15 +15,15 @@ export const useDatepicker = ({ defaultDate = new Date(), firstYear = 1990, last
 	}, [firstYear, lastYear]);
 
 	const isLastMonth = useMemo(() => {
-		return checkLastMonth(year, lastYear, month);
+		return isFirstAvailableMonth(year, lastYear, month);
 	}, [month, year, lastYear]);
 
 	const isFirstMonth = useMemo(() => {
-		return checkFirstMonth(year, firstYear, month);
+		return isFirstAvailableMonth(year, firstYear, month);
 	}, [month, year, firstYear]);
 
 	const nextMonth = useCallback(() => {
-		if (checkLastMonth(year, lastYear, month)) return;
+		if (isFirstAvailableMonth(year, lastYear, month)) return;
 		if (month === 11) {
 			setMonth(0);
 			setYear((year) => year + 1);
@@ -32,7 +33,7 @@ export const useDatepicker = ({ defaultDate = new Date(), firstYear = 1990, last
 	}, [month, year, lastYear]);
 
 	const prevMonth = useCallback(() => {
-		if (checkFirstMonth(year, firstYear, month)) return;
+		if (isFirstAvailableMonth(year, firstYear, month)) return;
 		if (month === 0) {
 			setMonth(11);
 			setYear((year) => year - 1);
@@ -42,16 +43,4 @@ export const useDatepicker = ({ defaultDate = new Date(), firstYear = 1990, last
 	}, [month, year, firstYear]);
 
 	return { month, setMonth, year, setYear, date, setDate, nextMonth, prevMonth, years, isLastMonth, isFirstMonth };
-};
-
-const getYearList = (firstYear: number, lastYear: number): number[] => {
-	return [...new Array(lastYear - firstYear).fill(0).map((_, i) => firstYear + i), lastYear];
-};
-
-const checkLastMonth = (year: number, lastYear: number, month: number): boolean => {
-	return year === lastYear && month === 11;
-};
-
-const checkFirstMonth = (year: number, firstYear: number, month: number): boolean => {
-	return year === firstYear && month === 0;
 };

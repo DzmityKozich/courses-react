@@ -1,5 +1,17 @@
 import { DatepickerDate } from './DatepikerDate';
 
+export const getYearList = (firstYear: number, lastYear: number): number[] => {
+	return [...new Array(lastYear - firstYear).fill(0).map((_, i) => firstYear + i), lastYear];
+};
+
+export const isLastAvailableMonth = (year: number, lastYear: number, month: number): boolean => {
+	return year === lastYear && month === 11;
+};
+
+export const isFirstAvailableMonth = (year: number, firstYear: number, month: number): boolean => {
+	return year === firstYear && month === 0;
+};
+
 export const getMonthData = (year: number, month: number): DatepickerDate[][] => {
 	const daysInMonth = getDaysInMonth(year, month);
 	const fullDates = addMissingDates(daysInMonth);
