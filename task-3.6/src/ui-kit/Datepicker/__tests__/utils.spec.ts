@@ -100,4 +100,34 @@ describe('Datepicker utils test', () => {
 			}
 		}
 	});
+
+	it('should get Datepicker month data', () => {
+		const monthData = getMonthData(2024, 0);
+
+		for (let i = 0; i < monthData.length; i++) {
+			const week = monthData[i];
+			expect(week).toHaveLength(7);
+
+			for (let j = 0; j < week.length; j++) {
+				const day = week[j];
+				if (i === 0) {
+					if (!day.isDayOfMonth(2024, 0)) {
+						expect(day.month).toBe(11);
+					}
+				}
+
+				if (i === monthData.length - 1) {
+					if (!day.isDayOfMonth(2024, 0)) {
+						expect(day.month).toBe(1);
+					}
+				}
+
+				if (j !== 6) {
+					expect(day.dayOfWeek).toBe(j + 1);
+				} else {
+					expect(day.dayOfWeek).toBe(0);
+				}
+			}
+		}
+	});
 });

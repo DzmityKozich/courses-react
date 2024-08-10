@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useState } from 'react';
 import { DatepickerDate } from './DatepikerDate';
 import { KitDatepicker } from './types';
-import { isFirstAvailableMonth, getYearList } from './utils';
+import { isFirstAvailableMonth, getYearList, isLastAvailableMonth } from './utils';
 
 type Props = Omit<KitDatepicker, 'selectDate'>;
 
@@ -15,7 +15,7 @@ export const useDatepicker = ({ defaultDate = new Date(), firstYear = 1990, last
 	}, [firstYear, lastYear]);
 
 	const isLastMonth = useMemo(() => {
-		return isFirstAvailableMonth(year, lastYear, month);
+		return isLastAvailableMonth(year, lastYear, month);
 	}, [month, year, lastYear]);
 
 	const isFirstMonth = useMemo(() => {
@@ -23,7 +23,7 @@ export const useDatepicker = ({ defaultDate = new Date(), firstYear = 1990, last
 	}, [month, year, firstYear]);
 
 	const nextMonth = useCallback(() => {
-		if (isFirstAvailableMonth(year, lastYear, month)) return;
+		if (isLastAvailableMonth(year, lastYear, month)) return;
 		if (month === 11) {
 			setMonth(0);
 			setYear((year) => year + 1);
