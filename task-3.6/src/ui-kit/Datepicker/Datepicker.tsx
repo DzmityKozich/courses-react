@@ -9,9 +9,9 @@ import { useDatepicker } from './useDatepicker';
 import { KitDatepicker } from './types';
 import { Select } from '../Select';
 import { MenuItem } from '../Menu';
+import { DateBtn, DatepickerCard, DatepickerCardHeader, DatepickerTable } from './styled-components';
 
 import './Datepicker.scss';
-import { DateBtn, DatepickerCard, DatepickerCardHeader, DatepickerTable } from './styled-components';
 
 export const Datepicker: React.FC<KitDatepicker> = ({ defaultDate, selectDate, lastYear, firstYear }) => {
 	const { month, setMonth, setYear, year, date, setDate, prevMonth, nextMonth, years, isFirstMonth, isLastMonth } = useDatepicker({
@@ -72,7 +72,7 @@ export const Datepicker: React.FC<KitDatepicker> = ({ defaultDate, selectDate, l
 					{dates.map((week, i) => (
 						<tr key={i}>
 							{week.map((d) => (
-								<td key={d.timestamp} className="text-center">
+								<td key={d.timestamp} className="text-center" data-timestamp={d.timestamp}>
 									<DateBtn
 										className={classNames({ selected: d.isSameDate(date) })}
 										onClick={() => handleDateSelect(d)}
