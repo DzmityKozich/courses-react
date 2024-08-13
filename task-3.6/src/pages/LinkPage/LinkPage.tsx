@@ -4,6 +4,7 @@ import { Link } from '../../ui-kit/Link';
 import { PageLayout, ThemeContainer } from '../../share';
 
 import './LinkPage.scss';
+import { NavLink } from 'react-router-dom';
 
 export const LinkPage: React.FC = () => {
 	return (
@@ -22,16 +23,18 @@ export const LinkPage: React.FC = () => {
 					<tbody>
 						<tr>
 							<td>
-								<Link to="">Link</Link>
+								<NavLink to="">
+									<Link>Link</Link>
+								</NavLink>
 							</td>
 							<td>Default</td>
 						</tr>
 
 						<tr>
 							<td>
-								<Link to="" disabled>
-									Link
-								</Link>
+								<NavLink to="">
+									<Link disabled>Link</Link>
+								</NavLink>
 							</td>
 							<td>Disabled</td>
 						</tr>

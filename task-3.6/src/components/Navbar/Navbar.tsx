@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { Button } from '../../ui-kit';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { Link } from '../../ui-kit/Link';
 import { Navigations, Paths } from '../../routes/paths';
 import { Dropdown, DropdownButton } from '../../ui-kit/Dropdown';
@@ -32,9 +32,9 @@ export const Navbar: React.FC<Props> = ({ changeTheme }) => {
 	return (
 		<div className="w-full p-4 bg-black">
 			<div className="flex flex-row justify-between items-center">
-				<Link to={prev} disabled={!prev}>
-					&lt; Prev
-				</Link>
+				<NavLink to={prev}>
+					<Link disabled={!prev}>&lt; Prev</Link>
+				</NavLink>
 
 				<div className="flex gap-3">
 					<Button color="secondary" onClick={changeTheme}>
@@ -55,9 +55,9 @@ export const Navbar: React.FC<Props> = ({ changeTheme }) => {
 					</Dropdown>
 				</div>
 
-				<Link to={next} disabled={!next}>
-					Next &gt;
-				</Link>
+				<NavLink to={next}>
+					<Link disabled={!next}>Next &gt;</Link>
+				</NavLink>
 			</div>
 		</div>
 	);
