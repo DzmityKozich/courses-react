@@ -10,14 +10,9 @@ type Props = {
 };
 
 const LinkComponent: React.FC<Props> = ({ active, children, disabled, className }) => {
-	const preventClickEvent = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-		console.log(event.preventDefault.toString());
-		event.preventDefault();
-	};
-
 	if (disabled) {
 		return (
-			<div onClick={preventClickEvent} className={`disabled ${className}`}>
+			<div onClick={(event) => event.preventDefault()} className={`disabled ${className}`}>
 				<div className="kitLink">{children}</div>
 			</div>
 		);
