@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useApiContext } from '../../context/ApiContext';
 import { useQuery } from '@tanstack/react-query';
-import { TodoApiService } from '../../services/TodoApiService';
+import { TodoSearch } from '../TodoSearch';
 
-// const api = new TodoApiService();
+import './TodoList.scss';
 
 export const TodoList: React.FC = () => {
 	const { todoApi } = useApiContext();
@@ -24,5 +24,19 @@ export const TodoList: React.FC = () => {
 		return <p>An error occurred: {error.message}</p>;
 	}
 
-	return <></>;
+	return (
+		<div className="todoListContainer">
+			<div className="todoList">
+				<div className="todoListHeader">
+					<TodoSearch />
+				</div>
+
+				<div className="todoListBody">{/* todo cards here */}</div>
+			</div>
+
+			<div className="todoListActions">
+				<button>Clear all tasks</button>
+			</div>
+		</div>
+	);
 };
