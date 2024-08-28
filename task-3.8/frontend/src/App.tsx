@@ -3,6 +3,7 @@ import './App.scss';
 import { TodoList } from './components/TodoList';
 import { ApiContext } from './context/ApiContext';
 import { TodoApiService } from './services/TodoApiService';
+import { ThemeContext, themes } from 'ui-kit';
 
 const queryClient = new QueryClient();
 const todoApi = new TodoApiService();
@@ -11,7 +12,9 @@ function App() {
 	return (
 		<ApiContext.Provider value={{ todoApi }}>
 			<QueryClientProvider client={queryClient}>
-				<TodoList />
+				<ThemeContext.Provider value={themes.light}>
+					<TodoList />
+				</ThemeContext.Provider>
 			</QueryClientProvider>
 		</ApiContext.Provider>
 	);
