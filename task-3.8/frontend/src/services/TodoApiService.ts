@@ -10,4 +10,15 @@ export class TodoApiService implements TodoApiServiceDef {
 		const res = await fetch(`${url}/todo`);
 		return await res.json();
 	};
+
+	public update = async (todo: ToDo): Promise<ToDo | null> => {
+		const res = await fetch(`${url}/todo/update`, {
+			body: JSON.stringify(todo),
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		});
+		return await res.json();
+	};
 }

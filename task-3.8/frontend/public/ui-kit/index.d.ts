@@ -1,4 +1,5 @@
 import { ButtonHTMLAttributes } from 'react';
+import { default as default_2 } from 'react';
 import { ForwardRefExoticComponent } from 'react';
 import { ReactNode } from 'react';
 import { RefAttributes } from 'react';
@@ -31,6 +32,10 @@ declare interface ButtonThemeProps {
 
 declare type ButtonThemes = Record<Colors, ButtonThemeProps>;
 
+export declare const Checkbox: ForwardRefExoticComponent<CheckboxHTMLAttrs & KitCheckboxProps & RefAttributes<HTMLInputElement>>;
+
+declare type CheckboxHTMLAttrs = Omit<default_2.InputHTMLAttributes<HTMLInputElement>, 'type'>;
+
 declare interface CheckboxThemeProps {
     borderColor: string;
     labelColor: string;
@@ -49,6 +54,14 @@ declare interface CheckboxThemeProps {
         };
     };
 }
+
+export declare const CheckIcon: default_2.FC<IconProps>;
+
+export declare const ChevronLeftIcon: React.FC<IconProps>;
+
+export declare const ChevronRightIcon: React.FC<IconProps>;
+
+export declare const CloseIcon: default_2.FC<IconProps>;
 
 declare type Colors = 'primary' | 'secondary';
 
@@ -89,6 +102,16 @@ declare interface DefaultStyles {
     listItemActiveColor: string;
 }
 
+export declare const EyeCloseIcon: React.FC<IconProps>;
+
+export declare const EyeIcon: React.FC<IconProps>;
+
+declare type IconColors = 'inherit' | 'primary' | 'secondary' | string;
+
+declare type IconProps = {
+    color: IconColors;
+};
+
 declare interface InputThemeProps {
     color: string;
     placeholderColor: string;
@@ -111,7 +134,13 @@ export declare type KitButtonProps = {
     endIcon?: ReactNode;
 };
 
+declare type KitCheckboxProps = {
+    label?: string;
+};
+
 export declare const lightTheme: Theme;
+
+export declare const PlayIcon: default_2.FC<IconProps>;
 
 declare enum THEME {
     LIGHT = "light",
