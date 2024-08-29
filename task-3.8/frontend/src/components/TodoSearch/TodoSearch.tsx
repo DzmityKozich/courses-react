@@ -1,17 +1,20 @@
 import React from 'react';
+import { Button } from 'ui-kit';
 
 import './TodoSearch.scss';
 
 export const TodoSearch: React.FC = () => {
 	return (
-		<div className="todoSearch">
-			<div className="search">
-				<input type="text" />
+		<form className="todoForm">
+			<div className="todoFormInput">
+				<input type="text" placeholder="Type here to add a task..." />
 			</div>
 
 			<div className="actions">
-				<button>Add</button>
+				<Button color="primary" type="submit">
+					Add
+				</Button>
 			</div>
-		</div>
+		</form>
 	);
 };

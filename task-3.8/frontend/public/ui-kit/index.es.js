@@ -1710,36 +1710,38 @@ process.env.NODE_ENV !== "production" && process.env.NODE_ENV !== "test" && type
 
 See https://s-c.sh/2BAXzed for more info.`), window[ir] += 1);
 const Za = pn.button`
-	padding: 0.5rem 0.75rem;
-	border-radius: 8px;
-	border-width: 1px;
-	border-style: solid;
-	width: fit-content;
-	height: fit-content;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border-width: 1px;
+  border-style: solid;
+  width: fit-content;
+  height: fit-content;
+  cursor: pointer;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
-	${({ color: e, theme: r }) => fn`
-		background-color: ${r.buttons[e].bgColor};
-		border-color: ${r.buttons[e].borderColor};
-		color: ${r.buttons[e].textColor};
+  ${({ color: e, theme: r }) => fn`
+    background-color: ${r.buttons[e].bgColor};
+    border-color: ${r.buttons[e].borderColor};
+    color: ${r.buttons[e].textColor};
 
-		&:hover {
-			background-color: ${r.buttons[e].hover.bgColor};
-			border-color: ${r.buttons[e].hover.borderColor};
-			color: ${r.buttons[e].hover.textColor};
-		}
+    &:hover {
+      background-color: ${r.buttons[e].hover.bgColor};
+      border-color: ${r.buttons[e].hover.borderColor};
+      color: ${r.buttons[e].hover.textColor};
+    }
 
-		&:active {
-			background-color: ${r.buttons[e].active.bgColor};
-			border-color: ${r.buttons[e].active.borderColor};
-			color: ${r.buttons[e].active.textColor};
-		}
+    &:active {
+      background-color: ${r.buttons[e].active.bgColor};
+      border-color: ${r.buttons[e].active.borderColor};
+      color: ${r.buttons[e].active.textColor};
+    }
 
-		&:disabled {
-			background-color: ${r.buttons[e].disabled.bgColor};
-			border-color: ${r.buttons[e].disabled.borderColor};
-			color: ${r.buttons[e].disabled.textColor};
-		}
-	`}
+    &:disabled {
+      background-color: ${r.buttons[e].disabled.bgColor};
+      border-color: ${r.buttons[e].disabled.borderColor};
+      color: ${r.buttons[e].disabled.textColor};
+    }
+  `}
 `, Yo = Yn((e, r) => {
   const { color: t, startIcon: n, children: o, endIcon: i, ...s } = e, u = Ht(nt);
   return /* @__PURE__ */ Ct.jsx(Za, { color: t, ...s, theme: u, ref: r, children: /* @__PURE__ */ Ct.jsxs("div", { className: "flex flex-row justify-center items-center gap-1", children: [

@@ -85,36 +85,38 @@ Perhaps you're looking to import 'styled-components/native'?
 Read more about this at https://www.styled-components.com/docs/basics#react-native`);var ir="__sc-".concat(ke,"__");process.env.NODE_ENV!=="production"&&process.env.NODE_ENV!=="test"&&typeof window<"u"&&(window[ir]||(window[ir]=0),window[ir]===1&&console.warn(`It looks like there are several instances of 'styled-components' initialized in this application. This may cause dynamic styles to not render properly, errors during the rehydration process, a missing theme prop, and makes your application bigger without good reason.
 
 See https://s-c.sh/2BAXzed for more info.`),window[ir]+=1);const Ka=fn.button`
-	padding: 0.5rem 0.75rem;
-	border-radius: 8px;
-	border-width: 1px;
-	border-style: solid;
-	width: fit-content;
-	height: fit-content;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border-width: 1px;
+  border-style: solid;
+  width: fit-content;
+  height: fit-content;
+  cursor: pointer;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
-	${({color:e,theme:r})=>ln`
-		background-color: ${r.buttons[e].bgColor};
-		border-color: ${r.buttons[e].borderColor};
-		color: ${r.buttons[e].textColor};
+  ${({color:e,theme:r})=>ln`
+    background-color: ${r.buttons[e].bgColor};
+    border-color: ${r.buttons[e].borderColor};
+    color: ${r.buttons[e].textColor};
 
-		&:hover {
-			background-color: ${r.buttons[e].hover.bgColor};
-			border-color: ${r.buttons[e].hover.borderColor};
-			color: ${r.buttons[e].hover.textColor};
-		}
+    &:hover {
+      background-color: ${r.buttons[e].hover.bgColor};
+      border-color: ${r.buttons[e].hover.borderColor};
+      color: ${r.buttons[e].hover.textColor};
+    }
 
-		&:active {
-			background-color: ${r.buttons[e].active.bgColor};
-			border-color: ${r.buttons[e].active.borderColor};
-			color: ${r.buttons[e].active.textColor};
-		}
+    &:active {
+      background-color: ${r.buttons[e].active.bgColor};
+      border-color: ${r.buttons[e].active.borderColor};
+      color: ${r.buttons[e].active.textColor};
+    }
 
-		&:disabled {
-			background-color: ${r.buttons[e].disabled.bgColor};
-			border-color: ${r.buttons[e].disabled.borderColor};
-			color: ${r.buttons[e].disabled.textColor};
-		}
-	`}
+    &:disabled {
+      background-color: ${r.buttons[e].disabled.bgColor};
+      border-color: ${r.buttons[e].disabled.borderColor};
+      color: ${r.buttons[e].disabled.textColor};
+    }
+  `}
 `,Xa=B.forwardRef((e,r)=>{const{color:t,startIcon:n,children:o,endIcon:i,...s}=e,u=B.useContext(xr);return wt.jsx(Ka,{color:t,...s,theme:u,ref:r,children:wt.jsxs("div",{className:"flex flex-row justify-center items-center gap-1",children:[n,o,i]})})});var at=(e=>(e.LIGHT="light",e.DARK="dark",e))(at||{});function G(){return G=Object.assign?Object.assign.bind():function(e){for(var r=1;r<arguments.length;r++){var t=arguments[r];for(var n in t)({}).hasOwnProperty.call(t,n)&&(e[n]=t[n])}return e},G.apply(null,arguments)}function Ja(e){if(e===void 0)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function Je(e,r){return Je=Object.setPrototypeOf?Object.setPrototypeOf.bind():function(t,n){return t.__proto__=n,t},Je(e,r)}function Za(e,r){e.prototype=Object.create(r.prototype),e.prototype.constructor=e,Je(e,r)}function Kr(e){return Kr=Object.setPrototypeOf?Object.getPrototypeOf.bind():function(r){return r.__proto__||Object.getPrototypeOf(r)},Kr(e)}function Qa(e){try{return Function.toString.call(e).indexOf("[native code]")!==-1}catch{return typeof e=="function"}}function dn(){try{var e=!Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],function(){}))}catch{}return(dn=function(){return!!e})()}function eo(e,r,t){if(dn())return Reflect.construct.apply(null,arguments);var n=[null];n.push.apply(n,r);var o=new(e.bind.apply(e,n));return t&&Je(o,t.prototype),o}function Xr(e){var r=typeof Map=="function"?new Map:void 0;return Xr=function(n){if(n===null||!Qa(n))return n;if(typeof n!="function")throw new TypeError("Super expression must either be null or a function");if(r!==void 0){if(r.has(n))return r.get(n);r.set(n,o)}function o(){return eo(n,arguments,Kr(this).constructor)}return o.prototype=Object.create(n.prototype,{constructor:{value:o,enumerable:!1,writable:!0,configurable:!0}}),Je(o,n)},Xr(e)}var ro={1:`Passed invalid arguments to hsl, please pass multiple numbers e.g. hsl(360, 0.75, 0.4) or an object e.g. rgb({ hue: 255, saturation: 0.4, lightness: 0.75 }).
 
 `,2:`Passed invalid arguments to hsla, please pass multiple numbers e.g. hsla(360, 0.75, 0.4, 0.7) or an object e.g. rgb({ hue: 255, saturation: 0.4, lightness: 0.75, alpha: 0.7 }).
