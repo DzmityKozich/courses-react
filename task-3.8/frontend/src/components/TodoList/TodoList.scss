@@ -8,11 +8,14 @@
 .todoList {
 	border-radius: 8px;
 	background-color: #fff;
+	overflow: hidden;
+	box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
 .todoListHeader {
 	padding: 1rem 1.6rem;
 	box-shadow: 0px 1px 2px 0px #dedfe5;
+	background-color: #fff;
 }
 
 .todoListBody {
@@ -20,4 +23,26 @@
 	flex-direction: column;
 	padding: 1.6rem;
 	gap: 1.5rem;
+	overflow: auto;
+	min-height: 400px;
+	max-height: calc(100vh - 250px);
+
+	&::-webkit-scrollbar {
+		width: 7px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: transparent;
+		border-radius: 10px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: #888;
+		border-radius: 10px;
+		border: 1px solid #888;
+	}
+
+	&::-webkit-scrollbar-thumb:hover {
+		background-color: #555;
+	}
 }

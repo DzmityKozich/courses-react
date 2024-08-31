@@ -1,49 +1,25 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useApiContext } from '../../context/ApiContext';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { TodoSearch } from '../TodoSearch';
 import { Button, CloseIcon } from 'ui-kit';
 import { TodoCard } from '../TodoCard';
 import { ToDo } from '../../models/enities/ToDo';
+import { useOptimisticTodoUpdate } from '../../hooks/useOptimisticTodoUpdate/useOptimisticTodoUpdate';
 
 import './TodoList.scss';
 
 export const TodoList: React.FC = () => {
 	const { todoApi } = useApiContext();
-	const queryClient = useQueryClient();
+	const { mutate: mutateTodo } = useOptimisticTodoUpdate({ todoApi });
+
 	const { data, error, isPending } = useQuery({
 		queryKey: ['getAllTodos'],
 		queryFn: todoApi.getAll,
 	});
 
-	const { mutate } = useMutation({
-		mutationFn: todoApi.update,
-		onMutate: async (newTodo) => {
-			// Cancel any outgoing refetches
-			// (so they don't overwrite our optimistic update)
-			await queryClient.cancelQueries({ queryKey: ['getAllTodos', newTodo.id] });
-
-			// Snapshot the previous value
-			const previousTodo = queryClient.getQueryData(['getAllTodos', newTodo.id]);
-
-			// Optimistically update to the new value
-			queryClient.setQueryData(['getAllTodos', newTodo.id], newTodo);
-
-			// Return a context with the previous and new todo
-			return { previousTodo, newTodo };
-		},
-		// If the mutation fails, use the context we returned above
-		onError: (err, newTodo, context) => {
-			queryClient.setQueryData(['getAllTodos', context?.newTodo.id], context?.previousTodo);
-		},
-		// Always refetch after error or success:
-		onSettled: (newTodo) => {
-			queryClient.invalidateQueries({ queryKey: ['getAllTodos', newTodo?.id] });
-		},
-	});
-
 	const updateTodo = (todo: ToDo) => {
-		mutate(todo);
+		mutateTodo(todo);
 	};
 
 	if (isPending) {
