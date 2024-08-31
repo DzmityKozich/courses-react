@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'ui-kit';
+import { Button, PlusIcon } from 'ui-kit';
 
 import './TodoSearch.scss';
 
@@ -11,7 +11,7 @@ export const TodoSearch: React.FC = () => {
 			</div>
 
 			<div className="actions">
-				<Button color="primary" type="submit">
+				<Button color="primary" type="submit" startIcon={<PlusIcon color="inherit" />}>
 					Add
 				</Button>
 			</div>

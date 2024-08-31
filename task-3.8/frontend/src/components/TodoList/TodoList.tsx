@@ -2,7 +2,7 @@ import React from 'react';
 import { useApiContext } from '../../context/ApiContext';
 import { useQuery } from '@tanstack/react-query';
 import { TodoSearch } from '../TodoSearch';
-import { Button, CloseIcon } from 'ui-kit';
+import { Button, DeleteIcon } from 'ui-kit';
 import { TodoCard } from '../TodoCard';
 import { ToDo } from '../../models/enities/ToDo';
 import { useOptimisticTodoUpdate } from '../../hooks/useOptimisticTodoUpdate/useOptimisticTodoUpdate';
@@ -39,14 +39,14 @@ export const TodoList: React.FC = () => {
 
 				<div className="todoListBody">
 					{data.map((todo) => (
-						<TodoCard key={todo.id} todo={todo} onCompleteToggle={(isComplete) => updateTodo({ ...todo, isComplete })} />
+						<TodoCard key={todo.id} todo={todo} onTodoUpdate={(todo) => updateTodo(todo)} />
 					))}
 				</div>
 			</div>
 
 			<div className="todoListActions">
 				{/* FIXME: Css classes issue!!! */}
-				<Button color="secondary" startIcon={<CloseIcon color="red" />}>
+				<Button color="secondary" startIcon={<DeleteIcon color="inherit" />}>
 					Clear all tasks
 				</Button>
 			</div>

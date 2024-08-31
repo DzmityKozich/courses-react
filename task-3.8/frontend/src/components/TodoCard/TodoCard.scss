@@ -27,3 +27,10 @@ $gray: #dedfe5;
 .line-through {
 	text-decoration: line-through;
 }
+
+.todoCardActions {
+	display: flex;
+	flex-direction: row;
+	width: 75px;
+	justify-content: space-between;
+}
