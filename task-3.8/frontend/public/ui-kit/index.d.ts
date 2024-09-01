@@ -3,6 +3,7 @@ import { default as default_2 } from 'react';
 import { ForwardRefExoticComponent } from 'react';
 import { ReactNode } from 'react';
 import { RefAttributes } from 'react';
+import { TextareaHTMLAttributes } from 'react';
 import { ThemeContext } from 'styled-components';
 
 export declare const Button: ForwardRefExoticComponent<ButtonHTMLAttributes<HTMLButtonElement> & KitButtonProps & RefAttributes<HTMLButtonElement>>;
@@ -148,11 +149,19 @@ declare type KitIconButtonProps = {
     icon: ReactNode;
 };
 
+declare type KitTextareaProps = {
+    label?: string;
+    error?: boolean;
+    helpText?: string;
+};
+
 export declare const lightTheme: Theme;
 
 export declare const PlayIcon: default_2.FC<IconProps>;
 
 export declare const PlusIcon: default_2.FC<IconProps>;
+
+export declare const Textarea: ForwardRefExoticComponent<TextareaHTMLAttributes<HTMLTextAreaElement> & KitTextareaProps & RefAttributes<HTMLTextAreaElement>>;
 
 declare enum THEME {
     LIGHT = "light",

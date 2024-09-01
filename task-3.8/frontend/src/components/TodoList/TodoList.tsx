@@ -1,11 +1,11 @@
 import React from 'react';
 import { useApiContext } from '../../context/ApiContext';
 import { useQuery } from '@tanstack/react-query';
-import { TodoSearch } from '../TodoSearch';
+import { AddTodoForm } from '../TodoSearch';
 import { Button, DeleteIcon } from 'ui-kit';
 import { TodoCard } from '../TodoCard';
 import { ToDo } from '../../models/enities/ToDo';
-import { useOptimisticTodoUpdate } from '../../hooks/useOptimisticTodoUpdate/useOptimisticTodoUpdate';
+import { useOptimisticTodoUpdate } from '../../hooks';
 
 import './TodoList.scss';
 
@@ -34,7 +34,7 @@ export const TodoList: React.FC = () => {
 		<div className="todoListContainer">
 			<div className="todoList">
 				<div className="todoListHeader">
-					<TodoSearch />
+					<AddTodoForm />
 				</div>
 
 				<div className="todoListBody">
@@ -45,7 +45,6 @@ export const TodoList: React.FC = () => {
 			</div>
 
 			<div className="todoListActions">
-				{/* FIXME: Css classes issue!!! */}
 				<Button color="secondary" startIcon={<DeleteIcon color="inherit" />}>
 					Clear all tasks
 				</Button>

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Button, PlusIcon } from 'ui-kit';
 
-import './TodoSearch.scss';
+import './AddTodoForm.scss';
 
-export const TodoSearch: React.FC = () => {
+export const AddTodoForm: React.FC = () => {
 	return (
 		<form className="todoForm">
 			<div className="todoFormInput">

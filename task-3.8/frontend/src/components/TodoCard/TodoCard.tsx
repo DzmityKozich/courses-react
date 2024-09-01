@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ToDo } from '../../models/enities/ToDo';
-import { Checkbox, IconBtn, EditIcon, DeleteIcon, CheckIcon } from 'ui-kit';
+import { Checkbox, IconBtn, EditIcon, DeleteIcon, CheckIcon, Textarea } from 'ui-kit';
 import classNames from 'classnames';
 
 import './TodoCard.scss';
@@ -32,7 +32,7 @@ export const TodoCard: React.FC<Props> = ({ todo, onTodoUpdate }) => {
 	return (
 		<div className="todoCard">
 			<Checkbox checked={todo.isComplete} onChange={toggleComple} />
-			<div
+			{/* <div
 				className={classNames('todoCardText', { 'line-through': todo.isComplete })}
 				// contentEditable={isEdit}
 				// onChange={({ target }: any) => {
@@ -40,6 +40,9 @@ export const TodoCard: React.FC<Props> = ({ todo, onTodoUpdate }) => {
 				// }}
 			>
 				{todo.text}
+			</div> */}
+			<div className="todoCardText">
+				<Textarea className={classNames('todoText', { 'line-through': todo.isComplete })} defaultValue={todo.text} rows={2} />
 			</div>
 			<div className="todoCardActions">
 				{!isEdit && <IconBtn icon={<DeleteIcon color="inherit" />} title="Delete" />}
