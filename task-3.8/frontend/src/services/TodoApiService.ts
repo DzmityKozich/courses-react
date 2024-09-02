@@ -21,4 +21,11 @@ export class TodoApiService implements TodoApiServiceDef {
 		});
 		return await res.json();
 	};
+
+	public delete = async (id: string): Promise<boolean> => {
+		const res = await fetch(`${url}/todo/${id}`, {
+			method: 'DELETE',
+		});
+		return res.status === 204;
+	};
 }

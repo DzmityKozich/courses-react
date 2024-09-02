@@ -46,7 +46,7 @@ export class Handler {
 	delete: RequestHandler<{ id: string }> = async (req, res) => {
 		const result = await this.repo.delete(req.params.id);
 		if (result) {
-			res.status(200).send(`ToDo item with id ${req.params.id} has been removed!`);
+			res.status(204).send(`ToDo item with id ${req.params.id} has been removed!`);
 		} else {
 			res.status(404).send(`ToDo item with id ${req.params.id} not found!`);
 		}

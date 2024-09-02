@@ -1,26 +1,37 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useApiContext } from '../../context/ApiContext';
 import { useQuery } from '@tanstack/react-query';
 import { AddTodoForm } from '../TodoSearch';
 import { Button, DeleteIcon } from 'ui-kit';
 import { TodoCard } from '../TodoCard';
 import { ToDo } from '../../models/enities/ToDo';
-import { useOptimisticTodoUpdate } from '../../hooks';
+import { useOptimisticTodoDelete, useOptimisticTodoUpdate } from '../../hooks';
 
 import './TodoList.scss';
 
 export const TodoList: React.FC = () => {
 	const { todoApi } = useApiContext();
 	const { mutate: mutateTodo } = useOptimisticTodoUpdate({ todoApi });
+	const { mutate: removeTodo } = useOptimisticTodoDelete({ todoApi });
 
 	const { data, error, isPending } = useQuery({
 		queryKey: ['getAllTodos'],
 		queryFn: todoApi.getAll,
 	});
 
-	const updateTodo = (todo: ToDo) => {
-		mutateTodo(todo);
-	};
+	const updateTodo = useCallback(
+		(todo: ToDo) => {
+			mutateTodo(todo);
+		},
+		[mutateTodo]
+	);
+
+	const deleteTodo = useCallback(
+		(todo: ToDo) => {
+			removeTodo(todo.id);
+		},
+		[removeTodo]
+	);
 
 	if (isPending) {
 		return <p>loading...</p>;
@@ -39,7 +50,7 @@ export const TodoList: React.FC = () => {
 
 				<div className="todoListBody">
 					{data.map((todo) => (
-						<TodoCard key={todo.id} todo={todo} onTodoUpdate={(todo) => updateTodo(todo)} />
+						<TodoCard key={todo.id} todo={todo} onTodoUpdate={updateTodo} onTodoRemove={deleteTodo} />
 					))}
 				</div>
 			</div>

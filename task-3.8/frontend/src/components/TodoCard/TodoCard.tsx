@@ -8,9 +8,10 @@ import './TodoCard.scss';
 type Props = {
 	todo: ToDo;
 	onTodoUpdate: (todo: ToDo) => void;
+	onTodoRemove: (todo: ToDo) => void;
 };
 
-export const TodoCard: React.FC<Props> = ({ todo, onTodoUpdate }) => {
+export const TodoCard: React.FC<Props> = ({ todo, onTodoUpdate, onTodoRemove }) => {
 	const [todoItem, setTodoItem] = useState(todo);
 	const [isEdit, setIsEdit] = useState(false);
 
@@ -46,7 +47,7 @@ export const TodoCard: React.FC<Props> = ({ todo, onTodoUpdate }) => {
 				/>
 			</div>
 			<div className="todoCardActions">
-				{!isEdit && <IconBtn icon={<DeleteIcon color="inherit" />} title="Delete" />}
+				{!isEdit && <IconBtn icon={<DeleteIcon color="inherit" />} onClick={() => onTodoRemove(todoItem)} title="Delete" />}
 				{!isEdit && !todoItem.isComplete && <IconBtn icon={<EditIcon color="inherit" />} onClick={enableEditMode} title="Edit" />}
 				{isEdit && !todoItem.isComplete && <IconBtn icon={<CheckIcon color="inherit" />} onClick={saveChanges} title="Save" />}
 			</div>

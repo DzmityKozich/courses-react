@@ -7,19 +7,19 @@ type Props = {
 	todoApi: TodoApiServiceDef;
 };
 
-export const useOptimisticTodoUpdate = ({ todoApi }: Props) => {
+export const useOptimisticTodoDelete = ({ todoApi }: Props) => {
 	const queryClient = useQueryClient();
 
 	const mutation = useMutation({
-		mutationFn: todoApi.update,
-		onMutate: async (newTodo) => {
+		mutationFn: todoApi.delete,
+		onMutate: async (id) => {
 			await queryClient.cancelQueries({ queryKey: ['getAllTodos'] });
 
 			const previousTodos = queryClient.getQueryData(['getAllTodos']);
 
 			queryClient.setQueryData(['getAllTodos'], (old: ToDo[]) => {
-				const index = old.findIndex(({ id }) => id === newTodo.id);
-				return toSpliced(old, index, 1, newTodo);
+				const index = old.findIndex((todo) => todo.id === id);
+				return toSpliced(old, index, 1);
 			});
 
 			return { previousTodos };
