@@ -19,8 +19,8 @@ export const TodoCard: React.FC<Props> = ({ todo, onTodoUpdate }) => {
 	};
 
 	const saveChanges = () => {
-		// const updated: ToDo = { ...todoItem, isComplete: target.checked };
 		setIsEdit(false);
+		onTodoUpdate(todoItem);
 	};
 
 	const toggleComple = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,25 +29,26 @@ export const TodoCard: React.FC<Props> = ({ todo, onTodoUpdate }) => {
 		onTodoUpdate(updated);
 	};
 
+	const handleTextChange = ({ target }: React.ChangeEvent<HTMLTextAreaElement>) => {
+		setTodoItem({ ...todoItem, text: target.value });
+	};
+
 	return (
 		<div className="todoCard">
-			<Checkbox checked={todo.isComplete} onChange={toggleComple} />
-			{/* <div
-				className={classNames('todoCardText', { 'line-through': todo.isComplete })}
-				// contentEditable={isEdit}
-				// onChange={({ target }: any) => {
-				// 	console.log(target.value);
-				// }}
-			>
-				{todo.text}
-			</div> */}
+			<Checkbox checked={todoItem.isComplete} onChange={toggleComple} />
 			<div className="todoCardText">
-				<Textarea className={classNames('todoText', { 'line-through': todo.isComplete })} defaultValue={todo.text} rows={2} />
+				<Textarea
+					className={classNames('todoText', { 'line-through': todoItem.isComplete })}
+					value={todoItem.text}
+					onChange={handleTextChange}
+					rows={5}
+					readOnly={!isEdit}
+				/>
 			</div>
 			<div className="todoCardActions">
 				{!isEdit && <IconBtn icon={<DeleteIcon color="inherit" />} title="Delete" />}
-				{!isEdit && !todo.isComplete && <IconBtn icon={<EditIcon color="inherit" />} onClick={enableEditMode} title="Edit" />}
-				{isEdit && !todo.isComplete && <IconBtn icon={<CheckIcon color="inherit" />} onClick={saveChanges} title="Save" />}
+				{!isEdit && !todoItem.isComplete && <IconBtn icon={<EditIcon color="inherit" />} onClick={enableEditMode} title="Edit" />}
+				{isEdit && !todoItem.isComplete && <IconBtn icon={<CheckIcon color="inherit" />} onClick={saveChanges} title="Save" />}
 			</div>
 		</div>
 	);

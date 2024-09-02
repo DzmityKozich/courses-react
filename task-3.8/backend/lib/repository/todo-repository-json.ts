@@ -11,24 +11,38 @@ dotenv.config();
 
 const filePath = process.env.JSON_PATH!;
 
+const promisefy =
+	(fn: Function) =>
+	(...args: any[]): Promise<any> => {
+		return new Promise((resolve, reject) => {
+			return fn(...args, (err: any, data: any) => {
+				if (err) {
+					reject(err);
+				} else {
+					resolve(data);
+				}
+			});
+		});
+	};
+
 @injectable()
 export class TodoRepositoryJson implements RepositoryDef {
-	public init(): Promise<void> {
-		// NOTE: just mock implementation
-		return Promise.resolve();
+	private todoList: ToDo[] = [];
+
+	public async init(): Promise<void> {
+		const readFileAsync = promisefy(fs.readFile);
+		try {
+			const todoListAsString = (await readFileAsync(filePath)).toString();
+			this.todoList = (JSON.parse(todoListAsString) as ToDo[]).map(
+				({ id, createdAt, isComplete, text, title }) => new ToDo(id, title, text, createdAt, isComplete)
+			);
+		} catch (error) {
+			console.log(error);
+		}
 	}
 
 	public getAll(): Promise<ToDo[]> {
-		try {
-			const todoListAsString = fs.readFileSync(filePath).toString();
-			const todoList = (JSON.parse(todoListAsString) as ToDo[]).map(
-				({ id, createdAt, isComplete, text, title }) => new ToDo(id, title, text, createdAt, isComplete)
-			);
-			return Promise.resolve(todoList);
-		} catch (error) {
-			console.log(error);
-			return Promise.resolve([]);
-		}
+		return Promise.resolve(this.todoList);
 	}
 
 	public async getById(id: string): Promise<ToDo | null> {
@@ -42,7 +56,7 @@ export class TodoRepositoryJson implements RepositoryDef {
 		if (index !== -1) return todo;
 		const newTodo = new ToDo(todo.id, todo.title, todo.text, Date.now(), todo.isComplete);
 		todoList.push(newTodo);
-		this.writeFile(todoList);
+		this.writeCahnges(todoList);
 		return newTodo;
 	}
 
@@ -52,7 +66,7 @@ export class TodoRepositoryJson implements RepositoryDef {
 		if (index === -1) return null;
 		const newTodo = new ToDo(todo.id, todo.title, todo.text, todo.createdAt, todo.isComplete);
 		todoList.splice(index, 1, newTodo);
-		this.writeFile(todoList);
+		this.writeCahnges(todoList);
 		return newTodo;
 	}
 
@@ -61,11 +75,12 @@ export class TodoRepositoryJson implements RepositoryDef {
 		const index = todoList.findIndex((todo) => id === todo.id);
 		if (index === -1) return false;
 		todoList.splice(index, 1);
-		this.writeFile(todoList);
+		this.writeCahnges(todoList);
 		return true;
 	}
 
-	private writeFile(todoList: ToDo[]): void {
-		fs.writeFileSync(filePath, JSON.stringify(todoList, null, '\t'));
+	private writeCahnges(todoList: ToDo[]): void {
+		this.todoList = todoList;
+		// fs.writeFileSync(filePath, JSON.stringify(todoList, null, '\t'));
 	}
 }
