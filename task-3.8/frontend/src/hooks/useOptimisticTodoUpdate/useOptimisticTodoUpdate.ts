@@ -12,14 +12,14 @@ export const useOptimisticTodoUpdate = ({ todoApi }: Props) => {
 
 	const mutation = useMutation({
 		mutationFn: todoApi.update,
-		onMutate: async (newTodo) => {
+		onMutate: async (updatedTodo) => {
 			await queryClient.cancelQueries({ queryKey: ['getAllTodos'] });
 
 			const previousTodos = queryClient.getQueryData(['getAllTodos']);
 
 			queryClient.setQueryData(['getAllTodos'], (old: ToDo[]) => {
-				const index = old.findIndex(({ id }) => id === newTodo.id);
-				return toSpliced(old, index, 1, newTodo);
+				const index = old.findIndex(({ id }) => id === updatedTodo.id);
+				return toSpliced(old, index, 1, updatedTodo);
 			});
 
 			return { previousTodos };

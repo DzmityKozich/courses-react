@@ -8,11 +8,13 @@ import { ToDo } from '../../models/enities/ToDo';
 import { useOptimisticTodoDelete, useOptimisticTodoUpdate } from '../../hooks';
 
 import './TodoList.scss';
+import { useOptimisticTodoCreate } from '../../hooks/useOptimisticTodoCreate';
 
 export const TodoList: React.FC = () => {
 	const { todoApi } = useApiContext();
 	const { mutate: mutateTodo } = useOptimisticTodoUpdate({ todoApi });
 	const { mutate: removeTodo } = useOptimisticTodoDelete({ todoApi });
+	const { mutate: createTodo } = useOptimisticTodoCreate({ todoApi });
 
 	const { data, error, isPending } = useQuery({
 		queryKey: ['getAllTodos'],
@@ -33,6 +35,15 @@ export const TodoList: React.FC = () => {
 		[removeTodo]
 	);
 
+	const addTodo = useCallback(
+		(text: string) => {
+			const todo = new ToDo('', text, Date.now(), false);
+			console.log({ todo });
+			createTodo(todo);
+		},
+		[createTodo]
+	);
+
 	if (isPending) {
 		return <p>loading...</p>;
 	}
@@ -45,10 +56,11 @@ export const TodoList: React.FC = () => {
 		<div className="todoListContainer">
 			<div className="todoList">
 				<div className="todoListHeader">
-					<AddTodoForm />
+					<AddTodoForm onFormSubmit={addTodo} />
 				</div>
 
 				<div className="todoListBody">
+					{/* TODO: sort items by create date */}
 					{data.map((todo) => (
 						<TodoCard key={todo.id} todo={todo} onTodoUpdate={updateTodo} onTodoRemove={deleteTodo} />
 					))}
