@@ -5,8 +5,7 @@ import { AddTodoForm } from '../TodoSearch';
 import { Button, DeleteIcon } from 'ui-kit';
 import { TodoCard } from '../TodoCard';
 import { ToDo } from '../../models/enities/ToDo';
-import { useOptimisticTodoDelete, useOptimisticTodoUpdate } from '../../hooks';
-import { useOptimisticTodoCreate } from '../../hooks/useOptimisticTodoCreate';
+import { useOptimisticTodoDelete, useOptimisticTodoUpdate, useOptimisticTodoCreate, useOptimisticTodoListClear } from '../../hooks';
 
 import './TodoList.scss';
 
@@ -15,6 +14,7 @@ export const TodoList: React.FC = () => {
 	const { mutate: mutateTodo } = useOptimisticTodoUpdate({ todoApi });
 	const { mutate: removeTodo } = useOptimisticTodoDelete({ todoApi });
 	const { mutate: createTodo } = useOptimisticTodoCreate({ todoApi });
+	const { mutate: clearTodoList } = useOptimisticTodoListClear({ todoApi });
 
 	const { data, error, isPending } = useQuery({
 		queryKey: ['getAllTodos'],
@@ -49,6 +49,10 @@ export const TodoList: React.FC = () => {
 		[createTodo]
 	);
 
+	const deleteAllTodos = () => {
+		clearTodoList(todoList);
+	};
+
 	if (isPending) {
 		return <p>loading...</p>;
 	}
@@ -65,14 +69,14 @@ export const TodoList: React.FC = () => {
 				</div>
 
 				<div className="todoListBody">
-					{todoList.map((todo) => (
-						<TodoCard key={todo.id} todo={todo} onTodoUpdate={updateTodo} onTodoRemove={deleteTodo} />
-					))}
+					{!todoList.length && <div className="flex justify-center">No items yet</div>}
+					{!!todoList.length &&
+						todoList.map((todo) => <TodoCard key={todo.id} todo={todo} onTodoUpdate={updateTodo} onTodoRemove={deleteTodo} />)}
 				</div>
 			</div>
 
 			<div className="todoListActions flex justify-center">
-				<Button color="secondary" startIcon={<DeleteIcon color="inherit" />}>
+				<Button color="secondary" startIcon={<DeleteIcon color="inherit" />} onClick={deleteAllTodos}>
 					Clear all tasks
 				</Button>
 			</div>

@@ -12,8 +12,10 @@ export const AddTodoForm: React.FC<Props> = ({ onFormSubmit }) => {
 
 	const submit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		onFormSubmit(text);
-		setText('');
+		if (text) {
+			onFormSubmit(text);
+			setText('');
+		}
 	};
 
 	const change = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
