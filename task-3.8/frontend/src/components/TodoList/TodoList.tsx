@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { useApiContext } from '../../context/ApiContext';
 import { useQuery } from '@tanstack/react-query';
 import { AddTodoForm } from '../TodoSearch';
@@ -6,9 +6,9 @@ import { Button, DeleteIcon } from 'ui-kit';
 import { TodoCard } from '../TodoCard';
 import { ToDo } from '../../models/enities/ToDo';
 import { useOptimisticTodoDelete, useOptimisticTodoUpdate } from '../../hooks';
+import { useOptimisticTodoCreate } from '../../hooks/useOptimisticTodoCreate';
 
 import './TodoList.scss';
-import { useOptimisticTodoCreate } from '../../hooks/useOptimisticTodoCreate';
 
 export const TodoList: React.FC = () => {
 	const { todoApi } = useApiContext();
@@ -20,6 +20,11 @@ export const TodoList: React.FC = () => {
 		queryKey: ['getAllTodos'],
 		queryFn: todoApi.getAll,
 	});
+
+	const todoList = useMemo(() => {
+		if (!data) return [];
+		return [...data].sort((todoA, todoB) => todoB.createdAt - todoA.createdAt);
+	}, [data]);
 
 	const updateTodo = useCallback(
 		(todo: ToDo) => {
@@ -60,14 +65,13 @@ export const TodoList: React.FC = () => {
 				</div>
 
 				<div className="todoListBody">
-					{/* TODO: sort items by create date */}
-					{data.map((todo) => (
+					{todoList.map((todo) => (
 						<TodoCard key={todo.id} todo={todo} onTodoUpdate={updateTodo} onTodoRemove={deleteTodo} />
 					))}
 				</div>
 			</div>
 
-			<div className="todoListActions">
+			<div className="todoListActions flex justify-center">
 				<Button color="secondary" startIcon={<DeleteIcon color="inherit" />}>
 					Clear all tasks
 				</Button>
