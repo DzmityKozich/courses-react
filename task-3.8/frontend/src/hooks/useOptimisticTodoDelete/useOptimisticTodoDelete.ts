@@ -5,9 +5,10 @@ import { toSpliced } from '../../utils';
 
 type Props = {
 	todoApi: TodoApiServiceDef;
+	triggerToast: (message: string) => void;
 };
 
-export const useOptimisticTodoDelete = ({ todoApi }: Props) => {
+export const useOptimisticTodoDelete = ({ todoApi, triggerToast }: Props) => {
 	const queryClient = useQueryClient();
 
 	const mutation = useMutation({
@@ -25,8 +26,8 @@ export const useOptimisticTodoDelete = ({ todoApi }: Props) => {
 			return { previousTodos };
 		},
 
-		// TODO: implement error handling
-		onError: (err, newTodo, context) => {
+		onError: (err, _, context) => {
+			triggerToast(`Something went wrong: ${err}`);
 			queryClient.setQueryData(['getAllTodos'], context?.previousTodos);
 		},
 

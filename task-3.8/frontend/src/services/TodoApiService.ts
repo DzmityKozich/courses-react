@@ -3,6 +3,15 @@ import { TodoApiServiceDef } from '../models/types/api-service/TodoApiServiceDef
 
 const url = import.meta.env.VITE_API_URL;
 
+const sendRequest = async <T>(request: Promise<Response>): Promise<{ res: Response; result: T }> => {
+	const res = await request;
+	const result = await res.json();
+	if (res.status < 200 || res.status > 299) {
+		throw new Error(result.error);
+	}
+	return { res, result };
+};
+
 export class TodoApiService implements TodoApiServiceDef {
 	constructor() {}
 
@@ -30,13 +39,15 @@ export class TodoApiService implements TodoApiServiceDef {
 	};
 
 	public create = async (todo: ToDo): Promise<ToDo> => {
-		const res = await fetch(`${url}/todo`, {
-			body: JSON.stringify(todo),
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		});
-		return await res.json();
+		const { result } = await sendRequest<ToDo>(
+			fetch(`${url}/todo`, {
+				body: JSON.stringify(todo),
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			})
+		);
+		return result;
 	};
 }

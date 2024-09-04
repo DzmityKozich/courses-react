@@ -19,7 +19,7 @@ export class Handler {
 		if (todo) {
 			res.status(200).send(todo);
 		} else {
-			res.status(404).send(`ToDo with id ${req.params.id} is not exist!`);
+			res.status(404).send(new Error(`ToDo with id ${req.params.id} is not exist!`));
 		}
 	};
 
@@ -29,7 +29,7 @@ export class Handler {
 			res.status(200).send(todo);
 		} catch (error) {
 			console.log(error);
-			res.status(400).send('Invalid data!');
+			res.status(400).send(new Error('Invalid data!'));
 		}
 	};
 
@@ -39,7 +39,7 @@ export class Handler {
 			res.status(200).send(todo);
 		} catch (error) {
 			console.log(error);
-			res.status(400).send('Invalid data!');
+			res.status(400).send(new Error('Invalid data!'));
 		}
 	};
 
@@ -48,7 +48,7 @@ export class Handler {
 		if (result) {
 			res.status(204).send(`ToDo item with id ${req.params.id} has been removed!`);
 		} else {
-			res.status(404).send(`ToDo item with id ${req.params.id} not found!`);
+			res.status(404).send(new Error(`ToDo item with id ${req.params.id} not found!`));
 		}
 	};
 }

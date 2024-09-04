@@ -4,9 +4,10 @@ import { ToDo } from '../../models/enities/ToDo';
 
 type Props = {
 	todoApi: TodoApiServiceDef;
+	triggerToast: (message: string) => void;
 };
 
-export const useOptimisticTodoCreate = ({ todoApi }: Props) => {
+export const useOptimisticTodoCreate = ({ todoApi, triggerToast }: Props) => {
 	const queryClient = useQueryClient();
 
 	const mutation = useMutation({
@@ -24,8 +25,8 @@ export const useOptimisticTodoCreate = ({ todoApi }: Props) => {
 			return { previousTodos };
 		},
 
-		// TODO: add error handler
-		onError: (err, newTodo, context) => {
+		onError: (err, _, context) => {
+			triggerToast(`Something went wrong: ${err}`);
 			queryClient.setQueryData(['getAllTodos'], context?.previousTodos);
 		},
 

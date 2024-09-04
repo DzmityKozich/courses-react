@@ -161,6 +161,14 @@ export declare const PlayIcon: default_2.FC<IconProps>;
 
 export declare const PlusIcon: default_2.FC<IconProps>;
 
+declare type Props = {
+    messge: string;
+    onClose: (event?: React.MouseEvent) => void;
+    open: boolean;
+    autoHideDuration?: number;
+    position?: 'bottom-left' | 'top-left' | 'top-center' | 'top-right' | 'bottom-right' | 'bottom-center';
+};
+
 export declare const Textarea: ForwardRefExoticComponent<TextareaHTMLAttributes<HTMLTextAreaElement> & KitTextareaProps & RefAttributes<HTMLTextAreaElement>>;
 
 declare enum THEME {
@@ -187,6 +195,8 @@ export { ThemeContext }
 declare type Themes = Record<THEME, Theme>;
 
 export declare const themes: Themes;
+
+export declare const Toast: ForwardRefExoticComponent<Props & RefAttributes<HTMLDivElement>>;
 
 declare interface ToastThemeProps {
     bgColor: string;

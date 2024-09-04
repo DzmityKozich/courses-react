@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { useApiContext } from '../../context/ApiContext';
 import { useQuery } from '@tanstack/react-query';
 import { AddTodoForm } from '../TodoSearch';
@@ -6,15 +6,18 @@ import { Button, DeleteIcon } from 'ui-kit';
 import { TodoCard } from '../TodoCard';
 import { ToDo } from '../../models/enities/ToDo';
 import { useOptimisticTodoDelete, useOptimisticTodoUpdate, useOptimisticTodoCreate, useOptimisticTodoListClear } from '../../hooks';
+import { ToastContext } from '../../context/ToastContext';
 
 import './TodoList.scss';
 
 export const TodoList: React.FC = () => {
 	const { todoApi } = useApiContext();
-	const { mutate: mutateTodo } = useOptimisticTodoUpdate({ todoApi });
-	const { mutate: removeTodo } = useOptimisticTodoDelete({ todoApi });
-	const { mutate: createTodo } = useOptimisticTodoCreate({ todoApi });
-	const { mutate: clearTodoList } = useOptimisticTodoListClear({ todoApi });
+	const { toastTrigger } = useContext(ToastContext);
+
+	const { mutate: mutateTodo } = useOptimisticTodoUpdate({ todoApi, triggerToast: toastTrigger.showToast });
+	const { mutate: removeTodo } = useOptimisticTodoDelete({ todoApi, triggerToast: toastTrigger.showToast });
+	const { mutate: createTodo } = useOptimisticTodoCreate({ todoApi, triggerToast: toastTrigger.showToast });
+	const { mutate: clearTodoList } = useOptimisticTodoListClear({ todoApi, triggerToast: toastTrigger.showToast });
 
 	const { data, error, isPending } = useQuery({
 		queryKey: ['getAllTodos'],
@@ -43,7 +46,6 @@ export const TodoList: React.FC = () => {
 	const addTodo = useCallback(
 		(text: string) => {
 			const todo = new ToDo('', text, Date.now(), false);
-			console.log({ todo });
 			createTodo(todo);
 		},
 		[createTodo]

@@ -4,9 +4,10 @@ import { TodoApiServiceDef } from '../../models/types/api-service/TodoApiService
 
 type Props = {
 	todoApi: TodoApiServiceDef;
+	triggerToast: (message: string) => void;
 };
 
-export const useOptimisticTodoListClear = ({ todoApi }: Props) => {
+export const useOptimisticTodoListClear = ({ todoApi, triggerToast }: Props) => {
 	const queryClisent = useQueryClient();
 
 	const clearTodoList = (todoList: ToDo[]) => {
@@ -17,7 +18,7 @@ export const useOptimisticTodoListClear = ({ todoApi }: Props) => {
 	const mutation = useMutation({
 		mutationFn: clearTodoList,
 
-		onMutate: async (todoList) => {
+		onMutate: async () => {
 			await queryClisent.cancelQueries({ queryKey: ['getAllTodos'] });
 
 			const priviousTodoList = queryClisent.getQueryData(['getAllTodos']);
@@ -27,7 +28,8 @@ export const useOptimisticTodoListClear = ({ todoApi }: Props) => {
 			return { priviousTodoList };
 		},
 
-		onError: (err, todoList, context) => {
+		onError: (err, _, context) => {
+			triggerToast(`Something went wrong: ${err}`);
 			queryClisent.setQueryData(['getAllTodos'], context?.priviousTodoList);
 		},
 
