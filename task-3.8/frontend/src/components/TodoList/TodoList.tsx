@@ -1,28 +1,27 @@
-import React, { useCallback, useContext, useMemo } from 'react';
-import { useApiContext } from '../../context/ApiContext';
-import { useQuery } from '@tanstack/react-query';
+import React, { useCallback, useMemo } from 'react';
 import { AddTodoForm } from '../TodoSearch';
 import { Button, DeleteIcon } from 'ui-kit';
 import { TodoCard } from '../TodoCard';
 import { ToDo } from '../../models/enities/ToDo';
-import { useOptimisticTodoDelete, useOptimisticTodoUpdate, useOptimisticTodoCreate, useOptimisticTodoListClear } from '../../hooks';
-import { ToastContext } from '../../context/ToastContext';
+import {
+	useOptimisticTodoDelete,
+	useOptimisticTodoUpdate,
+	useOptimisticTodoCreate,
+	useOptimisticTodoListClear,
+	useTodoListQuery,
+	useTodoMutateHandlers,
+} from '../../hooks';
 
 import './TodoList.scss';
 
 export const TodoList: React.FC = () => {
-	const { todoApi } = useApiContext();
-	const { toastTrigger } = useContext(ToastContext);
+	const { data, error, isPending } = useTodoListQuery();
+	const { onError, onSettled } = useTodoMutateHandlers();
 
-	const { mutate: mutateTodo } = useOptimisticTodoUpdate({ todoApi, triggerToast: toastTrigger.showToast });
-	const { mutate: removeTodo } = useOptimisticTodoDelete({ todoApi, triggerToast: toastTrigger.showToast });
-	const { mutate: createTodo } = useOptimisticTodoCreate({ todoApi, triggerToast: toastTrigger.showToast });
-	const { mutate: clearTodoList } = useOptimisticTodoListClear({ todoApi, triggerToast: toastTrigger.showToast });
-
-	const { data, error, isPending } = useQuery({
-		queryKey: ['getAllTodos'],
-		queryFn: todoApi.getAll,
-	});
+	const { mutate: mutateTodo } = useOptimisticTodoUpdate({ onError, onSettled });
+	const { mutate: removeTodo } = useOptimisticTodoDelete({ onError, onSettled });
+	const { mutate: createTodo } = useOptimisticTodoCreate({ onError, onSettled });
+	const { mutate: clearTodoList } = useOptimisticTodoListClear({ onError, onSettled });
 
 	const todoList = useMemo(() => {
 		if (!data) return [];

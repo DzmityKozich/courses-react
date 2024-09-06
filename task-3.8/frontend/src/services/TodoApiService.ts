@@ -7,7 +7,7 @@ const sendRequest = async <T>(request: Promise<Response>): Promise<{ res: Respon
 	const res = await request;
 	const result = await res.json();
 	if (res.status < 200 || res.status > 299) {
-		throw new Error(result.error);
+		throw new Error(result.message);
 	}
 	return { res, result };
 };
@@ -21,20 +21,24 @@ export class TodoApiService implements TodoApiServiceDef {
 	};
 
 	public update = async (todo: ToDo): Promise<ToDo | null> => {
-		const res = await fetch(`${url}/todo/update`, {
-			body: JSON.stringify(todo),
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		});
-		return await res.json();
+		const { result } = await sendRequest<ToDo | null>(
+			fetch(`${url}/todo/update`, {
+				body: JSON.stringify(todo),
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			})
+		);
+		return result;
 	};
 
 	public delete = async (id: string): Promise<boolean> => {
-		const res = await fetch(`${url}/todo/${id}`, {
-			method: 'DELETE',
-		});
+		const { res } = await sendRequest<boolean>(
+			fetch(`${url}/todo/${id}`, {
+				method: 'DELETE',
+			})
+		);
 		return res.status === 204;
 	};
 

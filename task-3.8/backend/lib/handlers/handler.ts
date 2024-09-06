@@ -2,6 +2,10 @@ import { RequestHandler } from 'express';
 import { DI } from '../inversify.config';
 import { RepositoryDef } from '../repository/repository-def';
 
+class ServerError {
+	constructor(public message: string) {}
+}
+
 export class Handler {
 	private repo = DI.get<RepositoryDef>(process.env.DB_TYPE || 'json');
 
@@ -19,7 +23,7 @@ export class Handler {
 		if (todo) {
 			res.status(200).send(todo);
 		} else {
-			res.status(404).send(new Error(`ToDo with id ${req.params.id} is not exist!`));
+			res.status(404).send(new ServerError(`ToDo with id ${req.params.id} is not exist!`));
 		}
 	};
 
@@ -29,7 +33,7 @@ export class Handler {
 			res.status(200).send(todo);
 		} catch (error) {
 			console.log(error);
-			res.status(400).send(new Error('Invalid data!'));
+			res.status(400).send(new ServerError('Invalid data!'));
 		}
 	};
 
@@ -39,7 +43,7 @@ export class Handler {
 			res.status(200).send(todo);
 		} catch (error) {
 			console.log(error);
-			res.status(400).send(new Error('Invalid data!'));
+			res.status(400).send(new ServerError('Invalid data!'));
 		}
 	};
 
@@ -48,7 +52,7 @@ export class Handler {
 		if (result) {
 			res.status(204).send(`ToDo item with id ${req.params.id} has been removed!`);
 		} else {
-			res.status(404).send(new Error(`ToDo item with id ${req.params.id} not found!`));
+			res.status(404).send(new ServerError(`ToDo item with id ${req.params.id} not found!`));
 		}
 	};
 }

@@ -1,15 +1,12 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { TodoApiServiceDef } from '../../models/types/api-service/TodoApiServiceDef';
 import { ToDo } from '../../models/enities/ToDo';
 import { toSpliced } from '../../utils';
+import { OptimisticMutateProps } from '../../models/types/OptimisticMudationProps';
+import { useApiContext } from '../../context/ApiContext';
 
-type Props = {
-	todoApi: TodoApiServiceDef;
-	triggerToast: (message: string) => void;
-};
-
-export const useOptimisticTodoUpdate = ({ todoApi, triggerToast }: Props) => {
+export const useOptimisticTodoUpdate = ({ onError, onSettled }: OptimisticMutateProps) => {
 	const queryClient = useQueryClient();
+	const { todoApi } = useApiContext();
 
 	const mutation = useMutation({
 		mutationFn: todoApi.update,
@@ -25,15 +22,8 @@ export const useOptimisticTodoUpdate = ({ todoApi, triggerToast }: Props) => {
 
 			return { previousTodos };
 		},
-
-		onError: (err, _, context) => {
-			triggerToast(`Something went wrong: ${err}`);
-			queryClient.setQueryData(['getAllTodos'], context?.previousTodos);
-		},
-
-		onSettled: () => {
-			queryClient.invalidateQueries({ queryKey: ['getAllTodos'] });
-		},
+		onError,
+		onSettled,
 	});
 
 	return mutation;

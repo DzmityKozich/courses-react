@@ -1,14 +1,11 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { ToDo } from '../../models/enities/ToDo';
-import { TodoApiServiceDef } from '../../models/types/api-service/TodoApiServiceDef';
+import { OptimisticMutateProps } from '../../models/types/OptimisticMudationProps';
+import { useApiContext } from '../../context/ApiContext';
 
-type Props = {
-	todoApi: TodoApiServiceDef;
-	triggerToast: (message: string) => void;
-};
-
-export const useOptimisticTodoListClear = ({ todoApi, triggerToast }: Props) => {
-	const queryClisent = useQueryClient();
+export const useOptimisticTodoListClear = ({ onError, onSettled }: OptimisticMutateProps) => {
+	const queryClient = useQueryClient();
+	const { todoApi } = useApiContext();
 
 	const clearTodoList = (todoList: ToDo[]) => {
 		const reqs = todoList.map(({ id }) => todoApi.delete(id));
@@ -19,23 +16,16 @@ export const useOptimisticTodoListClear = ({ todoApi, triggerToast }: Props) => 
 		mutationFn: clearTodoList,
 
 		onMutate: async () => {
-			await queryClisent.cancelQueries({ queryKey: ['getAllTodos'] });
+			await queryClient.cancelQueries({ queryKey: ['getAllTodos'] });
 
-			const priviousTodoList = queryClisent.getQueryData(['getAllTodos']);
+			const previousTodos = queryClient.getQueryData(['getAllTodos']);
 
-			queryClisent.setQueryData(['getAllTodos'], []);
+			queryClient.setQueryData(['getAllTodos'], []);
 
-			return { priviousTodoList };
+			return { previousTodos };
 		},
-
-		onError: (err, _, context) => {
-			triggerToast(`Something went wrong: ${err}`);
-			queryClisent.setQueryData(['getAllTodos'], context?.priviousTodoList);
-		},
-
-		onSettled: () => {
-			queryClisent.invalidateQueries({ queryKey: ['getAllTodos'] });
-		},
+		onError,
+		onSettled,
 	});
 
 	return mutation;
