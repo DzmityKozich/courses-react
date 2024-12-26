@@ -1,0 +1,17 @@
+.originalCheckbox {
+	&:checked ~ .checkboxMark {
+		background-image: url(../../../../icons/checkbox.svg);
+		border-color: #00ae1c;
+	}
+}
+
+.checkboxMark {
+	width: 13px;
+	height: 13px;
+	background-color: transparent;
+	border: 1px #fff solid;
+	border-radius: 2px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
