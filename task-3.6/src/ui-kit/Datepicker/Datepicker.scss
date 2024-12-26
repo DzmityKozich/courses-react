@@ -1,0 +1,22 @@
+.dateSelectionPanel {
+	display: flex;
+	flex-direction: row;
+	gap: 2px;
+}
+
+.datepickerSelect {
+	& .kit-input {
+		font-weight: 700;
+	}
+
+	& .kit-input-holder {
+		border: none;
+		padding: 0;
+		max-width: 85px;
+		overflow: hidden;
+	}
+
+	& svg {
+		display: none;
+	}
+}

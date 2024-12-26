@@ -1,0 +1,1 @@
+export { ColorpickerPage } from './ColorpickerPage';
