@@ -1,0 +1,57 @@
+.eventCard {
+	cursor: pointer;
+	border-radius: 8px;
+	overflow: hidden;
+	display: flex;
+	flex-direction: row;
+	overflow: hidden;
+
+	&.sm,
+	&.xs {
+		.eventCardHeader {
+			flex-direction: row;
+			gap: 0.25rem;
+			align-items: start;
+		}
+	}
+
+	&.xs {
+		.eventCardBody {
+			padding: 0 0.5rem;
+		}
+
+		.eventTitle {
+			font-size: 0.8rem;
+			line-height: 16px;
+		}
+
+		.eventDuration {
+			font-size: 0.75rem;
+		}
+	}
+}
+
+.eventMarker {
+	height: 100%;
+	width: 4px;
+}
+
+.eventCardBody {
+	padding: 0.25rem 0.5rem;
+	width: 100%;
+}
+
+.eventCardHeader {
+	display: flex;
+	flex-direction: column;
+}
+
+.eventTitle {
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 20px;
+}
+
+.eventDuration {
+	font-size: 0.85rem;
+}

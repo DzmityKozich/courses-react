@@ -1,0 +1,1 @@
+export { CalendarEventInfoModal } from './CalendarEventInfoModal';

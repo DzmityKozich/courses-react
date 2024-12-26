@@ -1,0 +1,67 @@
+@import '../../../../common.scss';
+
+.logo {
+	font-size: 1.5rem;
+	position: relative;
+	padding-left: 50px;
+
+	&::before {
+		display: block;
+		position: absolute;
+		content: '';
+		width: 28px;
+		height: 28px;
+		background-color: $green;
+		top: 13%;
+		left: 5px;
+		transform: rotate(45deg);
+		border-radius: 5px;
+		z-index: 9;
+	}
+
+	&::after {
+		display: block;
+		position: absolute;
+		content: '';
+		width: 28px;
+		height: 28px;
+		background-color: $light-grren;
+		top: 13%;
+		left: 15px;
+		transform: rotate(45deg);
+		border-radius: 5px;
+	}
+}
+
+.logo-lg {
+	font-size: 2.5rem;
+	position: relative;
+	padding-left: 73px;
+
+	&::before {
+		display: block;
+		position: absolute;
+		content: '';
+		width: 43px;
+		height: 43px;
+		background-color: $green;
+		top: 13%;
+		left: 0;
+		transform: rotate(45deg);
+		border-radius: 10px;
+		z-index: 9;
+	}
+
+	&::after {
+		display: block;
+		position: absolute;
+		content: '';
+		width: 43px;
+		height: 43px;
+		background-color: $light-grren;
+		top: 13%;
+		left: 17px;
+		transform: rotate(45deg);
+		border-radius: 10px;
+	}
+}

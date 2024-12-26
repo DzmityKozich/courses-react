@@ -1,0 +1,1 @@
+export { CalendarEventInfo } from './CalendarEventInfo';

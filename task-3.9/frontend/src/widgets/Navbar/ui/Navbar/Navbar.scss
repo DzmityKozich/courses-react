@@ -1,0 +1,19 @@
+@import '../../../../common.scss';
+
+.navbar {
+	width: 100%;
+	padding: 0.75rem 3.75rem;
+	background-color: #fff;
+	box-shadow: 0px 4px 4px 0px #0000001a;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.navbarSegment {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 1rem;
+}

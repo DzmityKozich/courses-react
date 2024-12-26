@@ -1,0 +1,16 @@
+.dateTimePicker {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	gap: 0.75rem;
+	align-items: end;
+}
+
+.datePicker {
+	width: 288px;
+}
+
+.timePicker {
+	min-width: 150px;
+}

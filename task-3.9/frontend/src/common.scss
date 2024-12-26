@@ -1,0 +1,24 @@
+$green: #00ae1c;
+$light-grren: #80d78d;
+$black: #323749;
+$gray: #dedfe5;
+
+.form-field {
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+	align-items: center;
+}
+
+.skeleton-loading {
+	animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+	0% {
+		background-color: hsl(200, 20%, 80%);
+	}
+	100% {
+		background-color: hsl(200, 20%, 95%);
+	}
+}

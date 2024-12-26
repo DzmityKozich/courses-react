@@ -1,0 +1,32 @@
+@import '../../../../common.scss';
+
+.createCalendarPopover {
+	padding: 1rem;
+	box-shadow: 0px 16px 50px 0px #0000003d;
+	border-radius: 8px;
+	background-color: #fff;
+}
+
+.popoverHeader {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding-bottom: 1rem;
+	border-bottom: 1px $gray solid;
+	font-size: 1.25rem;
+	font-weight: 700;
+}
+
+.popoverBody {
+	margin-top: 1rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.popoverActions {
+	margin-top: 1rem;
+	display: flex;
+	flex-direction: row-reverse;
+}

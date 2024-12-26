@@ -1,0 +1,13 @@
+@import '../../../../common.scss';
+
+.calendarNavigation {
+	display: inline-flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 1rem;
+}
+
+.selectedDate {
+	color: $black;
+	font-weight: 700;
+}
