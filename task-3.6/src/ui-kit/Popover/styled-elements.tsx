@@ -21,4 +21,5 @@ export const PopoverBackdrop = styled.div`
 	height: 100%;
 	background-color: transparent;
 	z-index: 999;
+	font-size: 0px;
 `;

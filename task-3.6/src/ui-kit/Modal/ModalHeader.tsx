@@ -14,7 +14,7 @@ export const ModalHeader: React.FC<Props> = ({ children }) => {
 	return (
 		<ModalHeaderContainer>
 			{children}
-			<IconBtn icon={<CloseIcon color="inherit" />} onClick={onClose} />
+			<IconBtn icon={<CloseIcon color="inherit" />} onClick={onClose} role="close" />
 		</ModalHeaderContainer>
 	);
 };

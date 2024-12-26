@@ -1,36 +1,33 @@
+import classNames from 'classnames';
 import React, { ReactNode } from 'react';
-import { NavLink, NavLinkProps } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
-type Props = NavLinkProps & {
+type Props = {
 	children: ReactNode;
 	className?: string;
 	disabled?: boolean;
+	active?: boolean;
 };
 
-const LinkComponent: React.FC<Props> = ({ to, children, disabled, className }) => {
-	return (
-		<>
-			{disabled && (
-				<NavLink to={to} onClick={(event) => event.preventDefault()} className={`disabled ${className}`}>
-					<div className="kitLink">{children}</div>
-				</NavLink>
-			)}
-			{!disabled && (
-				<NavLink
-					to={to}
-					className={({ isActive }) => {
-						return isActive ? `activeLink ${className}` : className;
-					}}
-				>
-					<div className="kitLink">{children}</div>
-				</NavLink>
-			)}
-		</>
-	);
+const LinkComponent: React.FC<Props> = ({ active, children, disabled, className }) => {
+	if (disabled) {
+		return (
+			<div onClick={(event) => event.preventDefault()} className={`disabled ${className}`}>
+				<div className="kitLink">{children}</div>
+			</div>
+		);
+	} else {
+		return (
+			<div className={classNames(className, { activeLink: active })}>
+				<div className="kitLink">{children}</div>
+			</div>
+		);
+	}
 };
 
 export const Link = styled(LinkComponent)`
+	user-select: none;
+
 	${({ theme }) => css`
 		& .kitLink {
 			text-decoration: none;

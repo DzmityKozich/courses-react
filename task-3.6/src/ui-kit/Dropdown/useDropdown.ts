@@ -7,7 +7,7 @@ export const useDropdown = () => {
 
 	const toggleState = useCallback(
 		(force?: boolean) => {
-			toggle({ ...state, open: force ?? !state.open });
+			toggle((prevState) => ({ ...prevState, open: force ?? !prevState.open }));
 		},
 		[toggle, state],
 	);

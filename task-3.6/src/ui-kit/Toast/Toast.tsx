@@ -24,7 +24,7 @@ export const Toast = forwardRef<HTMLDivElement, Props>((props, ref) => {
 		open && (
 			<ToastDiv ref={ref} className={classNames(position, appearance)}>
 				{messge}
-				<IconBtn icon={<CloseIcon color="inherit" />} style={{ color: 'currentcolor' }} onClick={onClose}></IconBtn>
+				<IconBtn icon={<CloseIcon color="inherit" />} style={{ color: 'currentcolor' }} onClick={onClose} />
 			</ToastDiv>
 		)
 	);

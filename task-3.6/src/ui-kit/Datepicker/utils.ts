@@ -1,5 +1,17 @@
 import { DatepickerDate } from './DatepikerDate';
 
+export const getYearList = (firstYear: number, lastYear: number): number[] => {
+	return [...new Array(lastYear - firstYear).fill(0).map((_, i) => firstYear + i), lastYear];
+};
+
+export const isLastAvailableMonth = (year: number, lastYear: number, month: number): boolean => {
+	return year === lastYear && month === 11;
+};
+
+export const isFirstAvailableMonth = (year: number, firstYear: number, month: number): boolean => {
+	return year === firstYear && month === 0;
+};
+
 export const getMonthData = (year: number, month: number): DatepickerDate[][] => {
 	const daysInMonth = getDaysInMonth(year, month);
 	const fullDates = addMissingDates(daysInMonth);
@@ -7,7 +19,7 @@ export const getMonthData = (year: number, month: number): DatepickerDate[][] =>
 	return splitByWeeks(dates);
 };
 
-const getDaysInMonth = (year: number, month: number) => {
+export const getDaysInMonth = (year: number, month: number): Date[] => {
 	let date = new Date(year, month, 1);
 	const days: Date[] = [];
 
@@ -19,24 +31,19 @@ const getDaysInMonth = (year: number, month: number) => {
 	return days;
 };
 
-const splitByWeeks = (dates: DatepickerDate[]): DatepickerDate[][] => {
+export const splitByWeeks = (dates: DatepickerDate[]): DatepickerDate[][] => {
 	return dates.reduce((weeks, date) => {
 		let lastWeek = weeks.at(-1);
-		if (!lastWeek) {
-			lastWeek = [];
-			weeks.push(lastWeek);
-		}
-		if (lastWeek.length < 7) {
-			lastWeek.push(date);
+		if (date.dayOfWeek === 1 || !lastWeek) {
+			weeks.push([date]);
 		} else {
-			lastWeek = [date];
-			weeks.push(lastWeek);
+			lastWeek.push(date);
 		}
 		return weeks;
 	}, [] as DatepickerDate[][]);
 };
 
-const addMissingDates = (dates: Date[]): Date[] => {
+export const addMissingDates = (dates: Date[]): Date[] => {
 	const firstDate = new Date(dates[0]);
 	const lastDate = new Date(dates.at(-1)!);
 	const startAdditional: Date[] = [];
