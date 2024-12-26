@@ -1,0 +1,14 @@
+.storeIconBtn {
+	background-color: #00ae1c;
+	width: 36px;
+	height: 36px;
+	border-radius: 8px;
+
+	&:active {
+		background-color: #0cd52b;
+	}
+
+	&:hover {
+		background-color: #00ae1c;
+	}
+}

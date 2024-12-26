@@ -1,0 +1,8 @@
+.orderItemCard {
+	display: grid;
+	grid-template-columns: 130px auto;
+	grid-template-rows: repeat(2, auto);
+	border-bottom: 1px #c8c8c8 solid;
+	padding: 0.75rem;
+	column-gap: 0.75rem;
+}
