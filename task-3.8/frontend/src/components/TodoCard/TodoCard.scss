@@ -1,0 +1,44 @@
+$gray: #dedfe5;
+
+.todoCard {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: start;
+	border: 1px $gray solid;
+	padding: 1rem;
+	border-radius: 8px;
+	box-shadow: 0px 2px 2px 0px #0000001a;
+	transition: background-color 0.15s ease;
+
+	&:hover {
+		background-color: #efefef;
+	}
+}
+
+.todoCardText {
+	padding: 0 1.6rem;
+	width: 68rem;
+	font-size: 1rem;
+	border-left: 1px $gray solid;
+	outline: none;
+	height: fit-content;
+}
+
+.todoText {
+	& textarea {
+		width: 100%;
+		border: 0;
+	}
+}
+
+.line-through {
+	text-decoration: line-through;
+}
+
+.todoCardActions {
+	display: flex;
+	flex-direction: row;
+	width: 75px;
+	justify-content: space-between;
+}
