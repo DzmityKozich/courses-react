@@ -1,0 +1,101 @@
+.chat {
+	min-width: 640px;
+	height: 485px;
+	display: grid;
+	grid-template-rows: min-content auto min-content;
+	background-color: #313131;
+	border: 1px solid #454545;
+	border-radius: 8px 8px 0 0;
+}
+
+.chatHeader {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 2rem;
+	background-color: #222222;
+	padding: 0.5rem 0.75rem;
+}
+
+.playerAva {
+	width: 2rem;
+	height: 2rem;
+	border-radius: 50%;
+	background-color: #454545;
+	background-position: center;
+	background-size: 15px 15px;
+	background-repeat: no-repeat;
+
+	&.x-ava {
+		background-image: url(../../assets/x.svg);
+	}
+
+	&.o-ava {
+		background-image: url(../../assets/circle.svg);
+	}
+}
+
+.playerName {
+	font-size: 1rem;
+	font-weight: 400;
+	color: #fff;
+	width: fit-content;
+	text-transform: capitalize;
+}
+
+.messageHolder {
+	width: 100%;
+	margin-bottom: 0.5rem;
+}
+
+.messageBubble {
+	color: #fff;
+	max-width: 85%;
+	width: fit-content;
+	min-width: 50px;
+	padding: 0.25rem 0.5rem;
+	text-align: left;
+	background-color: #737373;
+	border-radius: 8px;
+
+	&.right {
+		float: right;
+	}
+
+	&.playerMessage {
+		background-color: #00ae1c;
+	}
+}
+
+.chatInput {
+	position: relative;
+	padding: 1.5rem;
+}
+
+.input {
+	width: 100%;
+	padding: 0.8rem;
+	padding-right: 40px;
+	border: 1px solid #8b8b8b;
+	border-radius: 8px;
+	background-color: #424242;
+	color: #fff;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 20px;
+}
+
+.sendBtn {
+	width: 20px;
+	height: 20px;
+	top: 50%;
+	transform: translateY(-50%);
+	right: calc(1.5rem + 10px);
+	position: absolute;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-image: url(../../assets/send.svg);
+	background-color: transparent;
+}

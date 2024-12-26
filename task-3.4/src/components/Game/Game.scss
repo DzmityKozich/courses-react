@@ -1,0 +1,40 @@
+.gameHeader {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 1.5rem;
+	gap: 1rem;
+	border-bottom: 1px solid #454545;
+}
+
+.resetBtn {
+	text-transform: capitalize;
+	padding: 0.25rem 0.75rem;
+	background-color: #00ae1c;
+	font-weight: 600;
+	color: #fff;
+	border-radius: 8px;
+}
+
+.gameScore {
+	font-size: 2rem;
+	font-weight: 500;
+	line-height: 38.73px;
+	color: #fff;
+}
+
+.gameField {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.playground {
+	padding: 0rem 2.25rem;
+	border-right: 1px solid #454545;
+
+	&:last-child {
+		border-right: 0;
+	}
+}
