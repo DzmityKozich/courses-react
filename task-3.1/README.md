@@ -1,30 +1,34 @@
-# React + TypeScript + Vite
+# 🚀 Introductory Assignment for the React Course
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The task is to create a photo gallery. Use the Pixabay API to fetch photos.
 
-Currently, two official plugins are available:
+![Gallery](./resources/gallery.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌟 Features:
 
-## Expanding the ESLint configuration
+- **Tailwind Styling**: The application leverages Tailwind CSS for consistent and modern styling.
+- **Reusable Photo Card Component**: A dedicated and reusable component is created for displaying photo cards.
+- **Dynamic Data Handling**: Props are used to pass data to the photo card component.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 🛠️ Tech Stack
 
-- Configure the top-level `parserOptions` property like this:
+- Vite
+- React
+- Tailwind CSS
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+## 🦾 Development
+
+```
+# prepare the project by installing all dependencies:
+npm install
+
+# build the application
+npm run build
+
+# run the development setup
+npm run dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+---
+
+[next >>](https://github.com/DzmityKozich/courses-react/tree/main/task-3.2)
