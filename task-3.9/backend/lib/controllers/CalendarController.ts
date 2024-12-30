@@ -20,7 +20,8 @@ export class CalendarController {
 
 	public saveCalendar: RequestHandler = async (req, res) => {
 		try {
-			const { color, id, isDefault, title } = await this.repo.saveCalendar(req.body);
+			const userId = (req as RequestWithUserData).user.id;
+			const { color, id, isDefault, title } = await this.repo.saveCalendar({ ...req.body, userId });
 			res.status(200).send({ color, id, isDefault, title });
 		} catch (error) {
 			res.status(500).send();
