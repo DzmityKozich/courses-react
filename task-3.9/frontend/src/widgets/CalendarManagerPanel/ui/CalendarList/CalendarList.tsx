@@ -69,8 +69,7 @@ export const CalendarList: React.FC<Props> = ({ calendarList }) => {
 							/>
 
 							<div className="calendarItemActions">
-								{/* {!c.isDefault && <DeleteCalendarButton calendar={c} onClose={(calendar) => closeDeleteModal(calendar)} />} */}
-								<DeleteCalendarButton calendar={c} onClose={(calendar) => closeDeleteModal(calendar)} />
+								{!c.isDefault && <DeleteCalendarButton calendar={c} onClose={(calendar) => closeDeleteModal(calendar)} />}
 								<IconBtn icon={<EditIcon color="inherit" />} onClick={(event) => openCalendarProperties(event, c)} />
 							</div>
 						</div>
