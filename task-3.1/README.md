@@ -4,7 +4,7 @@ The task is to create a photo gallery. Use the Pixabay API to fetch photos.
 
 ![Gallery](./resources/gallery.png)
 
-## 🌟 Features:
+## 🌟 Features
 
 - **Tailwind Styling**: The application leverages Tailwind CSS for consistent and modern styling.
 - **Reusable Photo Card Component**: A dedicated and reusable component is created for displaying photo cards.
