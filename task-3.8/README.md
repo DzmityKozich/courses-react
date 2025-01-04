@@ -1,4 +1,4 @@
-# TODO app
+# 🚀 TODO app
 
 Client-server TODO app with async operations
 
