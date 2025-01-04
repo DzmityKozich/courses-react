@@ -54,4 +54,4 @@ npm run dev
 
 ---
 
-[<< previous](https://github.com/DzmityKozich/courses-react/tree/main/task-3.7) [next >>](https://github.com/DzmityKozich/courses-react/tree/main/task-3.9)
+[<< previous](https://github.com/DzmityKozich/courses-react/tree/main/task-3.6) [next >>](https://github.com/DzmityKozich/courses-react/tree/main/task-3.9)
