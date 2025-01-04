@@ -9,6 +9,7 @@ export const useTodoMutateHandlers = () => {
 	const onError = useCallback((err: Error, _: any, context: any) => {
 		toastTrigger.showToast(`Something went wrong: ${err}`);
 		queryClient.setQueryData(['getAllTodos'], context?.previousTodos);
+		console.error(err);
 	}, []);
 
 	const onSettled = useCallback(() => {

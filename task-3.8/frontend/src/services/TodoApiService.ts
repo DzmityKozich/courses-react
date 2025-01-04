@@ -34,11 +34,11 @@ export class TodoApiService implements TodoApiServiceDef {
 	};
 
 	public delete = async (id: string): Promise<boolean> => {
-		const { res } = await sendRequest<boolean>(
-			fetch(`${url}/todo/${id}`, {
-				method: 'DELETE',
-			})
-		);
+		const res = await fetch(`${url}/todo/${id}`, { method: 'DELETE' });
+		if (res.status < 200 || res.status > 299) {
+			const result = await res.json();
+			throw new Error(result.message);
+		}
 		return res.status === 204;
 	};
 
