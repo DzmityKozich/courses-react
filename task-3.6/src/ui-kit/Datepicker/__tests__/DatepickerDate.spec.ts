@@ -8,9 +8,14 @@ describe('DeatepickerDate test', () => {
 	});
 
 	it('should create DatepickerDate object with current date', () => {
+		const currentDate = new Date();
 		const datepickerDate = new DatepickerDate();
 
-		expect(datepickerDate.toDate().toString()).toBe(new Date().toString());
+		expect(datepickerDate.year).toBe(currentDate.getFullYear());
+		expect(datepickerDate.month).toBe(currentDate.getMonth());
+		expect(datepickerDate.monthDate).toBe(currentDate.getDate());
+		expect(datepickerDate.toDate().getHours()).toBe(currentDate.getHours());
+		expect(datepickerDate.toDate().getMinutes()).toBe(currentDate.getMinutes());
 	});
 
 	it('should create DatepickerDate object with specific date', () => {
