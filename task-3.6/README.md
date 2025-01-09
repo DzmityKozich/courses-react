@@ -1,30 +1,94 @@
-# React + TypeScript + Vite
+# 🚀 UI-Kit
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A set of custom UI components designed to simplify interface creation in React. This includes task №3.7 - test coverage.
 
-Currently, two official plugins are available:
+![Button](./resources/button.png)
+![Dark Button](./resources/button-dark.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌟 Features
 
-## Expanding the ESLint configuration
+- Button
+  - Primary and Secondary themes
+  - Support for start and end icons
+- Icon Button
+- Link
+  - Disabled state support
+- Input
+  - Support for start and end adornments
+  - Display `*` symbol next to the label for required fields
+  - Help text
+  - Error text
+- Textarea
+  - Support for start and end adornments
+  - Display `*` symbol next to the label for required fields
+  - Help text
+  - Error text
+  - Autosize functionality
+- Checkbox
+- Select
+  - Created using the `Component Composition` pattern
+- Dropdown
+  - Created using the `Component Composition` pattern
+- ColorPicker
+  - Support for default values
+  - Allows setting a custom color list in properties
+- Modal
+  - Created using the `Component Composition` pattern (`ModalBody`, `ModalHeader`, `ModalFooter` components)
+- Datepicker
+  - Support for default values
+  - Allows setting a year range
+  - Ability to select a specific year or month
+- Toast
+  - Control over Snackbar's position on the screen
+- Light and Dark themes support
+- Test coverage
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 🛠️ Tech Stack
 
-- Configure the top-level `parserOptions` property like this:
+- React
+- Tailwind
+- styled-components
+- React Router
+- Jest
+- Vitest
+- React Testing Library
+- Vite
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+## 🦾 Development
+
+```
+# To build the app
+npm run build
+
+# To run the app
+npm run dev
+
+# To run tests
+npm run test
+
+# To run tests with coverage
+npm run test:coverage
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## 🖼️ Gallery
+
+![Button](./resources/button.png)
+![Button](./resources/button-dark.png)
+Buttons
+
+![Input](./resources/input.png)
+![Input](./resources/input-dark.png)
+Input Field
+
+![Dropdown](./resources/dropdown.png)
+![Dropdown](./resources/dropdown-dark.png)
+Dropdown
+
+![Test coverage](./resources/test-coverage.png)
+Test coverage
+
+[See more here](./resources)
+
+---
+
+[<< previous](https://github.com/DzmityKozich/courses-react/tree/main/task-3.5) [next >>](https://github.com/DzmityKozich/courses-react/tree/main/task-3.8)
