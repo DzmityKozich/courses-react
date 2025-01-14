@@ -17,7 +17,7 @@ export const Navbar: React.FC = () => {
 			<Toolbar>
 				<IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}></IconButton>
 				<Link to="/" className="flex-1">
-					<div className="logo">Office Chairs</div>
+					<div className="logo">Products</div>
 				</Link>
 
 				<StoreLinkBtn icon={<ShoppingCartIcon fontSize="small" />} badgeContent={amount > 0 ? amount.toString() : ''} to={Paths.cartPage}>

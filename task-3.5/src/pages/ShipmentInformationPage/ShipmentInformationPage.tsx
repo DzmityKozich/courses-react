@@ -1,32 +1,29 @@
-import React, { useEffect } from 'react';
-import { PageTitle, StoreLinkBtn } from '../../share';
+import React, { useCallback, useEffect } from 'react';
+import { PageTitle } from '../../share';
 import { ShipmentInfoForm } from '../../components/ShipmentInfoForm';
-import { useShipmentInfoForm } from '../../hooks/useShipmentInfoForm';
 import { useRoutGuard } from '../../hooks/useRouteGuard';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { ShipmentForm } from '../../models/types';
+import { Paths } from '../../routes/routes';
 
 export const ShipmentInformationPage: React.FC = () => {
 	const { state } = useLocation();
-	const { valid, value } = useShipmentInfoForm(({ valid, value }) => ({ valid, value }));
+	const navigate = useNavigate();
 	const { setOrderInfoPageAccess } = useRoutGuard(({ setOrderInfoPageAccess }) => ({ setOrderInfoPageAccess }));
 
 	useEffect(() => {
-		setOrderInfoPageAccess(valid);
-	}, [valid, setOrderInfoPageAccess]);
+		setOrderInfoPageAccess(false);
+	}, []);
 
-	useEffect(() => {
-		console.log(state);
-	}, [state]);
+	const onSubmit = useCallback((values: ShipmentForm) => {
+		setOrderInfoPageAccess(true);
+		navigate(Paths.orderInfoPage, { state: { ...state, shipmentFormValue: values } });
+	}, []);
 
 	return (
 		<>
 			<PageTitle title="Shipment information" />
-			<div className="mb-8">
-				<ShipmentInfoForm />
-			</div>
-			<StoreLinkBtn to="/order-info" disabled={!valid} state={{ ...state, shipmentFormValue: value }}>
-				Submit order
-			</StoreLinkBtn>
+			<ShipmentInfoForm onSubmit={onSubmit} />
 		</>
 	);
 };

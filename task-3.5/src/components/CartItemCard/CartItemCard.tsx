@@ -33,7 +33,7 @@ export const CartItemCard: React.FC<Props> = ({ item, amount, deleteItem, increa
 				<Typography component="div">
 					{title}, {description}
 				</Typography>
-				<StoreBtn startIcon={<DeleteIcon />} onClick={deleteItem}>
+				<StoreBtn startIcon={<DeleteIcon />} onClick={deleteItem} className="w-[150px]">
 					Delete
 				</StoreBtn>
 			</Box>

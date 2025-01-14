@@ -15,4 +15,10 @@ export const StoreBtn = styled(Button)({
 	'&:hover': {
 		backgroundColor: '#00ae1c',
 	},
+
+	'&:disabled': {
+		backgroundColor: '#187727',
+		color: '#b9b9b9',
+		cursor: 'not-allowed',
+	},
 });

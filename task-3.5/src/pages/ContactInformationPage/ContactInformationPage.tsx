@@ -1,31 +1,29 @@
-import React, { useEffect } from 'react';
-import { PageTitle, StoreLinkBtn } from '../../share';
+import React, { useCallback, useEffect } from 'react';
+import { PageTitle } from '../../share';
 import { ContactInfoForm } from '../../components/ContactInfoForm';
-import { useContactInfoForm } from '../../hooks/useContactInfoForm';
 import { useRoutGuard } from '../../hooks/useRouteGuard';
 import { Paths } from '../../routes/routes';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { ContactForm } from '../../models/types';
 
 export const ContactInformationPage: React.FC = () => {
 	const { state = {} } = useLocation();
-	const { valid, value } = useContactInfoForm(({ valid, value }) => ({ valid, value }));
+	const navigate = useNavigate();
 	const { setShipmentInfoPageAccess } = useRoutGuard(({ setShipmentInfoPageAccess }) => ({ setShipmentInfoPageAccess }));
 
 	useEffect(() => {
-		setShipmentInfoPageAccess(valid);
-	}, [value, valid, setShipmentInfoPageAccess]);
+		setShipmentInfoPageAccess(false);
+	}, []);
+
+	const onSubmit = useCallback((values: ContactForm) => {
+		setShipmentInfoPageAccess(true);
+		navigate(Paths.shipmentInfoPage, { state: { ...state, conatctFormValue: values } });
+	}, []);
 
 	return (
 		<>
 			<PageTitle title="Contact information" />
-
-			<div className="mb-8">
-				<ContactInfoForm />
-			</div>
-
-			<StoreLinkBtn to={Paths.shipmentInfoPage} disabled={!valid} state={{ ...state, conatctFormValue: value }}>
-				Next step
-			</StoreLinkBtn>
+			<ContactInfoForm onSubmit={onSubmit} />
 		</>
 	);
 };

@@ -18,7 +18,7 @@ export const Layout: React.FC = () => {
 		<Box sx={{ flexGrow: 1 }} className="w-full">
 			<Navbar />
 
-			<div className="mt-6">
+			<div className="my-6">
 				<Routes>
 					<Route path="/" element={<ItemsPage />} />
 					<Route path="/order/*" element={<OrderPage />} />
