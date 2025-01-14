@@ -34,9 +34,11 @@ export const useCart = create<Cart>((set, get) => ({
 }));
 
 const calculateSum = (items: CartItem[]): number => {
-	return items.reduce((sum, { item, amount }) => {
-		return sum + item.price * amount;
-	}, 0);
+	return +items
+		.reduce((sum, { item, amount }) => {
+			return sum + item.price * amount;
+		}, 0)
+		.toFixed(2);
 };
 
 const totalItems = (items: CartItem[]): number => {
