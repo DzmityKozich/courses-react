@@ -1,30 +1,34 @@
-# React + TypeScript + Vite
+# 🚀 Tic-Tac-Toe game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A small **Tic-Tac-Toe** game
+![Game](./resources/tic-tac-toe.png)
 
-Currently, two official plugins are available:
+## 🌟 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- The screen is divided into two sides: one for "player X" and one for "player O".
+- There is a score displayed at the top of the page; players can reset the score.
+- In case of a victory by one of the players, the winning sequence will be crossed out, and _You win_ and _You lost_ messages will be shown.
+- Players can communicate through a chat located below the playground.
+- Each player will see the messages as if sent from their own perspective, similar to typical chat interfaces.
+- Each message contains the message text and the time it was sent.
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- React
+- Tailwind
+- Zustand
+- Vite
 
-- Configure the top-level `parserOptions` property like this:
+## 🦾 Development
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```
+# To build the frontend app
+npm run build
+
+# To run the frontend app
+npm run dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+---
+
+[<< previous](https://github.com/DzmityKozich/courses-react/tree/main/task-3.3) [next >>](https://github.com/DzmityKozich/courses-react/tree/main/task-3.5)
