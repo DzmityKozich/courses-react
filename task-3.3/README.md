@@ -1,30 +1,34 @@
-# React + TypeScript + Vite
+# 🚀 Forms
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The goal of the task is to demonstrate the ability to work with various form management approaches.
+![Forms](./resources/forms.png)
 
-Currently, two official plugins are available:
+## 🌟 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Uncontrolled approach
+- Controlled approach
+- Custom input components (no UI libs were used)
+- Custom validation
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- React
 
-- Configure the top-level `parserOptions` property like this:
+## 🦾 Development
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```
+# To build the frontend app
+npm run build
+
+# To run the frontend app
+npm run dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## 🖼️ Gallery
+
+![Froms](./resources/forms.png)
+![Validation](./resources/validated-forms.png)
+
+---
+
+[<< previous](https://github.com/DzmityKozich/courses-react/tree/main/task-3.2) [next >>](https://github.com/DzmityKozich/courses-react/tree/main/task-3.4)
