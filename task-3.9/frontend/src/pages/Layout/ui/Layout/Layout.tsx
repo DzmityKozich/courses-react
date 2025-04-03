@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Navbar } from 'widgets/Navbar';
 import { CalendarManagerPanel } from 'widgets/CalendarManagerPanel';
-import { useCalendarListQuery } from '../../model/useCalendarListQuery';
+import { useCalendarListQuery, useCalendarListRtkQuery } from '../../model/useCalendarListQuery';
 import { useCalendarList } from 'entities/Calendar';
 import { ToastHolder } from 'shared/ui-kit';
 import { sortCalendars } from '../../lib/calendar-sort';
@@ -10,12 +10,13 @@ import { sortCalendars } from '../../lib/calendar-sort';
 import './Layout.scss';
 
 export const Layout: React.FC = () => {
-	const { data } = useCalendarListQuery();
+	// const { data } = useCalendarListQuery();
+	const { data } = useCalendarListRtkQuery();
 	const { setCalendarList } = useCalendarList();
 
 	useEffect(() => {
 		if (data) {
-			setCalendarList(sortCalendars(data));
+			setCalendarList(sortCalendars(data) as any[]);
 		}
 	}, [data]);
 

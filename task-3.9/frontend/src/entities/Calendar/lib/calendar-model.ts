@@ -20,3 +20,13 @@ export const convertDtoToCalendar = (calendarDto: CalendarDto): Calendar => {
 	const { color, id, isDefault, title } = calendarDto;
 	return new Calendar(title, color, true, isDefault, id);
 };
+
+export const convertDtoToStoreModel = (dto: CalendarDto): CalendarStoreModel => {
+	const { color, id, isDefault, title } = dto;
+	return { color, id, isActive: true, isDefault, title };
+};
+
+export const convertStoreModelToDto = (model: CalendarStoreModel): CalendarDto => {
+	const { color, id, isDefault, title } = model;
+	return { color, id, isDefault, title };
+};

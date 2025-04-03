@@ -1,6 +1,6 @@
-import { Calendar } from 'entities/Calendar/model/Calendar';
+import { CalendarStoreModel } from 'entities/Calendar/model/calendar-types';
 
-export const sortCalendars = (calendars: Calendar[]): Calendar[] => {
+export const sortCalendars = (calendars: CalendarStoreModel[]): CalendarStoreModel[] => {
 	const copy = [...calendars];
 	if (!copy.length) return copy;
 	const index = calendars.findIndex(({ isDefault }) => isDefault);

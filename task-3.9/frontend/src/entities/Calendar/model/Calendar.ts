@@ -1,6 +1,7 @@
 import { v4 as uuid } from 'uuid';
+import { CalendarStoreModel } from './calendar-types';
 
-export class Calendar {
+export class Calendar implements CalendarStoreModel {
 	public id: string;
 	private _isDefault: boolean;
 
